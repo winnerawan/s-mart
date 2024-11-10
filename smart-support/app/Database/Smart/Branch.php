@@ -23,7 +23,6 @@ class Branch extends AbstractModel
 	protected $branchStatus;
 	protected $branchTimezone;
 	protected $userBranchs;
-	protected $clusters;
 
 
 	/**

@@ -23,7 +23,8 @@ class Item extends AbstractModel
 	/**
 	 */
 	protected $casts = [
-		// 'id' => 'string'
+		'id' => 'string',
+		'sku' => 'string'
 	];
 	/**
 	 */

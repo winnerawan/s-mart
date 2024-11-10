@@ -5,11 +5,11 @@ namespace App\Database\Smart;
 
 /**
  */
-class Purchase extends AbstractModel
+class SaleItem extends AbstractModel
 {
 	/**
 	 */
-	protected $table = 'purchase';
+	protected $table = 'sale_item';
 
 	// /**
 	//  */
@@ -22,30 +22,21 @@ class Purchase extends AbstractModel
 	/**
 	 */
 	protected $casts = [
-		'id' => 'string',
+		'sale_id' => 'string',
+		'item_id' => 'string',
+		'sku' => 'string'
 	];
+
 	/**
 	 */
 	protected $items;
-	protected $hasItems;
-
-	/** 
-	*/
-	public function hasItems() {
-		$hasItems = Item::where([
-			'item.category_id' => $this->id
-		])->count();
-		if ($hasItems>0) {
-			return true;
-		}
-		return false;
-	}
 
 	/** 
 	*/
 	public function items() {
 		return Item::where([
-			'item.category_id' => $this->id
+			'item.id' => $this->item_id,
+			'item.sku' => $this->sku
 		]);
 	}
 

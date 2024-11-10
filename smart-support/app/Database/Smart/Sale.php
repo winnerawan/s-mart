@@ -19,6 +19,11 @@ class Sale extends AbstractModel
 	// 	'icon',
 	// 	'position' 
 	// ];
+	/**
+	 */
+	protected $casts = [
+		'id' => 'string',
+	];
 
 	/**
 	 */
