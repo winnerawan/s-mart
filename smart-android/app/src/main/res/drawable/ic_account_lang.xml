@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2023 © JAGONET  All Rights Reserved by PT. SARANA MEDIA CEMERLANG
+  ~ Unauthorized copying of this file, via any medium is strictly
+  ~ prohibited Proprietary and confidential
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:width="24dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="@color/black" android:pathData="M12,2C6.486,2 2,6.486 2,12c0,1.594 0.386,3.172 1.116,4.586l-1.07,3.829a1.252,1.252 0,0 0,1.54 1.54l3.832,-1.07C8.831,21.616 10.408,22 12,22c5.514,0 10,-4.486 10,-10S17.514,2 12,2zM10.25,6.501h3a0.75,0.75 0,0 1,0.75 0.75v1.25a3.49,3.49 0,0 1,-1.273 2.7,0.748 0.748,0 1,1 -0.955,-1.156c0.463,-0.383 0.728,-0.945 0.728,-1.544v-0.5h-2.25a0.75,0.75 0,1 1,0 -1.5zM15.75,6.501a0.75,0.75 0,0 1,0.75 0.75v1.75h0.75a0.75,0.75 0,1 1,0 1.5h-0.75v3.25a0.75,0.75 0,1 1,-1.5 0v-6.5a0.75,0.75 0,0 1,0.75 -0.75zM9.25,9.001a0.75,0.75 0,0 1,0.7 0.48l2.5,6.5a0.75,0.75 0,0 1,-1.4 0.539L10.466,15L8.034,15l-0.584,1.52a0.75,0.75 0,0 1,-1.4 -0.539l2.5,-6.5a0.75,0.75 0,0 1,0.7 -0.481zM9.25,11.841 L8.611,13.501L9.89,13.501l-0.639,-1.66z"/>
+</vector>

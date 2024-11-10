@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2023 © JAGONET  All Rights Reserved by PT. SARANA MEDIA CEMERLANG
+  ~ Unauthorized copying of this file, via any medium is strictly
+  ~ prohibited Proprietary and confidential
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:shape="oval">
+    <solid android:color="@color/main_color"/>
+    <size android:height="@dimen/dimen_56dp" android:width="@dimen/dimen_56dp"/>
+</shape>

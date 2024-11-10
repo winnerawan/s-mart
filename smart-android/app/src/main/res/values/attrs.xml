@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorDivider" format="reference">
+
+    </attr>
+    <attr name="colorError" format="reference|color">
+
+    </attr>
+    <attr name="colorErrorContainer" format="color">
+
+    </attr>
+    <attr name="colorIcon" format="reference">
+
+    </attr>
+    <attr name="colorIconLight" format="reference">
+
+    </attr>
+    <attr name="colorOnBackground" format="reference|string|integer|boolean|color|float|dimension|fraction">
+
+    </attr>
+    <attr name="colorUnderlayBackground" format="reference">
+    </attr>
+    <attr name="colorBackgroundPlaceholder" format="reference">
+    </attr>
+    <attr name="colorSurfaceContainerHigh" format="color">
+
+    </attr>
+
+    <declare-styleable name="ProgressCircleView">
+        <attr name="radius" format="dimension"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="thickness" format="dimension"/>
+        <attr name="clockwise" format="boolean"/>
+        <attr name="colorInactive" format="color"/>
+        <attr name="colorActive" format="color"/>
+    </declare-styleable>
+</resources>

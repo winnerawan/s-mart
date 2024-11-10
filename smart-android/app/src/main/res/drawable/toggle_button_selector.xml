@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2023 © JAGONET  All Rights Reserved by PT. SARANA MEDIA CEMERLANG
+  ~ Unauthorized copying of this file, via any medium is strictly
+  ~ prohibited Proprietary and confidential
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:state_checked="true" android:state_pressed="true" android:drawable="@drawable/ic_flag_active_uk"/>
+    <item android:state_focused="false" android:state_checked="true" android:drawable="@drawable/ic_flag_active_indonesia"/>
+    <item android:state_checked="false" android:state_pressed="true" android:drawable="@drawable/ic_flag_active_indonesia"/>
+    <item android:state_focused="false" android:state_checked="false" android:drawable="@drawable/ic_flag_active_uk"/>
+</selector>

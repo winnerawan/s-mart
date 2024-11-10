@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="textShadowDx">1</integer>
+    <integer name="textShadowDy">1</integer>
+    <integer name="textShadowRadius">2</integer>
+    <integer name="text_shadow_dx">1</integer>
+    <integer name="text_shadow_dy">1</integer>
+    <integer name="text_shadow_radius">2</integer>
+<!--    <integer name="dividerAlpha">0.8</integer>-->
+<!--    <integer name="dividerLightAlpha">0.4</integer>-->
+    <integer name="episode_list_preload_size">12</integer>
+    <integer name="fui_min_password_length">6</integer>
+    <integer name="scrim_animation_duration">50</integer>
+
+</resources>

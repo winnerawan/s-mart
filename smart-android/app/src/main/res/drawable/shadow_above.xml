@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2023 © JAGONET  All Rights Reserved by PT. SARANA MEDIA CEMERLANG
+  ~ Unauthorized copying of this file, via any medium is strictly
+  ~ prohibited Proprietary and confidential
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:startColor="#20000000"
+        android:endColor="@android:color/transparent"
+        android:angle="90" >
+    </gradient>
+</shape>

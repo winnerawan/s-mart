@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2023 © JAGONET  All Rights Reserved by PT. SARANA MEDIA CEMERLANG
+  ~ Unauthorized copying of this file, via any medium is strictly
+  ~ prohibited Proprietary and confidential
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:height="28dp" android:width="28dp" android:viewportWidth="28" android:viewportHeight="28">
+    <path android:fillColor="#ef0a1b" android:pathData="M28,14H0C0,6.27 6.27,0 14,0s14,6.27 14,14" android:fillType="evenOdd"/>
+    <path android:fillColor="#efefef" android:pathData="M28,14c0,7.74 -6.27,14 -14,14S0,21.74 0,14h28z" android:fillType="evenOdd"/>
+</vector>

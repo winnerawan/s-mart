@@ -1,0 +1,91 @@
+<!--
+  ~ Copyright 2023 © JAGONET  All Rights Reserved by PT. SARANA MEDIA CEMERLANG
+  ~ Unauthorized copying of this file, via any medium is strictly
+  ~ prohibited Proprietary and confidential
+  -->
+
+<resources>
+    <string name="app_name">S-Mart</string>
+    <string name="account_authtoken_label">@string/api_header_authorization_bearer</string>
+    <string name="account_authtoken_type">@string/api_header_authorization_bearer</string>
+    <string name="api_header_accept">Accept</string>
+    <string name="api_header_accept_json">application/json</string>
+    <string name="api_header_authorization">Authorization</string>
+    <string name="api_header_authorization_bearer">Bearer</string>
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="ticket">Ticket</string>
+    <string name="account">Account</string>
+    <string name="change_picture">Change Picture</string>
+    <string name="general">General</string>
+    <string name="log_out">Log Out</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="help_centre_text">Help Centre</string>
+    <string name="my_profile">My Profile</string>
+    <string name="your_account_info">Your account information</string>
+    <string name="language_text">Language</string>
+    <string name="select_language">Choose your preferred language</string>
+    <string name="faq_text">Frequently Ask Question</string>
+    <string name="term_and_condition_text">Terms and Conditions</string>
+    <string name="privacy_policy_text">Privacy Policy</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_your_current_password">Change your current password</string>
+    <string name="transaction_history">Transaction History</string>
+    <string name="transaction_history_desc">Your transaction details</string>
+    <string name="asterisk">*</string>
+    <string name="email_label">Email</string>
+    <string name="password">Password</string>
+    <string name="is_have_account">Doesn\'t have account?</string>
+    <string name="register">Register</string>
+    <string name="sign_in">Sign In</string>
+    <string name="swipe_up_to_explore">Swipe up to explore packets</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="skip">Skip</string>
+    <string name="speed">speed</string>
+    <string name="gaugeText">Speed</string>
+    <string name="go">Go</string>
+    <string name="change_test_server">Change test server</string>
+    <string name="retry">Retry</string>
+
+    <string name="download_mbps">Download Mbps</string>
+    <string name="upload_mbps">Upload Mbps</string>
+    <string name="download">Download</string>
+    <string name="upload">Upload</string>
+    <string name="ping">Ping</string>
+    <string name="jitter">Jitter</string>
+    <string name="testhistoryitem_download">%1$s Mbps</string>
+    <string name="testhistoryitem_upload">%1$s Mbps</string>
+    <string name="provider">Connected To: %1$s</string>
+    <string name="isp">ISP: %1$s</string>
+    <string name="error_internet">Unable to connect to the server. Kindly try again later</string>
+    <string name="distance">%1$s km</string>
+    <string name="again">Again</string>
+    <string name="share">Share</string>
+    <string name="ms">ms</string>
+    <string name="speedtest">SpeedTest</string>
+    <string name="speedtest_caps">SPEEDTEST</string>
+    <string name="service">Service</string>
+    <string name="service_desc">Your service details</string>
+    <string name="label_username">Username</string>
+    <string name="message_auth_invalid">Invalid your username/password.</string>
+    <string name="message_empty_username">Please provide a non empty username!</string>
+    <string name="message_empty_password">Please provide a non empty password!</string>
+    <string name="account_type">id.co.sherly.mart</string>
+    <string name="account_label">@string/app_name</string>
+    <string name="explore_news">Explore news</string>
+    <string name="news">Latest news</string>
+    <string name="explore_packets">Explore packets</string>
+    <string name="packet_name">Packet Name</string>
+    <string name="packet_speed">Packet Speed</string>
+    <string name="device_sharing">Device Sharing</string>
+    <string name="total_price">Total Price</string>
+    <string name="packet_description">Packet Description</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="see_more">See more</string>
+    <string name="message_add_internet_number">Your managed internet number</string>
+    <string name="add_internet_number">Add internet number</string>
+    <string name="support">Support</string>
+    <string name="action_share">Share</string>
+    <string name="action_open_with">Open with</string>
+    <string name="subscribe">Subscribe</string>
+</resources>

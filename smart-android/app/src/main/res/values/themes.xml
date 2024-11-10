@@ -1,0 +1,584 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.JagoNet.NewsDetail" parent="Theme.JagoNet">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+    <style name="Theme.JagoNet" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/orange_logo</item>
+        <item name="colorPrimaryVariant">@color/orange_logo_accent</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/orange_logo_light</item>
+        <item name="colorSecondaryVariant">@color/orange_secondary_variant</item>
+        <item name="colorOnSecondary">@color/bg_variant</item>
+        <!-- Status bar color. -->
+<!--        <item name="android:statusBarColor">@color/white</item>-->
+        <item name="android:statusBarColor">@android:color/white</item>
+
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <!-- Customize your theme here. -->
+        <item name="colorBackgroundPlaceholder">@color/m3_sys_color_dynamic_light_surface_container_high</item>
+        <item name="colorDivider">?attr/colorOutlineVariant</item>
+        <item name="colorIcon">?android:attr/textColorPrimary</item>
+        <item name="colorIconLight">?android:attr/textColorTertiary</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.Jagonet.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.Jagonet.BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.Jagonet.BodySmall</item>
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.Jagonet.DisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.Jagonet.DisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.Jagonet.DisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.Jagonet.HeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.Jagonet.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.Jagonet.HeadlineSmall</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.Jagonet.LabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.Jagonet.LabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.Jagonet.LabelSmall</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Jagonet.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.Jagonet.TitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.Jagonet.TitleSmall</item>
+        <item name="bottomSheetDialogTheme">@style/Widget.Jagonet.BottomSheet</item>
+    </style>
+    <style name="TextAppearance.Jagonet.TitleSmall" parent="@style/TextAppearance.Material3.TitleSmall">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="TextAppearance.Jagonet.Tab" parent="@style/TextAppearance.Jagonet.TitleSmall">
+        <item name="textAllCaps">false</item>
+    </style>
+    <style name="TextAppearance.Jagonet.LabelMedium" parent="@style/TextAppearance.Material3.LabelMedium">
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="Widget.Jagonet.BottomNavigationView" parent="@style/Widget.Material3.BottomNavigationView">
+        <item name="itemIconTint">@color/selector_navigation_bar_icon_tint</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.Jagonet.LabelMedium</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.Jagonet.LabelMedium</item>
+        <item name="itemTextColor">@color/selector_navigation_bar_label_tint</item>
+    </style>
+    <style name="TextAppearance.Jagonet.BodyLarge" parent="@style/TextAppearance.Material3.BodyLarge">
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="TextAppearance.Jagonet.BodyMedium" parent="@style/TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="TextAppearance.Jagonet.BodySmall" parent="@style/TextAppearance.Material3.BodySmall">
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="TextAppearance.Jagonet.Chip" parent="@style/TextAppearance.Jagonet.BodyMedium">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance.Jagonet.DisplayLarge" parent="@style/TextAppearance.Material3.DisplayLarge">
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="TextAppearance.Jagonet.DisplayMedium" parent="@style/TextAppearance.Material3.DisplayMedium">
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="TextAppearance.Jagonet.DisplaySmall" parent="@style/TextAppearance.Material3.DisplaySmall">
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="TextAppearance.Jagonet.HeadlineLarge" parent="@style/TextAppearance.Material3.HeadlineLarge">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="TextAppearance.Jagonet.HeadlineMedium" parent="@style/TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="TextAppearance.Jagonet.HeadlineSmall" parent="@style/TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="TextAppearance.Jagonet.LabelLarge" parent="@style/TextAppearance.Material3.LabelLarge">
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+
+    <style name="TextAppearance.Jagonet.LabelSmall" parent="@style/TextAppearance.Material3.LabelSmall">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="TextAppearance.Jagonet.TitleLarge" parent="@style/TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="TextAppearance.Jagonet.TitleMedium" parent="@style/TextAppearance.Material3.TitleMedium">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="BottomNavigationViewStyle">
+        <item name="android:textSize">10sp</item>
+    </style>
+    <style name="BottomNavigationViewStyle.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/rose_quartz</item>
+    </style>
+    <style name="BottomNavigationViewStyle.Active" parent="BottomNavigationViewStyle">
+        <item name="font">@font/rubik_semibold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="BottomNavigationViewStyle.InActive" parent="BottomNavigationViewStyle">
+        <item name="font">@font/rubik</item>
+        <item name="android:textColor">@color/gray_text_logo</item>
+    </style>
+
+    <style name="LangSwitch" parent="Theme.JagoNet">
+        <item name="colorAccent">@color/orange_logo_accent</item>
+        <item name="colorControlNormal">@color/gray75</item>
+        <item name="colorOnSecondary">@color/gray75</item>
+        <item name="android:colorControlActivated">@color/orange_logo_accent</item>
+        <item name="colorSwitchThumbNormal">@color/gray75</item>
+        <item name="android:colorControlNormal">@color/gray75</item>
+        <item name="android:thumb">@drawable/toggle_button_selector</item>
+        <item name="trackTint">@color/switch_selector_track</item>
+    </style>
+    <style name="ButtonAccent">
+        <item name="android:textSize">@dimen/fontsize_14</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/ripple_accent_corner_44</item>
+        <item name="android:layout_marginTop">@dimen/dimen_24dp</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_2dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_marginStart">@dimen/dimen_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_16dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="fontFamily">@font/rubik_bold</item>
+    </style>
+    <style name="ButtonAccentLight">
+        <item name="android:textSize">@dimen/fontsize_14</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/ripple_accent_light_corner_44</item>
+        <item name="android:layout_marginTop">@dimen/dimen_24dp</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_2dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_marginStart">@dimen/dimen_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_16dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="fontFamily">@font/rubik_bold</item>
+    </style>
+    <style name="TabsTextAppearance" parent="@style/TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/fontsize_14</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/medium</item>
+        <item name="textAllCaps">true</item>
+    </style>
+    <style name="Widget.Jagonet.AppBarLayout" parent="@style/Widget.Material3.AppBarLayout">
+<!--        <item name="android:background">?android:attr/colorBackground</item>-->
+        <item name="android:background">@color/white</item>
+
+    </style>
+
+    <style name="Widget.Jagonet.AppBarLayoutColor" parent="@style/Widget.Material3.AppBarLayout">
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="Widget.Jagonet.AppBarLayout.Details" parent="@style/Widget.Jagonet.AppBarLayout">
+<!--        <item name="android:background">?android:attr/colorBackground</item>-->
+        <item name="android:background">@color/white</item>
+
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    <style name="Widget.Jagonet.AppBarLayout.News" parent="@style/Widget.Jagonet.AppBarLayout">
+        <!--        <item name="android:background">?android:attr/colorBackground</item>-->
+        <item name="android:background">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    <style name="Widget.Jagonet.Toolbar" parent="@style/Widget.Material3.Toolbar">
+        <item name="fontFamily">@font/rubik_semibold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/fontsize_13</item>
+    </style>
+    <style name="roundedCornerImageView12" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/dimen_12dp</item>
+    </style>
+    <!--    <style name="Widget.Jagonet.Toolbar" parent="@style/Widget.Material3.Toolbar">-->
+    <!--    </style>-->
+    <style name="Widget.Jagonet.TabLayout" parent="@style/Widget.Material3.TabLayout.OnSurface">
+        <item name="android:background">@drawable/tabs_background</item>
+        <item name="fontFamily">@font/rubik</item>
+    </style>
+    <style name="Widget.Jagonet.TabLayoutWhite" parent="@style/Widget.Material3.TabLayout.OnSurface">
+        <item name="android:background">@drawable/tabs_background_white</item>
+    </style>
+    <style name="Widget.Jagonet.TabLayout.Details" parent="@style/Widget.Jagonet.TabLayout">
+        <item name="tabMinWidth">0dp</item>
+        <item name="tabMode">scrollable</item>
+    </style>
+    <style name="Widget.Jagonet.TabLayout.MediaType" parent="@style/Widget.Jagonet.TabLayoutWhite">
+        <item name="paddingStart">8dp</item>
+        <item name="tabMode">fixed</item>
+        <item name="fontFamily">@font/rubik</item>
+        <!--        <item name="tabIndicator"></item>-->
+    </style>
+    <style name="Widget.Jagonet.TabLayout.MediaType.SemiBold" parent="@style/Widget.Jagonet.TabLayoutWhite">
+        <item name="paddingStart">8dp</item>
+        <item name="tabMode">fixed</item>
+        <item name="fontFamily">@font/rubik_semibold</item>
+        <!--        <item name="tabIndicator"></item>-->
+    </style>
+    <style name="TextAppearance.Jagonet.Tab.Small" parent="@style/TextAppearance.Jagonet.Tab">
+        <item name="android:textSize">@dimen/fontsize_14</item>
+        <item name="fontFamily">@font/rubik</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+    <style name="Widget.Jagonet.CollapsingToolbarLayout.Title" parent="@style/Widget.Material3.CollapsingToolbar.Medium">
+        <item name="contentScrim">?android:attr/colorBackground</item>
+        <item name="expandedTitleMarginStart">@dimen/marginSide</item>
+        <item name="layout_scrollFlags">scroll|exitUntilCollapsed</item>
+        <item name="scrimAnimationDuration">@integer/scrim_animation_duration</item>
+        <item name="scrimVisibleHeightTrigger">?attr/collapsingToolbarLayoutMediumSize</item>
+        <item name="titleEnabled">true</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.State" parent="@style/Widget.Jagonet.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.State.Body" parent="@style/Widget.Jagonet.TextView.State">
+        <item name="android:textAppearance">?attr/textAppearanceBodyLarge</item>
+        <item name="android:textColor">?android:attr/textColorTertiary</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.State.Title" parent="@style/Widget.Jagonet.TextView.State">
+        <item name="android:textAppearance">?attr/textAppearanceTitleLarge</item>
+        <item name="android:textColor">?android:attr/textColorTertiary</item>
+    </style>
+    <style name="Widget.Jagonet.TextView" parent="@android:style/Widget.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceBodyMedium</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.Title" parent="@style/Widget.Jagonet.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceTitleLarge</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:maxLines">1</item>
+        <item name="fontFamily">@font/rubik_semibold</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.Title.RubikToolbar" parent="@style/Widget.Jagonet.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceTitleLarge</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:maxLines">1</item>
+        <item name="textSize">@dimen/fontsize_17</item>
+        <item name="fontFamily">@font/rubik_semibold</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.Title.Detail" parent="@style/Widget.Jagonet.TextView.Title">
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.Title.Detail.Header" parent="@style/Widget.Jagonet.TextView.Title.Detail">
+        <item name="android:textAppearance">?attr/textAppearanceHeadlineSmall</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:textIsSelectable">true</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.Overlay" parent="@style/Widget.Jagonet.TextView">
+        <item name="android:shadowColor">@color/text_shadow</item>
+        <item name="android:shadowDx">@integer/text_shadow_dx</item>
+        <item name="android:shadowDy">@integer/text_shadow_dy</item>
+        <item name="android:shadowRadius">@integer/text_shadow_radius</item>
+        <item name="android:translationZ">@dimen/elevationPoster</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.Overlay.Poster" parent="@style/Widget.Jagonet.TextView.Overlay">
+        <item name="android:textAppearance">?attr/textAppearanceLabelMedium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:background">@drawable/text_poster_overlay_background</item>
+    </style>
+
+    <style name="Widget.Jagonet.TextView.Title.Detail.Subtitle" parent="@style/Widget.Jagonet.TextView.Title.Detail">
+        <item name="android:textAppearance">?attr/textAppearanceBodyMedium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?android:attr/textColorTertiary</item>
+        <item name="android:maxLines">2</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.Title.Toolbar" parent="@style/Widget.Jagonet.TextView.Title.Detail">
+        <item name="android:textAppearance">?attr/textAppearanceBodyMedium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?android:attr/textColorTertiary</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">@dimen/fontsize_17</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.Title.Discover" parent="@style/Widget.Jagonet.TextView.Title">
+<!--        <item name="android:paddingTop">8dp</item>-->
+<!--        <item name="android:paddingBottom">8dp</item>-->
+
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:drawableEnd">@drawable/ic_round_arrow_forward_ios_20</item>
+        <item name="android:drawableTint">?android:attr/textColorTertiary</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.TitleMedium" parent="@style/Widget.Jagonet.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceTitleLarge</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">start</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.TitleSmall" parent="@style/Widget.Jagonet.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceTitleLarge</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">start</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+    <style name="circleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="roundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.BottomSheetTitle" parent="@style/Widget.Jagonet.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceTitleLarge</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">start</item>
+        <item name="android:maxLines">1</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.Button" parent="@style/Widget.Jagonet.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceTitleSmall</item>
+        <!--        <item name="android:background">?unknown_attr_ref: 0</item>-->
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="Widget.Jagonet.BottomSheet" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/JagonetBottomSheet</item>
+    </style>
+
+    <style name="JagonetBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/Widget.Jagonet.BottomSheet.ShapeAppearanceBottomSheetDialog</item>
+        <item name="backgroundTint">@color/white</item>
+
+    </style>
+
+    <style name="Widget.Jagonet.BottomSheet.ShapeAppearanceBottomSheetDialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">12dp</item>
+        <item name="cornerSizeTopLeft">12dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+    <style name="Widget.Jagonet.Button" parent="@style/Widget.Material3.Button">
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">@dimen/buttonCorners</item>
+    </style>
+    <style name="Widget.Jagonet.Button.Icon" parent="@style/Widget.Jagonet.Button">
+        <item name="android:minWidth">@dimen/button_height_small</item>
+        <item name="android:minHeight">@dimen/button_height_small</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="backgroundTint">?attr/colorSurface</item>
+        <item name="iconPadding">0dp</item>
+    </style>
+    <style name="Widget.Jagonet.Button.Large" parent="@style/Widget.Jagonet.Button">
+        <item name="android:textAppearance">?attr/textAppearanceTitleMedium</item>
+<!--        <item name="android:textStyle">bold</item>-->
+        <item name="android:maxWidth">300dp</item>
+        <item name="android:minHeight">54dp</item>
+    </style>
+    <style name="Widget.Jagonet.Button.OutlinedButton" parent="@style/Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">@dimen/buttonCorners</item>
+        <item name="strokeColor">@color/orange_primary_variant</item>
+    </style>
+    <style name="Widget.Jagonet.Button.TextButton" parent="@style/Widget.Material3.Button.TextButton">
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">@dimen/buttonCorners</item>
+    </style>
+    <style name="Widget.Jagonet.Button.TextButton.Small" parent="@style/Widget.Jagonet.Button.TextButton">
+        <item name="android:textAppearance">?attr/textAppearanceLabelSmall</item>
+        <item name="android:minHeight">@dimen/button_height_small</item>
+    </style>
+    <!--    <style name="TextViewFoundersGroteskProRegular" parent="@style/Widget.AppCompat.TextView">-->
+    <!--        <item name="android:textSize">@dimen/text_16</item>-->
+    <!--        <item name="android:textColor">@color/primaryTextColor</item>-->
+    <!--        <item name="android:textAllCaps">false</item>-->
+    <!--        <item name="fontFamily">@font/founders_grotesk_pro_regular</item>-->
+    <!--    </style>-->
+    <style name="Widget.Jagonet.CardView" parent="@style/Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/cardCornerRadius</item>
+    </style>
+    <style name="Widget.Jagonet.CardView.Elevated" parent="@style/Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/cardCornerRadius</item>
+    </style>
+    <style name="Widget.Jagonet.CardView.Filled" parent="@style/Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">@dimen/cardCornerRadius</item>
+    </style>
+    <style name="Widget.Jagonet.CardView.Filled8" parent="@style/Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">8dp</item>
+    </style>
+    <style name="Widget.Jagonet.CardView.Filled2" parent="@style/Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">10dp</item>
+    </style>
+    <style name="Widget.Jagonet.CardView.Filled3" parent="@style/Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">8dp</item>
+        <!--        android:background="?android:attr/colorBackground"-->
+        <!--        <item name="cardBackgroundColor">@color/background_opacity_90</item>-->
+        <item name="cardBackgroundColor">?android:attr/colorBackground</item>
+    </style>
+    <style name="Widget.Jagonet.CardView.Outlined" parent="@style/Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">@android:color/transparent</item>
+        <item name="cardCornerRadius">@dimen/cardCornerRadius</item>
+        <item name="strokeColor">?attr/colorDivider</item>
+    </style>
+    <style name="Widget.Jagonet.CardView.Selectable" parent="@style/Widget.Jagonet.CardView.Filled">
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+    <style name="Widget.Jagonet.Chip.Filter.Small" parent="@style/Widget.Material3.Chip.Filter">
+        <item name="chipMinHeight">28dp</item>
+        <item name="chipMinTouchTargetSize">38dp</item>
+        <item name="chipCornerRadius">24dp</item>
+        <item name="chipBackgroundColor">@color/selector_chip</item>
+        <item name="chipStyle">@style/chipText</item>
+        <item name="android:fontFamily">@font/rubik_semibold</item>
+    </style>
+    <style name="chipText" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/rubik_semibold</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="ProgressBarStyle">
+        <item name="android:layout_width">@dimen/dimen_36dp</item>
+        <item name="android:layout_height">@dimen/dimen_36dp</item>
+        <item name="android:indeterminateTint">@color/orange_primary_variant</item>
+    </style>
+    <style name="Widget.Jagonet.Button.Surface" parent="@style/Widget.Material3.Button.TonalButton">
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">@dimen/buttonCorners</item>
+    </style>
+    <style name="Widget.Jagonet.Button.Surface.Small" parent="@style/Widget.Jagonet.Button.Surface">
+        <item name="android:minHeight">@dimen/button_height_small</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="cornerRadius">@dimen/buttonCorners</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.ListItem" parent="@style/Widget.Jagonet.TextView.Line">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.ListItem.Poster" parent="@style/Widget.Jagonet.TextView.ListItem">
+    </style>
+    <style name="Widget.Jagonet.TextView.ListItem.Poster.Small" parent="@style/Widget.Jagonet.TextView.ListItem.Poster">
+        <item name="android:textAppearance">?attr/textAppearanceBodySmall</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">start</item>
+        <item name="android:lines">2</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.Line" parent="@style/Widget.Jagonet.TextView">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">start</item>
+        <item name="android:maxLines">1</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.Line.Headline" parent="@style/Widget.Jagonet.TextView.Line">
+        <item name="android:textAppearance">?attr/textAppearanceBodyMedium</item>
+        <item name="android:textColor">?android:attr/textColorTertiary</item>
+    </style>
+    <style name="Widget.Jagonet.TextView.Line.Primary" parent="@style/Widget.Jagonet.TextView.Line">
+        <item name="android:textAppearance">?attr/textAppearanceBodyMedium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+    <style name="TextAppearance.Jagonet.Typography" parent="">
+        <item name="android:textColor">@color/colorOnSurface</item>
+    </style>
+    <style name="TextAppearance.Jagonet.Typography.BodyDefault" parent="@style/TextAppearance.Jagonet.Typography">
+        <item name="android:textAppearance">@null</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">20sp</item>
+    </style>
+    <style name="TextAppearance.Jagonet.Typography.BodyDefault.SemiBold" parent="@style/TextAppearance.Jagonet.Typography.BodyDefault">
+        <item name="android:fontFamily">@font/rubik_semibold</item>
+    </style>
+    <style name="TextAppearance.Jagonet.Typography.BodyDefault.Bold" parent="@style/TextAppearance.Jagonet.Typography.BodyDefault">
+        <item name="android:fontFamily">@font/rubik_bold</item>
+    </style>
+    <style name="Widget.Jagonet.TabLayout.Small" parent="@style/Widget.Jagonet.TabLayout">
+        <item name="android:background">@null</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabMinWidth">0dp</item>
+        <item name="tabMode">scrollable</item>
+        <item name="tabPaddingEnd">8dp</item>
+        <item name="tabPaddingStart">8dp</item>
+        <item name="tabTextAppearance">@style/TextAppearance.Jagonet.Tab.Small</item>
+    </style>
+    <style name="TextAppearance.Jagonet.Typography.NewsContent" parent="@style/TextAppearance.Jagonet.Typography">
+        <item name="android:textAppearance">@null</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">20sp</item>
+    </style>
+    <style name="TextAppearance.Jagonet.Typography.BodySmall" parent="@style/TextAppearance.Jagonet.Typography">
+        <item name="android:textAppearance">@null</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">17sp</item>
+    </style>
+    <style name="TextAppearance.Jagonet.Typography.BodyExtraSmall" parent="@style/TextAppearance.Jagonet.Typography">
+        <item name="android:textAppearance">@null</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="lineHeight">14sp</item>
+    </style>
+    <style name="TextAppearance.Jagonet.Typography.BodySmall.Bold" parent="@style/TextAppearance.Jagonet.Typography.BodySmall">
+        <item name="android:fontFamily">@font/rubik_bold</item>
+    </style>
+    <style name="TextAppearance.Jagonet.Typography.BodySmall.SemiBold" parent="@style/TextAppearance.Jagonet.Typography.BodySmall">
+        <item name="android:fontFamily">@font/rubik_semibold</item>
+    </style>
+    <style name="Widget.Jagonet.CollapsingToolbarLayout.Details" parent="@style/Widget.Material3.CollapsingToolbar.Large">
+<!--        <item name="background">?android:attr/colorBackground</item>-->
+<!--        <item name="contentScrim">?android:attr/colorBackground</item>-->
+        <item name="background">@color/white</item>
+        <item name="contentScrim">@color/white</item>
+        <item name="layout_scrollFlags">exitUntilCollapsed|scroll</item>
+        <item name="scrimAnimationDuration">@integer/scrim_animation_duration</item>
+        <item name="scrimVisibleHeightTrigger">210dp</item>
+        <item name="titleEnabled">false</item>
+    </style>
+    <style name="Widget.Jagonet.CollapsingToolbarLayout.News" parent="@style/Widget.Material3.CollapsingToolbar.Large">
+        <!--        <item name="background">?android:attr/colorBackground</item>-->
+        <!--        <item name="contentScrim">?android:attr/colorBackground</item>-->
+        <item name="colorControlNormal">@color/white</item>
+        <item name="background">@color/white</item>
+        <item name="contentScrim">@color/white</item>
+        <item name="layout_scrollFlags">exitUntilCollapsed|scroll</item>
+        <item name="scrimAnimationDuration">@integer/scrim_animation_duration</item>
+        <item name="scrimVisibleHeightTrigger">140dp</item>
+        <item name="titleEnabled">false</item>
+    </style>
+    <style name="Widget.Jagonet.BottomAppBar.Details" parent="@style/Widget.Material3.BottomAppBar">
+        <item name="backgroundTint">@color/white</item>
+    </style>
+</resources>

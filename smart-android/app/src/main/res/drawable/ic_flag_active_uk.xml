@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2023 © JAGONET  All Rights Reserved by PT. SARANA MEDIA CEMERLANG
+  ~ Unauthorized copying of this file, via any medium is strictly
+  ~ prohibited Proprietary and confidential
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:height="28dp" android:width="28dp" android:viewportWidth="28" android:viewportHeight="28">
+    <path android:fillColor="#f0f0f0" android:pathData="M14,14m-14,0a14,14 0,1 1,28 0a14,14 0,1 1,-28 0" android:fillType="nonZero"/>
+    <path android:fillColor="#0052b4" android:pathData="M2.894,5.477a13.949,13.949 0,0 0,-2.412 4.87h7.283l-4.87,-4.87zM27.518,10.348a13.95,13.95 0,0 0,-2.412 -4.871l-4.871,4.87h7.283zM0.482,17.652a13.95,13.95 0,0 0,2.412 4.872l4.871,-4.872H0.482zM22.523,2.894a13.95,13.95 0,0 0,-4.87 -2.412v7.283l4.87,-4.87zM5.477,25.106a13.95,13.95 0,0 0,4.87 2.412v-7.283l-4.87,4.87zM10.348,0.482a13.95,13.95 0,0 0,-4.871 2.412l4.87,4.871V0.482zM17.652,27.518a13.95,13.95 0,0 0,4.871 -2.412l-4.87,-4.871v7.283zM20.235,17.652l4.87,4.872a13.95,13.95 0,0 0,2.413 -4.872h-7.283z" android:fillType="nonZero"/>
+    <path android:fillColor="#d80027" android:pathData="M27.881,12.174H15.826V0.119a14.14,14.14 0,0 0,-3.652 0v12.055H0.119a14.14,14.14 0,0 0,0 3.652h12.055v12.055a14.139,14.139 0,0 0,3.652 0V15.826h12.055a14.139,14.139 0,0 0,0 -3.652z" android:fillType="nonZero"/>
+    <path android:fillColor="#d80027" android:pathData="M17.652,17.652L23.9,23.9c0.288,-0.288 0.562,-0.588 0.823,-0.9l-5.348,-5.348h-1.722zM10.348,17.652L4.1,23.9c0.288,0.288 0.588,0.562 0.9,0.823l5.348,-5.348v-1.722zM10.348,10.348L4.1,4.1c-0.288,0.288 -0.562,0.588 -0.823,0.9l5.348,5.348h1.722zM17.652,10.348L23.9,4.1a14.018,14.018 0,0 0,-0.9 -0.823l-5.348,5.348v1.722z" android:fillType="nonZero"/>
+</vector>

@@ -1,4 +1,4 @@
-FROM mysql:latest
+FROM mysql:8.0.32
 # FROM mariadb:lts
 
 # RUN apk add --update nano

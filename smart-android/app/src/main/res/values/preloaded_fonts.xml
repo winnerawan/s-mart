@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2023 © JAGONET  All Rights Reserved by PT. SARANA MEDIA CEMERLANG
+  ~ Unauthorized copying of this file, via any medium is strictly
+  ~ prohibited Proprietary and confidential
+  -->
+
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/rubik</item>
+        <item>@font/rubik_bold</item>
+        <item>@font/rubik_light</item>
+        <item>@font/rubik_semibold</item>
+        <item>@font/regular</item>
+        <item>@font/medium</item>
+    </array>
+</resources>

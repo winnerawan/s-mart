@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2023 © JAGONET  All Rights Reserved by PT. SARANA MEDIA CEMERLANG
+  ~ Unauthorized copying of this file, via any medium is strictly
+  ~ prohibited Proprietary and confidential
+  -->
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bar"
+    app:contentInsetEnd="0dp"
+    app:contentInsetLeft="0dp"
+    app:contentInsetRight="0dp"
+    app:contentInsetStart="0dp"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:actionBarSize"
+    android:background="@android:color/white"
+    android:elevation="2dp"
+    android:fitsSystemWindows="true"
+    android:gravity="center">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="left"
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:fontFamily="@font/medium"
+        android:id="@+id/txt"
+        tools:ignore="MissingPrefix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        tools:text="@string/speedtest"
+        android:textSize="@dimen/fontsize_20" />
+
+
+</LinearLayout>
+    </androidx.appcompat.widget.Toolbar>

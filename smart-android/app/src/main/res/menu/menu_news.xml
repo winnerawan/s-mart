@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--    <item android:icon="@drawable/ic_round_home" android:id="@+id/action_home" android:title="@string/title_home" app:showAsAction="always"/>-->
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/ic_round_share"
+        android:title="@string/action_share"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_open_with"
+        android:icon="@drawable/ic_round_open_in_new"
+        android:title="@string/action_open_with"
+        android:visible="false"
+        app:showAsAction="always" />
+</menu>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2023 © JAGONET  All Rights Reserved by PT. SARANA MEDIA CEMERLANG
+  ~ Unauthorized copying of this file, via any medium is strictly
+  ~ prohibited Proprietary and confidential
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+
+    <!--    android:background="#E8E7E4"-->
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_marginTop="@dimen/dimen_24dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/inputContainer"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:paddingTop="@dimen/dimen_16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            android:contentDescription="@null" />
+
+        <ImageView
+            android:layout_width="@dimen/dimen_160dp"
+            android:layout_height="@dimen/dimen_160dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="-26dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:paddingHorizontal="@dimen/dimen_16dp"
+            android:src="@drawable/logo" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/viewSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_24dp"
+        android:layout_marginBottom="@dimen/dimen_4dp"
+        android:background="@drawable/shadow_above"
+        app:layout_constraintBottom_toTopOf="@id/inputContainer"
+        app:layout_constraintTop_toBottomOf="@id/top" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_16dp"
+        android:layout_marginBottom="@dimen/dimen_16dp"
+        android:background="@drawable/shape_top_round"
+        app:layout_constraintBottom_toTopOf="@id/inputContainer"
+        app:layout_constraintTop_toBottomOf="@id/top" />
+
+    <RelativeLayout
+        android:id="@+id/inputContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewSeparator">
+
+        <LinearLayout
+            android:id="@+id/container_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/dimen_16dp"
+            android:paddingBottom="@dimen/dimen_16dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_6dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:text="@string/label_username"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fontsize_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:text="@string/asterisk"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="@dimen/fontsize_14" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/textUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:background="@drawable/shape_et"
+                android:fontFamily="@font/rubik_semibold"
+                android:hint="@string/label_username"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="@dimen/dimen_16dp"
+                android:textSize="@dimen/fontsize_14" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_6dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:text="@string/password"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fontsize_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:text="@string/asterisk"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="@dimen/fontsize_14" />
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_6dp"
+                app:boxBackgroundMode="none"
+                app:hintEnabled="false"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/salmon">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/textPasswword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_et"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:hint="@string/password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:padding="@dimen/dimen_14dp"
+                    android:textSize="@dimen/fontsize_14" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_2dp"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:text="@string/is_have_account"
+                    android:textAllCaps="false"
+                    android:textColor="@color/gray_text_logo"
+                    android:textSize="@dimen/fontsize_14"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/register_link"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_2dp"
+                    android:fontFamily="@font/rubik_bold"
+                    android:gravity="end"
+                    android:text="@string/register"
+                    android:textAllCaps="true"
+                    android:textColor="@color/gray_text_logo"
+                    android:textSize="@dimen/fontsize_14"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_24dp"
+                android:layout_marginBottom="@dimen/dimen_16dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSignIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/dimen_4dp"
+                    android:background="@drawable/ripple_accent_corner_44"
+                    android:elevation="0dp"
+                    android:fontFamily="@font/rubik_bold"
+                    android:stateListAnimator="@null"
+                    android:text="@string/sign_in"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/fontsize_17"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/progressBarFrame"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dimen_24dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+<!--        <com.airbnb.lottie.LottieAnimationView-->
+<!--            android:id="@+id/pb"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/dimen_80dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            app:lottie_autoPlay="true"-->
+<!--            app:lottie_loop="true"-->
+<!--            app:lottie_rawRes="@raw/loading" />-->
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

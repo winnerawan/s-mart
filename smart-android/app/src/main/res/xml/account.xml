@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2024 © JAGONET  All Rights Reserved by PT. SARANA MEDIA CEMERLANG
+  ~ Unauthorized copying of this file, via any medium is strictly
+  ~ prohibited Proprietary and confidential
+  -->
+
+<account-authenticator xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:accountType="@string/account_type"
+    android:customTokens="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/account_label"
+    android:smallIcon="@mipmap/ic_launcher" />
