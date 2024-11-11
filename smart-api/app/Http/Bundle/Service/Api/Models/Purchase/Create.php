@@ -5,6 +5,7 @@ namespace App\Http\Bundle\Service\Api\Models\Purchase;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Database\Smart;
 use App\Service\Api;
 use App\Support;
@@ -16,18 +17,25 @@ class Create extends Api\User\UserValidator
     /**
 	 */
 	protected $validatorRules = [
-        'name' => 'required|string',
-        'description' => 'nullable|string'
+        // 'supplier' => 'required|numeric',
+        // 'items.*' => 'required|array'
     ];
 
-    protected $category;
-
+    protected $supplier;
+    protected $purchase;
+    protected $total;
      /**
 	 */
 	public function validate(){
 		if (!parent::validate()) {
 			return false;
 		}
+        // $this->supplier = Smart\Supplier::select()
+        //     ->where('supplier.id', $this->validatorData->get('supplier'))
+        //     ->first();
+        // if (!$this->supplier) {
+        //     return false;
+        // }
         return true;
     }
 
@@ -36,13 +44,81 @@ class Create extends Api\User\UserValidator
     public function create() {
         return Smart\User::transaction(function(){
             $now = \Carbon\Carbon::now();
-            $this->category = new Smart\Category();
-            $this->category->name = $this->validatorData->get('name');
-            $this->category->description = $this->validatorData->get('description');
-            $this->category->save();
+            $this->purchase = new Smart\Purchase();
+            $this->purchase->id = Str::uuid();
+            $json = json_decode($this->request->getContent(), true);
+            $this->purchase->supplier_id = $json['supplier'];
+            $this->purchase->description = $json['description'];
+
+            $this->createPurchaseItems($json, $this->purchase);
+            $this->purchase->total = $this->total;
+            $this->purchase->save();
+        
+            $this->createOrUpdateStocks($json);
 		});
     }
 
-    
+    /**
+     */
+    protected function createPurchaseItems($json, $purchase) {
+        foreach($json['items'] as $item) {
+            $purchaseItem = new Smart\PurchaseItem();
+            $purchaseItem->purchase_id = $purchase->id;
+            $purchaseItem->item_id = $item['item'];
+            $purchaseItem->price = $item['price'];
+            $purchaseItem->qty = $item['qty'];
+            $purchaseItem->subtotal = ( $item['price'] * $item['qty'] );
 
+            $this->total += $purchaseItem->subtotal;
+
+            $purchaseItem->save();
+
+        }
+    }
+
+     /**
+     */
+    protected function getItemStock($category, $sku, $item) {
+        return Smart\ItemStock::where([
+            'item_stock.category_id' => $category,
+            'item_stock.sku' => $sku, 
+            'item_stock.item_id' => $item
+        ])->first();
+        
+    }
+    
+    /**
+     */
+    protected function createOrUpdateStocks($json) {
+        foreach($json['items'] as $item) {
+            $itemStock = $this->getItemStock($item['category'], $item['sku'], $item['item']);
+            if ($itemStock==null) {
+                $this->createStock($item);
+            } else {
+                $this->updateStock($item, $itemStock);
+            }
+            
+        }
+    }
+
+    /**
+     */
+    protected function createStock($item) {
+        $itemStock = new Smart\ItemStock();
+        $itemStock->item_id = $item['item'];
+        $itemStock->sku = $item['sku'];
+        $itemStock->category_id = $item['category'];
+        $itemStock->stock = $item['qty'];
+        $itemStock->save();
+    }
+
+    /**
+     */
+    protected function updateStock($item, $itemStock) {
+        $itemStock->item_id = $item['item'];
+        $itemStock->sku = $item['sku'];
+        $itemStock->category_id = $item['category'];
+        $itemStock->stock = $itemStock->stock + $item['qty'];
+        $itemStock->save();
+    }
 }
