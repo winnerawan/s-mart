@@ -15,7 +15,7 @@ import retrofit2.http.POST
 interface AuthService {
 
     @FormUrlEncoded
-    @POST("user/signin")
+    @POST("signin")
     fun signIn(
         @Field("username") username: String,
         @Field("password") password: String
@@ -24,6 +24,6 @@ interface AuthService {
     @POST("user/auth")
     fun auth(): Call<SignInResponse>
 
-    @POST("user/signout")
+    @POST("signout")
     fun signOut(): Call<String?>
 }

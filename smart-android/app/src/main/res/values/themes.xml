@@ -18,7 +18,7 @@
         <item name="android:statusBarColor">@android:color/white</item>
 
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:navigationBarColor">@color/black</item>
         <!-- Customize your theme here. -->
         <item name="colorBackgroundPlaceholder">@color/m3_sys_color_dynamic_light_surface_container_high</item>
         <item name="colorDivider">?attr/colorOutlineVariant</item>
@@ -580,5 +580,11 @@
     </style>
     <style name="Widget.Jagonet.BottomAppBar.Details" parent="@style/Widget.Material3.BottomAppBar">
         <item name="backgroundTint">@color/white</item>
+    </style>
+    <style name="LeftMenuStyle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginStart">14dp</item>
+        <item name="android:gravity">center_vertical</item>
     </style>
 </resources>

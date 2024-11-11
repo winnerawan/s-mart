@@ -7,7 +7,7 @@
     <color name="orange_logo_light">#FBF6F4</color>
     <color name="gray_text_logo">#4B4B4D</color>
     <color name="web_footer_bg">#F4F8FC</color>
-
+    <color name="shimmer_color">#dbdbdb</color>
     <color name="green_logo">#46cdcf</color>
     <color name="green_dark">#3D84A7</color>
     <color name="green_logo_light">#ABEDD8</color>
@@ -16,6 +16,8 @@
     <color name="blue_accent1">#285BD1</color>
     <color name="blue_accent2">#316DD8</color>
     <color name="blue_accent_dark">#003ED1</color>
+    <color name="blue_light">#e0f2ff</color>
+    <color name="blue_light2">#a6d5e8</color>
 
     <color name="main_color">#F58634</color>
     <color name="secondary_color">#008F51</color>

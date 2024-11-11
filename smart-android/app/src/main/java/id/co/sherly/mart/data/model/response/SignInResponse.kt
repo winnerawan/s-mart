@@ -9,10 +9,12 @@ package id.co.sherly.mart.data.model.response
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 import id.co.sherly.mart.data.model.AuthData
+import id.co.sherly.mart.data.model.Token
+import id.co.sherly.mart.data.model.User
 
 @Keep
 data class SignInResponse (
 
-    @SerializedName("data" ) var data : AuthData? = AuthData()
-
+    @SerializedName("user"  ) var user  : User?  = null,
+    @SerializedName("token" ) var token : Token? = null
 )

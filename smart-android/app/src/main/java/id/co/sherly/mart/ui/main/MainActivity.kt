@@ -8,6 +8,7 @@ package id.co.sherly.mart.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.roughike.bottombar.OnTabSelectListener
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.sherly.mart.R
 import id.co.sherly.mart.databinding.ActivityMainBinding
@@ -36,22 +37,33 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     private fun setUpBottomNavigation() {
-        binding.bottomNavigation.setOnItemSelectedListener { item ->
-            when(item.itemId) {
-                R.id.navigationHome -> {
+        binding.bottomNavigation.setOnTabSelectListener {
+            when(it) {
+                R.id.tab_home -> {
                     binding.viewPager.currentItem = 0
                 }
-                R.id.navigationHistory -> {
+                R.id.tab_sale -> {
                     binding.viewPager.currentItem = 1
                 }
-                R.id.navigationTicket -> {
+                R.id.tab_stock -> {
                     binding.viewPager.currentItem = 2
                 }
-                R.id.navigationAccount -> {
+                R.id.tab_purchase -> {
                     binding.viewPager.currentItem = 3
                 }
+                R.id.tab_category -> {
+                    binding.viewPager.currentItem = 4
+                }
+                R.id.tab_item -> {
+                    binding.viewPager.currentItem = 5
+                }
+                R.id.tab_supplier -> {
+                    binding.viewPager.currentItem = 6
+                }
+                R.id.tab_customer -> {
+                    binding.viewPager.currentItem = 7
+                }
             }
-            return@setOnItemSelectedListener true
         }
     }
 

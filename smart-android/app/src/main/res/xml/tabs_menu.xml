@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_home"
+        icon="@drawable/ic_chart_square"
+        title="@string/home_menu" />
+    <tab
+        id="@+id/tab_sale"
+        icon="@drawable/ic_shop_add"
+        title="@string/sale_menu" />
+    <tab
+        id="@+id/tab_stock"
+        icon="@drawable/ic_box_search"
+        title="@string/stock_menu" />
+
+    <tab
+        id="@+id/tab_purchase"
+        icon="@drawable/ic_shopping_bag"
+        title="@string/purchase_menu" />
+
+    <tab
+        id="@+id/tab_category"
+        icon="@drawable/ic_tag_2"
+        title="@string/category_menu" />
+
+    <tab
+        id="@+id/tab_item"
+        icon="@drawable/ic_additem"
+        title="@string/item_menu" />
+
+    <tab
+        id="@+id/tab_supplier"
+        icon="@drawable/ic_user_add"
+        title="@string/supplier_menu" />
+
+    <tab
+        id="@+id/tab_customer"
+        icon="@drawable/ic_user_octagon"
+        title="@string/customer_menu" />
+
+</tabs>

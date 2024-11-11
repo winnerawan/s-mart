@@ -122,8 +122,8 @@ public abstract class Auth {
     }
 
     private static void registerIdentityToAccountManager(@NonNull AccountManager am, @NonNull Identity identity) {
-        am.addAccountExplicitly(identity.getAccount(), identity.getToken().getToken(), null);
-        am.setAuthToken(identity.getAccount(), identity.getToken().getType(), identity.getToken().getToken());
+        am.addAccountExplicitly(identity.getAccount(), identity.getToken().getAccessToken(), null);
+        am.setAuthToken(identity.getAccount(), identity.getToken().getAccessType(), identity.getToken().getAccessToken());
         identity.writeToAccountManager(am);
     }
 

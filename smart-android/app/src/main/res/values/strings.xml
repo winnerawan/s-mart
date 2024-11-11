@@ -88,4 +88,42 @@
     <string name="action_share">Share</string>
     <string name="action_open_with">Open with</string>
     <string name="subscribe">Subscribe</string>
+    <string name="sign_in_text">Login to your account</string>
+    <string name="home_menu">Home</string>
+    <string name="sale_menu">Sale</string>
+    <string name="stock_menu">Stock</string>
+    <string name="item_menu">Item</string>
+    <string name="customer_menu">Customer</string>
+    <string name="category_menu">Category</string>
+    <string name="supplier_menu">Supplier</string>
+    <string name="purchase_menu">Purchase</string>
+    <string name="analytics">Sales Analytics</string>
+    <string name="category_label">Kategori</string>
+    <string name="stock_format">Stok %1$s</string>
+    <string name="category_count_format">%1$s Kategori</string>
+    <string name="customer_count_format">%1$s Pelanggan</string>
+    <string name="add_category">Tambah Kategori</string>
+    <string name="add">Tambah</string>
+    <string name="add_new_category">Tambah kategori baru</string>
+    <string name="update_category">Update kategori</string>
+    <string name="add_new_customer">Tambah pelanggan baru</string>
+    <string name="update_customer">Update pelanggan</string>
+    <string name="label_name">Nama</string>
+    <string name="label_category_name">Nama Kategori</string>
+    <string name="save">Simpan</string>
+    <string name="delete">Hapus</string>
+    <string name="customer_label">Pelanggan</string>
+    <string name="supplier_label">Supplier</string>
+    <string name="add_new_supplier">Tambah supplier baru</string>
+    <string name="label_supplier_name">Nama Supplier</string>
+    <string name="label_customer_name">Nama Pelanggan</string>
+    <string name="label_supplier_address">Alamat Supplier</string>
+    <string name="label_supplier_phone">Telepon</string>
+    <string name="sale_format">%1$s Penjualan</string>
+    <string name="update_supplier">Update supplier</string>
+    <string-array name="leftMenu">
+        <item>Home</item>
+        <item>Search</item>
+        <item>Settings</item>
+    </string-array>
 </resources>

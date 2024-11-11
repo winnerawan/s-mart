@@ -6,11 +6,11 @@
 
     <androidx.viewpager2.widget.ViewPager2
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         android:id="@+id/viewPager"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"/>
     <FrameLayout
         android:id="@+id/shadow"
@@ -19,28 +19,24 @@
         app:layout_constraintTop_toBottomOf="@id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="4dp"/>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
+    <com.roughike.bottombar.BottomBar
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:backgroundTint="@color/white"
-        app:itemTextAppearanceActive="@style/BottomNavigationViewStyle.Active"
-        app:itemTextAppearanceInactive="@style/BottomNavigationViewStyle.InActive"
-        app:itemActiveIndicatorStyle="@style/BottomNavigationViewStyle.Indicator"
-        app:itemTextAppearanceActiveBoldEnabled="true"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_navigation_menu"/>
+        android:id="@+id/bottomNavigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:bb_tabXmlResource="@xml/tabs_menu"
+        app:bb_activeTabColor="@color/blue_accent_dark"
+        app:bb_tabletMode="true" />
 
-<!--    <com.google.android.material.bottomappbar.BottomAppBar-->
-<!--        app:layout_constraintTop_toBottomOf="@id/viewPager"-->
-<!--        app:layout_constraintBaseline_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content">-->
-<!--        -->
-<!--    </com.google.android.material.bottomappbar.BottomAppBar>-->
+    <!--    <com.google.android.material.bottomappbar.BottomAppBar-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/viewPager"-->
+    <!--        app:layout_constraintBaseline_toBottomOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+    <!--        -->
+    <!--    </com.google.android.material.bottomappbar.BottomAppBar>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -67,6 +67,7 @@ android {
 }
 
 dependencies {
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
 
     /** core */
     implementation("androidx.core:core-ktx:1.12.0")
@@ -139,6 +140,7 @@ dependencies {
     implementation("com.daimajia.androidanimations:library:2.4@aar")
     implementation("com.dolatkia:full-screen-card-viewpager:1.0.0")
     implementation("com.orhanobut:logger:2.2.0")
+//    implementation("com.roughike:bottom-bar:2.3.1")
 
     /** test */
     testImplementation("junit:junit:4.13.2")

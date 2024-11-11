@@ -41,8 +41,8 @@ class SignInPresenter @Inject constructor(
                 call: Call<SignInResponse?>, response: Response<SignInResponse?>
             ) {
                 response.body()?.let {
-                    it.data?.let { auth ->
-                        registerIdentity(auth)
+                    if (it.user!=null) {
+                        registerIdentity(it)
                         view.hideLoading()
                         view.launchMainActivity()
                         return
@@ -59,7 +59,7 @@ class SignInPresenter @Inject constructor(
         })
     }
 
-    private fun registerIdentity(auth: AuthData) {
+    private fun registerIdentity(auth: SignInResponse) {
         Auth.registerIdentity(Identity(auth.user, auth.token))
         preferences.isLoggedIn = true
     }

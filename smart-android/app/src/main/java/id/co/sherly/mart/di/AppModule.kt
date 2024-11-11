@@ -6,14 +6,25 @@
 
 package id.co.sherly.mart.di
 
+import android.app.Application
+import android.content.SharedPreferences
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Qualifier
 
 @Module
 @InstallIn(SingletonComponent::class)
 class AppModule {
 
-//    @Provides
+    @Provides
+    @UserPrefs
+    fun provideUserPreferences(application: Application): SharedPreferences =
+        application.getSharedPreferences("settings", 0)
+
 
 }
+@Qualifier
+@Retention(AnnotationRetention.SOURCE)
+annotation class UserPrefs

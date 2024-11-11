@@ -27,7 +27,7 @@ object ProtectedServiceBuilder {
             .addInterceptor(interceptor)
             .addInterceptor(Interceptor { chain ->
                 val newRequest: Request = chain.request().newBuilder()
-                    .addHeader("Authorization", "${Auth.getIdentity().token.type} ${Auth.getIdentity().token.token}")
+                    .addHeader("Authorization", "${Auth.getIdentity().token.accessType} ${Auth.getIdentity().token.accessToken}")
                     .build()
                 chain.proceed(newRequest)
             })

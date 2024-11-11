@@ -25,28 +25,7 @@ class AccountPresenter @Inject constructor(
 ) : AccountContract.Presenter, BasePresenterImpl() {
 
     override fun authCheck() {
-        val service = ProtectedServiceBuilder.buildService(AuthService::class.java)
-        val call = service.auth()
-        call.enqueue(object : Callback<SignInResponse> {
-            override fun onResponse(
-                call: Call<SignInResponse>,
-                response: Response<SignInResponse>
-            ) {
-                if (response.code()>400) {
-                    forceSignOut()
-                    return
-                }
-                response.body()?.let {
-                    view.showUser(it.data?.user)
-                }
-            }
 
-            override fun onFailure(call: Call<SignInResponse>, t: Throwable) {
-                forceSignOut()
-                logError(t)
-            }
-
-        })
     }
 
     override fun signOut() {

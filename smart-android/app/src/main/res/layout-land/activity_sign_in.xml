@@ -17,12 +17,15 @@
         android:id="@+id/constraint1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.55"
+        app:layout_constraintWidth_percent="0.6"
+        android:background="@drawable/gradient_bg2"
         android:layout_width="0dp"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:src="@drawable/sign"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:adjustViewBounds="true"
+            android:padding="@dimen/dimen_16dp"
+            android:src="@drawable/sign1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
@@ -32,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/constraint1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.45"
+        app:layout_constraintWidth_percent="0.4"
         android:layout_width="@dimen/dimen_0dp"
         android:layout_height="match_parent">
 
@@ -49,21 +52,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:background="@drawable/gradient_bg"
                 android:orientation="vertical"
                 android:paddingHorizontal="@dimen/dimen_16dp">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:fontFamily="@font/bold"
+                    android:text="@string/sign_in_text"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fontsize_17" />
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_6dp"
+                    android:layout_marginTop="@dimen/dimen_16dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_4dp"
-                        android:fontFamily="@font/rubik_semibold"
+                        android:fontFamily="@font/bold"
                         android:text="@string/label_username"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
@@ -85,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_4dp"
                     android:background="@drawable/shape_et"
-                    android:fontFamily="@font/rubik_semibold"
+                    android:fontFamily="@font/medium"
                     android:hint="@string/label_username"
                     android:imeOptions="actionNext"
                     android:inputType="text"
@@ -102,7 +113,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen_4dp"
-                        android:fontFamily="@font/rubik_semibold"
+                        android:fontFamily="@font/bold"
                         android:text="@string/password"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
@@ -132,7 +143,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/shape_et"
-                        android:fontFamily="@font/rubik_semibold"
+                        android:fontFamily="@font/medium"
                         android:hint="@string/password"
                         android:imeOptions="actionDone"
                         android:inputType="textPassword"
@@ -160,7 +171,7 @@
                         android:layout_marginStart="@dimen/dimen_4dp"
                         android:background="@drawable/ripple_accent_corner_44"
                         android:elevation="0dp"
-                        android:fontFamily="@font/rubik_bold"
+                        android:fontFamily="@font/bold"
                         android:stateListAnimator="@null"
                         android:text="@string/sign_in"
                         android:textColor="@color/white"

@@ -28,9 +28,6 @@ object DatabaseModule {
         context, AppDatabase::class.java, BuildConfig.DATABASE
     ).fallbackToDestructiveMigration().build()
 
-    @Provides
-    @Singleton
-    fun provideSharedPreferences(@ApplicationContext context: Context) = UserPreferences(context)
 
     @Provides
     @Singleton

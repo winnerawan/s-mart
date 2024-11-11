@@ -16,12 +16,11 @@ import kotlinx.parcelize.Parcelize
 @Keep
 @Parcelize
 data class User(
-    @SerializedName("id"           ) var id           : Int?    = null,
-    @SerializedName("name"         ) var name         : String? = null,
-    @SerializedName("firstname"    ) var firstname    : String? = null,
-    @SerializedName("hasfirstname" ) var hasfirstname : Int?    = null,
-    @SerializedName("lastname"     ) var lastname     : String? = null,
-    @SerializedName("haslastname"  ) var haslastname  : Int?    = null
+
+    @SerializedName("id"       ) var id       : Int?    = null,
+    @SerializedName("type"     ) var type     : Int?    = null,
+    @SerializedName("username" ) var username : String? = null,
+    @SerializedName("name"     ) var name     : String? = null
 ):  Parcelable {
 
     constructor(am: AccountManager, account: Account) : this() {

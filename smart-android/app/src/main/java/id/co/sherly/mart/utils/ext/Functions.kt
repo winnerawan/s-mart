@@ -1,8 +1,10 @@
 package id.co.sherly.mart.utils.ext
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Color
@@ -15,9 +17,11 @@ import android.os.Parcelable
 import android.util.Log
 import android.view.View
 import android.view.Window
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.getSystemService
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -207,6 +211,13 @@ fun setDecorFitSystemWindowsOldApi(window: Window, bool: Boolean) {
 @RequiresApi(Build.VERSION_CODES.R)
 fun setDecorFitSystemWindows(window: Window, bool: Boolean) {
     window.setDecorFitsSystemWindows(bool)
+}
+
+fun Activity?.hideKeyboard() {
+    if (this?.currentFocus != null) {
+        val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager?
+        inputMethodManager!!.hideSoftInputFromWindow(currentFocus?.getWindowToken(), 0)
+    }
 }
 
 //fun ImageView.loadImageCircle(file: FileUrl?, size: Int = 0) {

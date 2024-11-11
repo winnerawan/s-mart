@@ -49,7 +49,7 @@ class Data extends Api\User\UserValidator
 	/**
 	 */
 	public function response(){
-        $response[] = $this->data;
+        $response = $this->data;
 		return $response;
 	}
 }

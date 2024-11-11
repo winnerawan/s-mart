@@ -20,6 +20,7 @@ import id.co.sherly.mart.databinding.ActivitySplashBinding
 import id.co.sherly.mart.ui.base.view.BaseActivity
 import id.co.sherly.mart.ui.main.MainActivity
 import id.co.sherly.mart.ui.onboarding.OnBoardingActivity
+import id.co.sherly.mart.ui.sign.`in`.SignInActivity
 import javax.inject.Inject
 
 
@@ -50,13 +51,13 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(), SplashContract.Vie
             launchMainActivity()
             return
         }
-        launchOnBoardingActivity()
+        launchSignInActivity()
     }
 
     /** launch onboarding activity
      */
-    private fun launchOnBoardingActivity() {
-        startActivity(Intent(this@SplashActivity, OnBoardingActivity::class.java))
+    private fun launchSignInActivity() {
+        startActivity(Intent(this@SplashActivity, SignInActivity::class.java))
         finish()
     }
 
