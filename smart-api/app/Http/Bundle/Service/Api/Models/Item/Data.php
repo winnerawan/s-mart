@@ -53,7 +53,7 @@ class Data extends Api\User\UserValidator
 	protected function wrapResponse($item) {
 		$response = $item;
 		if ($item->media_uid!=null) {
-			$response['image'] = Support\Media::buildFileUrlFromItemMedia($item->getItemMedia());
+			$response['image'] = sprintf('https:%s%s', Api\Config::get('media.file'), $item->getItemMedia()->getMedia()->file);//Support\Media::buildFileUrlFromItemMedia($item->getItemMedia());
 		} else {
 			$response['image'] = null;
 		}

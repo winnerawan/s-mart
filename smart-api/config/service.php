@@ -63,8 +63,8 @@
 		 |--------------------------------------------------------------------------
 		 */
 		'media' => [
-			'fit' => 'https://storage.s-mart.dev/',
-			'file' => 'https://storage.s-mart.dev/',
+			'fit' => '//storage.s-mart.dev/images/',
+			'file' => '//storage.s-mart.dev/images/',
 			'storage' => '/app/smart-storage/media/'
 		]
 		
