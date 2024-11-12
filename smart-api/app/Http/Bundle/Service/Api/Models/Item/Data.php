@@ -15,6 +15,12 @@ class Data extends Api\User\UserValidator
 {
 	/**
 	 */
+	protected $validatorRules = [
+        'query' => 'nullable|string',
+        'category' => 'nullable|numeric',
+    ];
+	/**
+	 */
 	protected $data;
     /**
 	 */
@@ -27,10 +33,18 @@ class Data extends Api\User\UserValidator
 				$join->on('item_media.category_id', 'item.category_id');
 				$join->on('item_media.sku', 'item.sku');
 				$join->on('item_media.item_id', 'item.id');
-			})
-			->orderBy('name', 'ASC')
+			});
 			// ->orderBy('created_datetime', 'DESC')
-			->get();
+		if ($this->validatorData->get('category')!=null) {
+			$this->data = $this->data->where('item.category_id', $this->validatorData->get('category'));
+		}
+		if ($this->validatorData->get('query')!=null) {
+			$this->data = $this->data->where('item.name', 'like', '%'.$this->validatorData->get('query').'%')
+				->orWhere('item.sku', 'like', '%'.$this->validatorData->get('query').'%')
+				->orWhere('item.description', 'like', '%'.$this->validatorData->get('query').'%');
+			// $this->data = $this->data->whereLike(['item.name', 'item.sku', 'item.description'], $this->validatorData->get('query'));
+		}
+		$this->data = $this->data->orderBy('name', 'ASC')->get();
 		return true;
 	}
 
