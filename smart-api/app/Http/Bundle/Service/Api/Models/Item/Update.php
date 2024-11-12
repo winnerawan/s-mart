@@ -76,6 +76,8 @@ class Update extends Api\User\UserValidator
             if ($this->media) {
 				$itemMedia = new Smart\ItemMedia();
 				$itemMedia->item_id = $this->item->id;
+                $itemMedia->category_id = $this->validatorData->get('category');
+                $itemMedia->sku = $this->validatorData->get('sku');
 				$itemMedia->media_uid = $this->media->uid;
 				$itemMedia->media_user_id = $this->media->user_id;
 				$itemMedia->created_user_id = $this->getUser()->id;
@@ -90,14 +92,4 @@ class Update extends Api\User\UserValidator
 		});
     }
 
-    /**
-     */
-    public function updatePosition() {
-        return Smart\User::transaction(function(){
-            $this->category->position = $this->validatorData->get('position');
-            // $this->category->updated_user_id = $this->getUser()->id;
-            // $this->category->is_updated = 1;
-            $this->category->save();
-		});
-    }
 }
