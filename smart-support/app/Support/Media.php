@@ -4,7 +4,7 @@
 namespace App\Support;
 
 use App\Database\Smart;
-use App\Web\Config;
+use App\Service\Api\Config;
 
 /**
  */

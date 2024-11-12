@@ -63,10 +63,10 @@
 		 |--------------------------------------------------------------------------
 		 */
 		'media' => [
-			'fit' => '//storage.s-mart.dev/images/',
-			'file' => '//storage.s-mart.dev/images/',
+			'fit' => 'https://storage.s-mart.dev/images/',
+			'file' => 'https://storage.s-mart.dev/images/',
 			'storage' => '/app/smart-storage/media/'
-		],
+		]
 		
 	]
 ];
