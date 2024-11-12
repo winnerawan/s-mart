@@ -41,6 +41,9 @@ class Update extends Api\User\UserValidator
             return false;
         }
         $this->item = Smart\Item::select()
+            ->where([
+                'item.id' => $this->validatorData->get('item'),
+            ])
             ->first();
         if (!$this->item) {
             return false;
