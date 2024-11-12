@@ -55,6 +55,7 @@ class Create extends Api\User\UserValidator
             $this->purchase->save();
         
             $this->createOrUpdateStocks($json);
+            $this->updateLastPurchasePriceItems($json);
 		});
     }
 
@@ -65,9 +66,9 @@ class Create extends Api\User\UserValidator
             $purchaseItem = new Smart\PurchaseItem();
             $purchaseItem->purchase_id = $purchase->id;
             $purchaseItem->item_id = $item['item'];
-            $purchaseItem->price = $item['price'];
+            $purchaseItem->price = $item['purchase_price'];
             $purchaseItem->qty = $item['qty'];
-            $purchaseItem->subtotal = ( $item['price'] * $item['qty'] );
+            $purchaseItem->subtotal = ( $item['purchase_price'] * $item['qty'] );
 
             $this->total += $purchaseItem->subtotal;
 
@@ -76,7 +77,7 @@ class Create extends Api\User\UserValidator
         }
     }
 
-     /**
+    /**
      */
     protected function getItemStock($category, $sku, $item) {
         return Smart\ItemStock::where([
@@ -84,7 +85,29 @@ class Create extends Api\User\UserValidator
             'item_stock.sku' => $sku, 
             'item_stock.item_id' => $item
         ])->first();
-        
+    }
+
+
+    /**
+     */
+    protected function getItem($category, $sku, $item) {
+        return Smart\Item::where([
+            'item.category_id' => $category,
+            'item.sku' => $sku, 
+            'item.id' => $item
+        ])->first();
+    }
+
+    /**
+     */
+    protected function updateLastPurchasePriceItems($json) {
+        foreach($json['items'] as $item) {
+            $mItem = $this->getItem($item['category'], $item['sku'], $item['item']);
+            if ($mItem->last_purchase_price==null) {
+                $mItem->last_purchase_price = $item['purchase_price'];
+                $mItem->save();
+            } 
+        }
     }
     
     /**
@@ -97,7 +120,6 @@ class Create extends Api\User\UserValidator
             } else {
                 $this->updateStock($item, $itemStock);
             }
-            
         }
     }
 
@@ -109,6 +131,8 @@ class Create extends Api\User\UserValidator
         $itemStock->sku = $item['sku'];
         $itemStock->category_id = $item['category'];
         $itemStock->stock = $item['qty'];
+        $itemStock->purchase_price = $item['purchase_price'];
+        $itemStock->selling_price = $item['selling_price'];
         $itemStock->save();
     }
 
@@ -119,6 +143,9 @@ class Create extends Api\User\UserValidator
         $itemStock->sku = $item['sku'];
         $itemStock->category_id = $item['category'];
         $itemStock->stock = $itemStock->stock + $item['qty'];
+        $itemStock->purchase_price = $item['purchase_price'];
+        $itemStock->selling_price = $item['selling_price'];
+        $itemStock->updated_at = \Carbon\Carbon::now();
         $itemStock->save();
     }
 }

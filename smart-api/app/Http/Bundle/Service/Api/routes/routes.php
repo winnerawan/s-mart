@@ -142,3 +142,16 @@ $router->group([
 		'api.auth.authorizedToken'
 	]
 ],__DIR__.'/tax.php');
+
+
+/*-------------------------------------------------------------------------
+ * /media
+ *-------------------------------------------------------------------------
+ */
+$router->group([
+	'as' => '/media',
+	'prefix' => '/media',
+	'middleware' => [
+		'api.auth.authorizedToken'
+	]
+],__DIR__.'/media.php');

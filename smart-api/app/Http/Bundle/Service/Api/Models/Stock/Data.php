@@ -22,11 +22,16 @@ class Data extends Api\User\UserValidator
 		if (!parent::validate()) {
 			return false;
 		}
-		$this->data = Smart\ItemStock::select()
+		$this->data = Smart\ItemStock::select('item_stock.*', 'item_media.media_uid')
 			->join('item', function($join) {
 				$join->on('item.category_id', 'item_stock.category_id');
 				$join->on('item.sku', 'item_stock.sku');
 				$join->on('item.id', 'item_stock.item_id');
+			})
+			->leftJoin('item_media', function($join) {
+				$join->on('item_media.category_id', 'item.category_id');
+				$join->on('item_media.sku', 'item.sku');
+				$join->on('item_media.item_id', 'item.id');
 			})
 			// ->orderBy('name', 'ASC')
 			// ->orderBy('created_datetime', 'DESC')
@@ -36,10 +41,12 @@ class Data extends Api\User\UserValidator
 
 	/**
 	 */
-	protected function wrapResponse($category) {
-		$response = $category;
-		if ($this->validatorData->get('with')=='items') {
-			$response['item'] = $category->items()->count();
+	protected function wrapResponse($item) {
+		$response = $item;
+		if ($item->media_uid!=null) {
+			$response['image'] = Support\Media::buildFileUrlFromItemMedia($item->getItemMedia());
+		} else {
+			$response['image'] = null;
 		}
 		return $response;
 	}
@@ -47,8 +54,8 @@ class Data extends Api\User\UserValidator
 	 */
 	protected function getData() {
 		$response = [];
-		foreach($this->data as $category) {
-			$response[] = $this->wrapResponse($category);
+		foreach($this->data as $item) {
+			$response[] = $this->wrapResponse($item);
 		}
 		return $response;
 	}

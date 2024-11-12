@@ -14,7 +14,7 @@ class Upload extends Api\User\UserValidator
 	/**
 	 */
 	protected $validatorRules = [
-        'media' => 'required|file|max:210000', /* 210MB */
+        'media' => 'required|file|max:21000', /* 210MB */
 	];
 	
 	/**

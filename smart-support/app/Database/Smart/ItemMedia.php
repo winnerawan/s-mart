@@ -15,6 +15,8 @@ class ItemMedia extends AbstractModel
      */
     protected $primaryKeys = [
         'item_id' => 'item_id',
+        'sku' => 'sku',
+        'category_id' => 'category_id',
         'media_uid' => 'media_uid'
     ];
 

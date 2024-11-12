@@ -20,12 +20,17 @@ class Item extends AbstractModel
 	// 	'position' 
 	// ];
 
+	
 	/**
 	 */
 	protected $casts = [
 		'id' => 'string',
 		'sku' => 'string'
 	];
+
+	/**
+	 */
+	protected $itemMedia;
 	/**
 	 */
 	public function hasStocks() {
@@ -40,5 +45,22 @@ class Item extends AbstractModel
 		return false;
 	}
 	
+	/**
+	 */
+	public function itemMedia() {
+		return ItemMedia::where([
+			'item_media.category_id' => $this->category_id,
+			'item_media.sku' => $this->sku,
+			'item_media.item_id' => $this->id,
+		]);
+	}
 
+	/**
+	 */
+	public function getItemMedia() {
+		if ($this->itemMedia==null) {
+			$this->itemMedia = $this->itemMedia();
+		}
+		return $this->itemMedia->first();
+	}
 }
