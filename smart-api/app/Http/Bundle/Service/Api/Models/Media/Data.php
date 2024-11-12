@@ -72,16 +72,15 @@ class Data extends Api\User\UserValidator
 	 */
 	protected function convertMediaData($medias){
 		$response = [];
-		$userTimezone = $this->getUser()->getUserTimezone();
 		foreach ($medias as $media) {
-			$response[] = $this->convertMediaItem($media, $userTimezone);
+			$response[] = $this->convertMediaItem($media);
 		}
 		return $response;
 	}
 
 	/**
 	 */
-	protected function convertMediaItem($media, $userTimezone){
+	protected function convertMediaItem($media){
 		$response['uid'] = $media->uid;
 		$response['name'] = $media->name;
 		$response['file'] = $media->file;
