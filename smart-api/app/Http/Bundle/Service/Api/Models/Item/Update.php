@@ -17,7 +17,7 @@ class Update extends Api\User\UserValidator
 	 */
 	protected $validatorRules = [
         'item' => 'required|string',
-        'category' => 'required|numeric',
+        'category' => 'nullable|numeric',
         'name' => 'nullable|string',
         'description' => 'nullable|string',
         'position' => 'nullable|numeric',
@@ -34,12 +34,7 @@ class Update extends Api\User\UserValidator
 		if (!parent::validate()) {
 			return false;
 		}
-        $this->category = Smart\Category::select()
-            ->where('category.id', $this->validatorData->get('category'))
-            ->first();
-        if (!$this->category) {
-            return false;
-        }
+        
         $this->item = Smart\Item::select()
             ->where([
                 'item.id' => $this->validatorData->get('item'),
@@ -71,7 +66,7 @@ class Update extends Api\User\UserValidator
     public function update() {
         return Smart\User::transaction(function(){
             $this->item->name = $this->validatorData->get('name');
-            $this->item->category_id = $this->category->id;
+            $this->item->category_id = $this->validatorData->get('category');
             $this->item->sku = $this->validatorData->get('sku');
             $this->item->description = $this->validatorData->get('description');
             // $this->category->updated_user_id = $this->getUser()->id;
