@@ -73,6 +73,8 @@ class Create extends Api\User\UserValidator
             if ($this->media) {
 				$itemMedia = new Smart\ItemMedia();
 				$itemMedia->item_id = $item->id;
+                $itemMedia->category_id = $this->category->id;
+                $itemMedia->sku = $this->validatorData->get('sku');
 				$itemMedia->media_uid = $this->media->uid;
 				$itemMedia->media_user_id = $this->media->user_id;
 				$itemMedia->created_user_id = $this->getUser()->id;
