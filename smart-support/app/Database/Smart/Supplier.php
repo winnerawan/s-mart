@@ -23,6 +23,7 @@ class Supplier extends AbstractModel
 	/**
 	 */
 	protected $items;
+	protected $purchases;
 	protected $hasPurchases;
 
 	/** 
@@ -37,21 +38,38 @@ class Supplier extends AbstractModel
 		return false;
 	}
 
+	// /** 
+	// */
+	// public function items() {
+	// 	return Item::where([
+	// 		'item.category_id' => $this->id
+	// 	]);
+	// }
+
+	// /** 
+	// */
+	// public function getItems() {
+	// 	if ($this->items==null) {
+	// 		$this->items = $this->items()->get();
+	// 	}
+	// 	return $this->items;
+	// }
+
 	/** 
 	*/
-	public function items() {
-		return Item::where([
-			'item.category_id' => $this->id
+	public function purchases() {
+		return Purchase::where([
+			'purchase.supplier_id' => $this->id
 		]);
 	}
 
 	/** 
 	*/
-	public function getItems() {
-		if ($this->items==null) {
-			$this->items = $this->items()->get();
+	public function getPurchases() {
+		if ($this->purchases==null) {
+			$this->purchases = $this->purchases()->get();
 		}
-		return $this->items;
+		return $this->purchases;
 	}
 
 }

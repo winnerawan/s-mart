@@ -33,7 +33,36 @@ class Data extends Api\User\UserValidator
 	 */
 	protected function wrapResponse($supplier) {
 		$response = $supplier;
+		if (str_contains($this->validatorData->get('with'), 'purchases')) {
+			$response['purchases'] = $this->getPurchases($supplier->getPurchases());
+		}
 		// $response['item'] = $supplier->items()->count();
+		return $response;
+	}
+
+	/**
+	 */
+	protected function wrapPurchase($purchase) {
+		$response = $purchase;
+		$response['supplier_name'] = $purchase->getSupplier()->name;
+		$response['item'] = $purchase->items()->count();
+		if (str_contains($this->validatorData->get('with'), 'pieces')) {
+			$response['pieces'] = (int) $purchase->pieces();
+		}
+		if (str_contains($this->validatorData->get('with'), 'items')) {
+			$response['items'] = $purchase->getItems();
+		}
+		
+		return $response;
+	}
+
+	/**
+	 */
+	protected function getPurchases($purchases) {
+		$response = [];
+		foreach($purchases as $purchase) {
+			$response[] = $this->wrapPurchase($purchase);
+		}
 		return $response;
 	}
 	/**
@@ -49,7 +78,7 @@ class Data extends Api\User\UserValidator
 	/**
 	 */
 	public function response(){
-        $response = $this->data;
+        $response = $this->getData();
 		return $response;
 	}
 }
