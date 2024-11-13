@@ -62,17 +62,18 @@ class Create extends Api\User\UserValidator
     public function create() {
         return Smart\User::transaction(function(){
             $now = \Carbon\Carbon::now();
+            $uuid = Str::uuid();
             $item = new Smart\Item();
-            $item->id = Str::uuid();//Support\Uid::alpha(8);//;
+            $item->id = $uuid;//Support\Uid::alpha(8);//;
             $item->name = $this->validatorData->get('name');
             $item->category_id = $this->category->id;
             $item->sku = $this->validatorData->get('sku');
             $item->description = $this->validatorData->get('description');
-            
+            $item->save();
 
             if ($this->media) {
 				$itemMedia = new Smart\ItemMedia();
-				$itemMedia->item_id = $item->id;
+				$itemMedia->item_id = $uuid;
                 $itemMedia->category_id = $this->category->id;
                 $itemMedia->sku = $this->validatorData->get('sku');
 				$itemMedia->media_uid = $this->media->uid;
@@ -86,7 +87,7 @@ class Create extends Api\User\UserValidator
 				$this->media->is_updated = 1;
 				$this->media->save();
 			}
-            $item->save();
+            
 		});
     }
 
