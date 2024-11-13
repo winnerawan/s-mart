@@ -68,7 +68,7 @@ class Create extends Api\User\UserValidator
             $item->category_id = $this->category->id;
             $item->sku = $this->validatorData->get('sku');
             $item->description = $this->validatorData->get('description');
-            $item->save();
+            
 
             if ($this->media) {
 				$itemMedia = new Smart\ItemMedia();
@@ -86,6 +86,7 @@ class Create extends Api\User\UserValidator
 				$this->media->is_updated = 1;
 				$this->media->save();
 			}
+            $item->save();
 		});
     }
 
