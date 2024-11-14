@@ -81,7 +81,7 @@ class Data extends Api\User\UserValidator
 	/**
 	 */
 	protected function convertMediaItem($media){
-		$response['uid'] = $media->uid;
+		$response['id'] = $media->id;
 		$response['name'] = $media->name;
 		$response['file'] = $media->file;
 		$response['path'] = $media->getMediaPath()->name;

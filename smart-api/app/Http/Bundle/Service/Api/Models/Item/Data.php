@@ -28,7 +28,7 @@ class Data extends Api\User\UserValidator
 		if (!parent::validate()) {
 			return false;
 		}
-		$this->data = Smart\Item::select('item.*', 'item_media.media_uid')
+		$this->data = Smart\Item::select('item.*', 'item_media.media_id')
 			->leftJoin('item_media', function($join) {
 				$join->on('item_media.category_id', 'item.category_id');
 				$join->on('item_media.sku', 'item.sku');
@@ -52,7 +52,7 @@ class Data extends Api\User\UserValidator
 	 */
 	protected function wrapResponse($item) {
 		$response = $item;
-		if ($item->media_uid!=null) {
+		if ($item->media_id!=null) {
 			$response['image'] = sprintf('https:%s%s', Api\Config::get('media.file'), $item->getItemMedia()->getMedia()->file);//Support\Media::buildFileUrlFromItemMedia($item->getItemMedia());
 		} else {
 			$response['image'] = null;

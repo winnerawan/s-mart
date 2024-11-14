@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.0",
         "lcobucci/jwt": "3.3",
         "propaganistas/laravel-phone": "^4.2",
+        "rorecek/laravel-ulid": "^2.0",
         "wa72/htmlpagedom": "^2.0",
         "wayang/stdlib-nik": "^1.0"
     },

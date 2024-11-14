@@ -17,7 +17,7 @@ class ItemMedia extends AbstractModel
         'item_id' => 'item_id',
         'sku' => 'sku',
         'category_id' => 'category_id',
-        'media_uid' => 'media_uid'
+        'media_id' => 'media_id'
     ];
 
     /**
@@ -28,7 +28,7 @@ class ItemMedia extends AbstractModel
      */
     public function media(){
         return Media::where([
-            'media.uid' => $this->media_uid
+            'media.id' => $this->media_id
         ]);
     }
 

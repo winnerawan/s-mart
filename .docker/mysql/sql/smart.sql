@@ -139,7 +139,7 @@ CREATE TABLE `category` (
   `position` tinyint unsigned NOT NULL DEFAULT '1',
   `icon` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,7 +148,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Sembako',NULL,1,NULL),(2,'Kebutuhuan Pokok',NULL,2,NULL),(3,'Snack',NULL,3,NULL),(4,'Obat',NULL,4,NULL),(5,'Rokok','',1,NULL);
+INSERT INTO `category` VALUES (1,'Sembako',NULL,1,NULL),(2,'Kebutuhuan Pokok',NULL,2,NULL),(3,'Snack',NULL,3,NULL),(4,'Obat',NULL,4,NULL),(5,'Rokok','',1,NULL),(7,'Gas',NULL,1,NULL);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +166,7 @@ CREATE TABLE `customer` (
   `updated_at` datetime DEFAULT NULL,
   `default` tinyint unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -187,11 +187,12 @@ DROP TABLE IF EXISTS `item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `item` (
-  `id` varbinary(36) NOT NULL,
+  `id` binary(26) NOT NULL,
   `category_id` int unsigned NOT NULL,
-  `sku` varbinary(36) NOT NULL,
+  `sku` varbinary(30) NOT NULL,
   `name` varchar(192) NOT NULL,
   `description` varchar(128) DEFAULT NULL,
+  `last_purchase_price` decimal(12,2) unsigned DEFAULT NULL,
   `image` varchar(128) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`,`sku`),
@@ -208,7 +209,6 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (_binary '74608692-32f4-46b1-8be6-8d284b3c3d71',5,_binary '8999909096004','Surya 12',NULL,NULL,'2024-11-10 05:53:11');
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,22 +220,24 @@ DROP TABLE IF EXISTS `item_media`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `item_media` (
-  `item_id` varbinary(36) NOT NULL,
+  `item_id` binary(26) NOT NULL,
+  `category_id` int unsigned NOT NULL,
+  `sku` varbinary(30) NOT NULL,
+  `media_id` binary(26) NOT NULL,
   `media_user_id` bigint unsigned NOT NULL,
-  `media_uid` varbinary(36) NOT NULL,
   `created_user_id` bigint unsigned NOT NULL,
   `created_datetime` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   `is_updated` tinyint unsigned NOT NULL DEFAULT '0',
   `updated_user_id` bigint unsigned DEFAULT NULL,
   `updated_datetime` datetime(6) DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(6),
-  PRIMARY KEY (`item_id`,`media_uid`) USING BTREE,
+  PRIMARY KEY (`item_id`,`media_id`) USING BTREE,
   KEY `index_1` (`created_user_id`) USING BTREE,
   KEY `index_2` (`created_datetime`) USING BTREE,
-  KEY `media_user_id` (`media_user_id`,`media_uid`),
+  KEY `media_user_id` (`media_user_id`,`media_id`),
   KEY `item_id` (`item_id`),
   CONSTRAINT `item_media_ibfk_2` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
-  CONSTRAINT `item_media_ibfk_3` FOREIGN KEY (`media_user_id`, `media_uid`) REFERENCES `media` (`user_id`, `uid`) ON UPDATE CASCADE,
-  CONSTRAINT `item_media_ibfk_4` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON UPDATE CASCADE
+  CONSTRAINT `item_media_ibfk_3` FOREIGN KEY (`media_user_id`, `media_id`) REFERENCES `media` (`user_id`, `id`) ON UPDATE CASCADE,
+  CONSTRAINT `item_media_ibfk_4` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -256,15 +258,17 @@ DROP TABLE IF EXISTS `item_stock`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `item_stock` (
-  `item_id` varbinary(36) NOT NULL,
-  `sku` varbinary(36) NOT NULL,
+  `item_id` binary(26) NOT NULL,
+  `sku` varbinary(30) NOT NULL,
   `category_id` int unsigned NOT NULL,
   `stock` int unsigned NOT NULL DEFAULT '0',
+  `purchase_price` decimal(12,2) unsigned NOT NULL,
+  `selling_price` decimal(12,2) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`item_id`),
+  PRIMARY KEY (`item_id`,`sku`),
   KEY `index2` (`category_id`),
-  CONSTRAINT `is_fk_1` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`),
+  CONSTRAINT `is_fk_1` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `is_fk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -287,7 +291,7 @@ DROP TABLE IF EXISTS `media`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `media` (
   `user_id` bigint unsigned NOT NULL,
-  `uid` varbinary(36) NOT NULL,
+  `id` binary(26) NOT NULL,
   `media_path_id` bigint unsigned NOT NULL,
   `media_status_id` bigint unsigned NOT NULL,
   `media_mimetype_id` bigint unsigned NOT NULL,
@@ -299,8 +303,8 @@ CREATE TABLE `media` (
   `is_updated` tinyint unsigned NOT NULL DEFAULT '0',
   `updated_user_id` bigint unsigned DEFAULT NULL,
   `updated_datetime` datetime(6) DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(6),
-  PRIMARY KEY (`user_id`,`uid`),
-  KEY `index_1` (`user_id`,`uid`) USING BTREE,
+  PRIMARY KEY (`user_id`,`id`),
+  KEY `index_1` (`user_id`,`id`) USING BTREE,
   KEY `index_3` (`media_status_id`) USING BTREE,
   KEY `index_5` (`size`) USING BTREE,
   KEY `index_2` (`media_path_id`) USING BTREE,
@@ -517,7 +521,7 @@ DROP TABLE IF EXISTS `purchase`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `purchase` (
-  `id` varbinary(36) NOT NULL,
+  `id` binary(26) NOT NULL,
   `supplier_id` int unsigned NOT NULL,
   `total` decimal(12,2) NOT NULL DEFAULT '0.00',
   `description` varchar(192) DEFAULT NULL,
@@ -545,17 +549,16 @@ DROP TABLE IF EXISTS `purchase_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `purchase_item` (
-  `purchase_id` varbinary(36) NOT NULL,
-  `item_id` varbinary(36) NOT NULL,
+  `purchase_id` binary(26) NOT NULL,
+  `item_id` binary(26) NOT NULL,
   `price` decimal(12,2) unsigned NOT NULL DEFAULT '0.00',
   `qty` int unsigned NOT NULL DEFAULT '0',
   `subtotal` decimal(10,2) unsigned NOT NULL DEFAULT '0.00',
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`purchase_id`,`item_id`),
-  KEY `pi_fk_2_idx` (`item_id`),
-  CONSTRAINT `pi_fk_1` FOREIGN KEY (`purchase_id`) REFERENCES `purchase` (`id`),
-  CONSTRAINT `pi_fk_2` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`)
+  KEY `index1` (`purchase_id`),
+  KEY `index2` (`item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -576,13 +579,15 @@ DROP TABLE IF EXISTS `sale`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sale` (
-  `id` varbinary(36) NOT NULL,
+  `id` binary(26) NOT NULL,
   `customer_id` int unsigned NOT NULL DEFAULT '1',
   `tax_id` int unsigned NOT NULL DEFAULT '1',
   `pay_type_id` int unsigned NOT NULL DEFAULT '1',
   `subtotal` decimal(12,2) unsigned NOT NULL,
   `discount` decimal(12,2) unsigned NOT NULL DEFAULT '0.00',
   `total` decimal(12,2) unsigned NOT NULL,
+  `total_purchase_price` decimal(12,2) unsigned NOT NULL,
+  `total_profit` decimal(12,2) unsigned NOT NULL,
   `created_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_datetime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -612,17 +617,19 @@ DROP TABLE IF EXISTS `sale_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sale_item` (
-  `sale_id` varbinary(36) NOT NULL,
-  `item_id` varbinary(36) NOT NULL,
+  `sale_id` binary(26) NOT NULL,
+  `item_id` binary(26) NOT NULL,
   `category_id` int unsigned NOT NULL,
   `price` decimal(12,2) unsigned NOT NULL,
-  `qty` int NOT NULL,
-  `subtotal` decimal(12,2) NOT NULL,
+  `qty` int unsigned NOT NULL,
+  `subtotal` decimal(12,2) unsigned NOT NULL,
+  `purchase_price` decimal(12,2) unsigned NOT NULL,
+  `profit` decimal(12,2) unsigned NOT NULL,
   PRIMARY KEY (`sale_id`,`item_id`),
   KEY `index2` (`category_id`),
   KEY `si_fk_2_idx` (`item_id`),
   CONSTRAINT `si_fk_1` FOREIGN KEY (`sale_id`) REFERENCES `sale` (`id`),
-  CONSTRAINT `si_fk_2` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`),
+  CONSTRAINT `si_fk_2` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `si_fk_3` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -650,7 +657,7 @@ CREATE TABLE `supplier` (
   `phone` varchar(16) DEFAULT NULL,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -659,6 +666,7 @@ CREATE TABLE `supplier` (
 
 LOCK TABLES `supplier` WRITE;
 /*!40000 ALTER TABLE `supplier` DISABLE KEYS */;
+INSERT INTO `supplier` VALUES (1,'Supplier 1',NULL,NULL,'2024-11-10 07:50:18');
 /*!40000 ALTER TABLE `supplier` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -923,7 +931,8 @@ CREATE TABLE `username` (
   KEY `index_1` (`user_id`) USING BTREE,
   KEY `index_3` (`created_user_id`) USING BTREE,
   KEY `index_4` (`created_datetime`) USING BTREE,
-  KEY `index_2` (`username`) USING BTREE
+  KEY `index_2` (`username`) USING BTREE,
+  CONSTRAINT `u_fk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -946,4 +955,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-10 12:53:48
+-- Dump completed on 2024-11-14 18:40:26

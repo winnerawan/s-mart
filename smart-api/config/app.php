@@ -183,7 +183,7 @@ return [
         Propaganistas\LaravelPhone\PhoneServiceProvider::class,
         App\Support\View\Minify\MinifyViewServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
-
+        Rorecek\Ulid\UlidServiceProvider::class,
         /**
          * Application
          */
@@ -205,6 +205,7 @@ return [
     'aliases' => [
         // 'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
+        'Ulid' => Rorecek\Ulid\Facades\Ulid::class,
         // 'Auth' => Illuminate\Support\Facades\Auth::class,
         // 'Blade' => Illuminate\Support\Facades\Blade::class,
         // 'Broadcast' => Illuminate\Support\Facades\Broadcast::class,

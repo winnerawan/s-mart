@@ -26,7 +26,7 @@ class UserPhoto extends AbstractModel
 	public function media(){
 		return Media::where([
 			'media.user_id' => $this->media_user_id,
-			'media.uid' => $this->media_uid
+			'media.id' => $this->media_id
 		]);
 	}
 

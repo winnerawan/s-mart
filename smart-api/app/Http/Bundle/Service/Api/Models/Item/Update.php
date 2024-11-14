@@ -78,7 +78,7 @@ class Update extends Api\User\UserValidator
 				$itemMedia->item_id = $this->item->id;
                 $itemMedia->category_id = $this->validatorData->get('category');
                 $itemMedia->sku = $this->validatorData->get('sku');
-				$itemMedia->media_uid = $this->media->uid;
+				$itemMedia->media_id = $this->media->id;
 				$itemMedia->media_user_id = $this->media->user_id;
 				$itemMedia->created_user_id = $this->getUser()->id;
 				$itemMedia->save();

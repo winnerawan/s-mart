@@ -43,6 +43,7 @@ class Delete extends Api\User\UserValidator
             if ($this->category->hasItems()) {
                 return;
             }
+            //todo: revert item_stock
             $this->category->delete();
 		});
     }

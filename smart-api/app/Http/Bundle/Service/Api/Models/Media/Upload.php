@@ -78,7 +78,7 @@ class Upload extends Api\User\UserValidator
 
 		$this->media = new Smart\Media();
 		$this->media->user_id = $user->id;
-		$this->media->uid = Support\Uid::number();
+		// $this->media->uid = Support\Uid::number();
 		$this->media->media_path_id = $this->path->id;
 		$this->media->media_status_id = Smart\MediaStatus::STATUS_TEMPORARY_ID;
 		$this->media->media_mimetype_id = $this->mimetype->id;
@@ -97,7 +97,7 @@ class Upload extends Api\User\UserValidator
 	public static function encodeName($media){
 		return str_replace(['+','/','='], ['-','_','$'], base64_encode(json_encode([
 			(string)$media->user_id,
-			(string)$media->uid
+			(string)$media->id
 		])));
 	}
 	

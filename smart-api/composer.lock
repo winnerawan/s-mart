@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ce3df2985bc15f6c4b50b90e5b30861",
+    "content-hash": "34fc45af8bd27a543c23ba6214e85a81",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2823,6 +2823,66 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "rorecek/laravel-ulid",
+            "version": "v2.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rorecek/laravel-ulid.git",
+                "reference": "972d98e1a22330f2bf9d8acbe36ff6d2ef6b4dc9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rorecek/laravel-ulid/zipball/972d98e1a22330f2bf9d8acbe36ff6d2ef6b4dc9",
+                "reference": "972d98e1a22330f2bf9d8acbe36ff6d2ef6b4dc9",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.3|^6.0|^7.0|^8.0|^9.0|^10.0",
+                "php": "^7.0|^8.0|^8.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rorecek\\Ulid\\UlidServiceProvider"
+                    ],
+                    "aliases": {
+                        "Ulid": "Rorecek\\Ulid\\Facades\\Ulid"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rorecek\\Ulid\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pavel Rorecek",
+                    "email": "info@laravelist.com",
+                    "homepage": "https://laravelist.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel package for ULID (Universally Unique Lexicographically Sortable Identifier)",
+            "homepage": "https://github.com/rorecek/laravel-ulid",
+            "keywords": [
+                "guid",
+                "identifier",
+                "ulid",
+                "uuid"
+            ],
+            "support": {
+                "issues": "https://github.com/rorecek/laravel-ulid/issues",
+                "source": "https://github.com/rorecek/laravel-ulid/tree/v2.0.6"
+            },
+            "time": "2023-06-25T07:41:46+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

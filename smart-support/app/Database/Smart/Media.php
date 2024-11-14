@@ -2,11 +2,13 @@
 /**
  */
 namespace App\Database\Smart;
+use Rorecek\Ulid\HasUlid;
 
 /**
  */
 class Media extends AbstractModel
 {
+	use HasUlid;
 	/**
 	 */
 	protected $table = 'media';
@@ -14,8 +16,8 @@ class Media extends AbstractModel
 	/**
 	 */
 	protected $primaryKeys = [
-		'user_id' => 'user_id',
-		'uid' => 'uid'
+		'id' => 'id',
+		'user_id' => 'user_id'
 	];
 
 	/**

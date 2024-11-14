@@ -78,7 +78,7 @@ class EditorUpload extends Api\User\UserValidator
 
 		$this->media = new Smart\Media();
 		$this->media->user_id = $user->id;
-		$this->media->uid = Support\Uid::number();
+		// $this->media->id = Support\Uid::number();
 		$this->media->media_path_id = $this->path->id;
 		$this->media->media_status_id = Smart\MediaStatus::STATUS_ACTIVE_ID;
 		$this->media->media_mimetype_id = $this->mimetype->id;
@@ -97,7 +97,7 @@ class EditorUpload extends Api\User\UserValidator
 	 */
 	public function response() {
 		$response['url'] = sprintf('https:%s%s', Api\Config::get('media.file'), $this->media->file);
-		$response['media_uid'] = $this->media->uid;
+		$response['media_id'] = $this->media->id;
 		return $response;
 	}
 	

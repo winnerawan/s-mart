@@ -2,11 +2,14 @@
 /**
  */
 namespace App\Database\Smart;
+use Rorecek\Ulid\HasUlid;
 
 /**
  */
 class Item extends AbstractModel
 {
+	
+	use HasUlid;
 	/**
 	 */
 	protected $table = 'item';

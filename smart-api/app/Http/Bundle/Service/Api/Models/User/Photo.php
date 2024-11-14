@@ -59,7 +59,7 @@ class Photo extends Api\User\UserValidator
 		}
 		$photo = new Smart\UserPhoto();
 		$photo->user_id = $user->id;
-		$photo->media_uid = $this->media->uid;
+		$photo->media_id = $this->media->id;
 		$photo->media_user_id = $this->media->user_id;
 		$photo->created_user_id = $user->id;
 		$photo->save();
