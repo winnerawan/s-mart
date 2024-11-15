@@ -189,12 +189,13 @@ DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `id` binary(26) NOT NULL,
   `category_id` int unsigned NOT NULL,
-  `sku` varbinary(30) NOT NULL,
+  `sku` binary(30) NOT NULL,
   `name` varchar(192) NOT NULL,
   `description` varchar(128) DEFAULT NULL,
   `last_purchase_price` decimal(12,2) unsigned DEFAULT NULL,
   `image` varchar(128) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `temp_qty` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`,`sku`),
   UNIQUE KEY `uid_UNIQUE` (`id`),
   UNIQUE KEY `sku_UNIQUE` (`sku`),
@@ -222,7 +223,7 @@ DROP TABLE IF EXISTS `item_media`;
 CREATE TABLE `item_media` (
   `item_id` binary(26) NOT NULL,
   `category_id` int unsigned NOT NULL,
-  `sku` varbinary(30) NOT NULL,
+  `sku` binary(30) NOT NULL,
   `media_id` binary(26) NOT NULL,
   `media_user_id` bigint unsigned NOT NULL,
   `created_user_id` bigint unsigned NOT NULL,
@@ -259,7 +260,7 @@ DROP TABLE IF EXISTS `item_stock`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `item_stock` (
   `item_id` binary(26) NOT NULL,
-  `sku` varbinary(30) NOT NULL,
+  `sku` binary(30) NOT NULL,
   `category_id` int unsigned NOT NULL,
   `stock` int unsigned NOT NULL DEFAULT '0',
   `purchase_price` decimal(12,2) unsigned NOT NULL,
@@ -955,4 +956,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-14 18:40:26
+-- Dump completed on 2024-11-15  0:59:35

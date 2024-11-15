@@ -61,18 +61,18 @@ class ItemController extends AbstractController
     }
 
     /*-------------------------------------------------------------------------
-     * /Item/updatePosition
+     * /Item/update
      *-------------------------------------------------------------------------
      */
-    public function updatePosition(Request $request)
+    public function updateTempQty(Request $request)
     {
-        $updatePosition = new Models\Item\Update($request);
-        if (!$updatePosition->validate()) {
+        $update = new Models\Item\Update($request);
+        if (!$update->validate()) {
             return $this->jsonError()
-                ->params($updatePosition->getValidator()->errors())
+                ->params($update->getValidator()->errors())
                 ->build();
         }
-        $updatePosition->updatePosition();
+        $update->updateTmpQty();
         return $this->jsonSuccess()
             ->build();
     }

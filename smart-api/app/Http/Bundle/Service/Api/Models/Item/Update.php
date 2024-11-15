@@ -92,4 +92,13 @@ class Update extends Api\User\UserValidator
 		});
     }
 
+    /**
+     */
+    public function updateTempQty() {
+        return Smart\User::transaction(function(){
+            $this->item->temp_qty = $this->validatorData->get('temp_qty');
+            $this->item->save();
+        });
+    }
+
 }
