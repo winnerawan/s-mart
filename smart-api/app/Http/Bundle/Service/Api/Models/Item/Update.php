@@ -74,6 +74,7 @@ class Update extends Api\User\UserValidator
             $this->item->save();
 
             if ($this->media) {
+                $this->deletePreviousMedia($this->item);
 				$itemMedia = new Smart\ItemMedia();
 				$itemMedia->item_id = $this->item->id;
                 $itemMedia->category_id = $this->validatorData->get('category');
@@ -90,6 +91,15 @@ class Update extends Api\User\UserValidator
 				$this->media->save();
 			}
 		});
+    }
+
+    /**
+     */
+    protected function deletePreviousMedia($item) {
+        $prevMedia = $item->getMedia();
+        if ($prevMedia!=null) {
+            $prevMedia->delete();
+        }
     }
 
     /**
