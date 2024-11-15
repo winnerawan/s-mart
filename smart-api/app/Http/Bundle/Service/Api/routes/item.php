@@ -23,6 +23,11 @@ $router->post('/updatePosition', [
 	'uses' => 'ItemController@updatePosition'
 ]);
 
+$router->post('/updateTempQty', [
+	'as' => '/updateTempQty',
+	'uses' => 'ItemController@updateTempQty'
+]);
+
 $router->post('/delete', [
 	'as' => '/delete',
 	'uses' => 'ItemController@delete'

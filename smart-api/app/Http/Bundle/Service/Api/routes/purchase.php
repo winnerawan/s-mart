@@ -18,11 +18,6 @@ $router->post('/update', [
 	'uses' => 'PurchaseController@update'
 ]);
 
-$router->post('/updateTempQty', [
-	'as' => '/updateTempQty',
-	'uses' => 'PurchaseController@updateTempQty'
-]);
-
 $router->post('/delete', [
 	'as' => '/delete',
 	'uses' => 'PurchaseController@delete'
