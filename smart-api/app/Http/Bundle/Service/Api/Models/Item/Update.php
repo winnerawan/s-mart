@@ -96,7 +96,7 @@ class Update extends Api\User\UserValidator
     /**
      */
     protected function deletePreviousMedia($item) {
-        $prevMedia = $item->getMedia();
+        $prevMedia = $item->getItemMedia();
         if ($prevMedia!=null) {
             $prevMedia->delete();
         }
