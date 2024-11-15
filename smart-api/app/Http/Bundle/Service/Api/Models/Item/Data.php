@@ -28,12 +28,12 @@ class Data extends Api\User\UserValidator
 		if (!parent::validate()) {
 			return false;
 		}
-		$this->data = Smart\Item::select('item.*', 'item_media.media_id')
-			->leftJoin('item_media', function($join) {
-				$join->on('item_media.category_id', 'item.category_id');
-				$join->on('item_media.sku', 'item.sku');
-				$join->on('item_media.item_id', 'item.id');
-			});
+		$this->data = Smart\Item::select('item.*');
+			// ->leftJoin('item_media', function($join) {
+			// 	$join->on('item_media.category_id', 'item.category_id');
+			// 	$join->on('item_media.sku', 'item.sku');
+			// 	$join->on('item_media.item_id', 'item.id');
+			// });
 			// ->orderBy('created_datetime', 'DESC')
 		if ($this->validatorData->get('category')!=null) {
 			$this->data = $this->data->where('item.category_id', $this->validatorData->get('category'));
