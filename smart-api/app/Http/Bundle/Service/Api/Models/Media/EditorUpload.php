@@ -106,7 +106,7 @@ class EditorUpload extends Api\User\UserValidator
 	public static function encodeName($media){
 		return str_replace(['+','/','='], ['-','_','$'], base64_encode(json_encode([
 			(string)$media->user_id,
-			(string)$media->uid
+			(string)$media->id
 		])));
 	}
 	

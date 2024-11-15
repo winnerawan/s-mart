@@ -18,9 +18,9 @@ $router->post('/update', [
 	'uses' => 'PurchaseController@update'
 ]);
 
-$router->post('/updatePosition', [
-	'as' => '/updatePosition',
-	'uses' => 'PurchaseController@updatePosition'
+$router->post('/updateTempQty', [
+	'as' => '/updateTempQty',
+	'uses' => 'PurchaseController@updateTempQty'
 ]);
 
 $router->post('/delete', [

@@ -22,6 +22,13 @@ class Media extends AbstractModel
 
 	/**
 	 */
+	protected $casts = [
+		'id' => 'string',
+		'sku' => 'string'
+	];
+
+	/**
+	 */
 	protected $mediaPath;
 	protected $mediaStatus;
 	protected $mediaMimetype;

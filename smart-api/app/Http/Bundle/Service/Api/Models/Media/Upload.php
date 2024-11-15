@@ -77,6 +77,7 @@ class Upload extends Api\User\UserValidator
         $user = $this->getUser();
 
 		$this->media = new Smart\Media();
+		
 		$this->media->user_id = $user->id;
 		// $this->media->uid = Support\Uid::number();
 		$this->media->media_path_id = $this->path->id;
@@ -84,9 +85,12 @@ class Upload extends Api\User\UserValidator
 		$this->media->media_mimetype_id = $this->mimetype->id;
 		$this->media->name = $this->getFileName();
 		$this->media->size = $this->getFileSize();
-		$this->media->file = vsprintf('%s.%s',[static::encodeName($this->media), $this->file->guessClientExtension()]);
 		$this->media->created_user_id = $user->id;
+		
 		$this->media->save();
+		$this->media->file = vsprintf('%s.%s',[static::encodeName($this->media), $this->file->guessClientExtension()]);
+		$this->media->save();
+		
 		/**/
 		$directory = Api\Config::get('media.storage') . $this->path->name;
 		$this->file->move($directory, $this->media->file);
@@ -95,10 +99,11 @@ class Upload extends Api\User\UserValidator
 	/**
 	 */
 	public static function encodeName($media){
-		return str_replace(['+','/','='], ['-','_','$'], base64_encode(json_encode([
+		$value = str_replace(['+','/','='], ['-','_','$'], base64_encode(json_encode([
 			(string)$media->user_id,
 			(string)$media->id
 		])));
+		return $value;
 	}
 	
 	/**
