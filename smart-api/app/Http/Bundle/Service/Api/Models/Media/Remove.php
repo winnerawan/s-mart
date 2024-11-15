@@ -14,7 +14,7 @@ class Remove extends Api\User\UserValidator
 	/**
 	 */
 	protected $validatorRules = [
-		'uid' => 'required|numeric'
+		'id' => 'required|numeric'
 	];
 
 	/**
@@ -28,7 +28,7 @@ class Remove extends Api\User\UserValidator
 			return false;
 		}
 		$this->file = $this->getUser()->medias()
-			->where('media.uid', $this->validatorData->get('uid'))
+			->where('media.id', $this->validatorData->get('id'))
 			->where('media.media_status_id', Smart\MediaStatus::STATUS_TEMPORARY_ID)
 			->first();
 		if (!$this->file) {

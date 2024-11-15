@@ -53,7 +53,7 @@ class Update extends Api\User\UserValidator
         $file = $this->validatorData->get('media');
         $this->media = $this->getUser()->medias()
             ->where('media.media_status_id', Smart\MediaStatus::STATUS_TEMPORARY_ID)
-            ->where('media.uid', $file)
+            ->where('media.id', $file)
             ->first();
         if (!$this->media) {
             return true;
