@@ -106,7 +106,7 @@ class Upload extends Api\User\UserValidator
 	public static function decodeName($value){
 		$value = json_decode(base64_decode(str_replace(['-','_','$'], ['+','/','='], $value), true), true);
 		if (is_array($value) && count($value) == 2) {
-			return Smart\Media::where(['user_id' => $value[0], 'uid' => $value[1]])->first();
+			return Smart\Media::where(['user_id' => $value[0], 'id' => $value[1]])->first();
 		}
 	}
 }
