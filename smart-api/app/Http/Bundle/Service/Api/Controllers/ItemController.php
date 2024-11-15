@@ -72,7 +72,7 @@ class ItemController extends AbstractController
                 ->params($update->getValidator()->errors())
                 ->build();
         }
-        $update->updateTmpQty();
+        $update->updateTempQty();
         return $this->jsonSuccess()
             ->build();
     }
