@@ -37,11 +37,11 @@ class ItemSupplierAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         val binding = (holder as ItemSupplierViewHolder).binding
-        val category = categories[position]
-        binding.name.text = category.name
-//        binding.phone.text = holder.itemView.context.getString(R.string.stock_format, "0")
+        val supplier = categories[position]
+        binding.name.text = supplier.name
+        binding.phone.text = supplier.phone?:"-"
 
-        if (category.selected) {
+        if (supplier.selected) {
             binding.iconCheck.visibility = View.VISIBLE
         }
 //        binding.iconCheck.setBackgroundColor(if (lastPos == position) Color.GREEN else Color.TRANSPARENT)
@@ -62,13 +62,13 @@ class ItemSupplierAdapter(
             }
 
             // Memilih item yang baru di klik
-            category.selected = !category.selected
+            supplier.selected = !supplier.selected
             notifyItemChanged(position) // Memperbarui item yang dipilih
 
             // Menyimpan posisi item yang dipilih
             lastPos = position
 
-            callback?.onSupplierSelected(category, position)
+            callback?.onSupplierSelected(supplier, position)
         }
     }
 
@@ -94,7 +94,7 @@ class ItemSupplierAdapter(
 
     var callback: Callback? = null
     interface Callback {
-        fun onSupplierSelected(category: Supplier, position: Int)
+        fun onSupplierSelected(supplier: Supplier, position: Int)
     }
 
 

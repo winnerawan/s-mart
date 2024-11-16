@@ -129,4 +129,7 @@
     <dimen name="dimen_230dp">230dp</dimen>
     <dimen name="tabPadding">8dp</dimen>
     <dimen name="dimen_46dp">46dp</dimen>
+    <dimen name="dimen_38dp">38dp</dimen>
+    <dimen name="dimen_180dp">180dp</dimen>
+    <dimen name="dimen_140dp">140dp</dimen>
 </resources>

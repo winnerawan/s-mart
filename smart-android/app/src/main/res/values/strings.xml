@@ -81,6 +81,7 @@
     <string name="total_price">Total Price</string>
     <string name="packet_description">Packet Description</string>
     <string name="buy_now">Buy Now</string>
+    <string name="buy">Beli</string>
     <string name="see_more">See more</string>
     <string name="message_add_internet_number">Your managed internet number</string>
     <string name="add_internet_number">Add internet number</string>
@@ -90,16 +91,21 @@
     <string name="subscribe">Subscribe</string>
     <string name="sign_in_text">Login to your account</string>
     <string name="home_menu">Home</string>
-    <string name="sale_menu">Sale</string>
+    <string name="sale_menu">Penjualan</string>
     <string name="stock_menu">Stock</string>
     <string name="item_menu">Item</string>
-    <string name="customer_menu">Customer</string>
+    <string name="customer_menu">Pelanggan</string>
     <string name="category_menu">Category</string>
     <string name="supplier_menu">Supplier</string>
-    <string name="purchase_menu">Purchase</string>
+    <string name="media_menu">Media</string>
+
+    <string name="purchase_menu">Pembelian</string>
     <string name="analytics">Sales Analytics</string>
     <string name="category_label">Kategori</string>
     <string name="stock_format">Stok %1$s</string>
+    <string name="item_format">%1$s Items</string>
+    <string name="image_format">%1$s Gambar</string>
+
     <string name="category_count_format">%1$s Kategori</string>
     <string name="customer_count_format">%1$s Pelanggan</string>
     <string name="add_category">Tambah Kategori</string>
@@ -121,6 +127,33 @@
     <string name="label_supplier_phone">Telepon</string>
     <string name="sale_format">%1$s Penjualan</string>
     <string name="update_supplier">Update supplier</string>
+    <string name="master_item">Master Item</string>
+    <string name="add_new_master_item">Tambah master item baru</string>
+    <string name="label_item_name">Nama Item</string>
+    <string name="label_sku">SKU (Stock Keeping Unit)</string>
+    <string name="label_description">Deskripsi/Keterangan</string>
+    <string name="label_category">Kategori</string>
+    <string name="upload_file">Upload file</string>
+    <string name="update_master_item">Update master item</string>
+    <string name="item_count_format">%1$s Item</string>
+    <string name="select_image">Pilih Gambar</string>
+    <string name="last_purchase_price_label">Harga beli terakhir</string>
+    <string name="search">Pencarian</string>
+    <string name="search_query_hint">Cari berdasarkan nama atau SKU</string>
+    <string name="media_label">Media</string>
+    <string name="add_new_media">Upload gambar</string>
+    <string name="select">Pilih</string>
+    <string name="supplier_count_format">%1$s Supplier</string>
+    <string name="purchase_count_format">%1$s Pembelian</string>
+    <string name="add_new_purchase">Pembelian Baru</string>
+    <string name="create_purchase_label">Buat Pembelian</string>
+    <string name="review_purchase_label">Tinjau Pembelian</string>
+    <string name="cart_purchase_label">Keranjang Pembelian</string>
+    <string name="date_label">Tanggal</string>
+    <string name="selling_price">Harga Jual</string>
+    <string name="item_cart_count_format">%1$s Item di pilih</string>
+    <string name="purchase_price_label">Harga beli</string>
+    <string name="sell_price_label">Harga jual</string>
     <string-array name="leftMenu">
         <item>Home</item>
         <item>Search</item>

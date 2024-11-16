@@ -4,12 +4,25 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="${applicationId}.SERVICE" />
 
     <application
         android:name=".Smart"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -38,9 +51,30 @@
 
         <activity android:name=".ui.onboarding.OnBoardingActivity"/>
         <activity android:name=".ui.sign.in.SignInActivity"/>
-        <activity android:name=".ui.sign.up.SignUpActivity"/>
-        <activity android:name=".ui.main.MainActivity"
+        <activity android:name=".ui.media.select.SelectMediaActivity"
             android:screenOrientation="landscape"/>
+        <activity android:name=".ui.purchase.create.PurchaseCreateActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".ui.main.MainActivity"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustPan|adjustResize"
+            android:screenOrientation="landscape"/>
+
+        <service
+            android:name="net.gotev.uploadservice.UploadService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
     </application>
 
 

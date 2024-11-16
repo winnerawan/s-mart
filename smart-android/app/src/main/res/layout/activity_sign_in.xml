@@ -213,7 +213,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginStart="@dimen/dimen_4dp"
-                    android:background="@drawable/ripple_accent_corner_44"
+                    android:background="@drawable/ripple_accent_corner_6"
                     android:elevation="0dp"
                     android:fontFamily="@font/bold"
                     android:stateListAnimator="@null"

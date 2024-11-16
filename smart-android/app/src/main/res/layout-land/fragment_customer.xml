@@ -143,7 +143,6 @@
             app:layout_constraintEnd_toStartOf="@id/iconClose"
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/text1"
-            android:layout_marginTop="@dimen/dimen_16dp"
             android:layout_marginStart="@dimen/dimen_16dp"
             android:fontFamily="@font/medium"
             android:textColor="@color/black"

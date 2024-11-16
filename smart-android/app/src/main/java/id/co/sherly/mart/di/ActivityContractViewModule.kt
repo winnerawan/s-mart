@@ -14,6 +14,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 import id.co.sherly.mart.ui.main.MainContract
 import id.co.sherly.mart.ui.main.MainPagerAdapter
+import id.co.sherly.mart.ui.media.select.SelectMediaContract
+import id.co.sherly.mart.ui.purchase.create.PurchaseCreateContract
 import id.co.sherly.mart.ui.sign.`in`.SignInContract
 import id.co.sherly.mart.ui.splash.SplashContract
 
@@ -34,6 +36,16 @@ class ActivityContractViewModule {
     @Provides
     fun mainView(activity: Activity): MainContract.View {
         return activity as MainContract.View
+    }
+
+    @Provides
+    fun selectMediaView(activity: Activity): SelectMediaContract.View {
+        return activity as SelectMediaContract.View
+    }
+
+    @Provides
+    fun purchaseCreateView(activity: Activity): PurchaseCreateContract.View {
+        return activity as PurchaseCreateContract.View
     }
 
     @Provides

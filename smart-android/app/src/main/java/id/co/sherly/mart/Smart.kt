@@ -7,11 +7,17 @@
 package id.co.sherly.mart
 
 import android.app.Application
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.FormatStrategy
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
 import dagger.hilt.android.HiltAndroidApp
+import net.gotev.uploadservice.UploadServiceConfig
+import net.gotev.uploadservice.okhttp.OkHttpStack
 
 @HiltAndroidApp
 class Smart : Application() {
@@ -19,7 +25,7 @@ class Smart : Application() {
     companion object {
 
         var instances: Smart? = null
-        const val notificationChannelID = "Notification"
+        const val notificationChannelID = "SmartMediaChannel"
 
         @Synchronized
         fun getInstance(): Smart? {
@@ -31,6 +37,8 @@ class Smart : Application() {
     override fun onCreate() {
         super.onCreate()
         instances = this
+        createNotificationChannel()
+        initializeUploadService()
         if (BuildConfig.DEBUG) {
             val formatStrategy: FormatStrategy = PrettyFormatStrategy.newBuilder()
                 .showThreadInfo(false) // (Optional) Whether to show thread info or not. Default true
@@ -42,6 +50,26 @@ class Smart : Application() {
             Logger.addLogAdapter(AndroidLogAdapter(formatStrategy))
         }
     }
-
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= 26) {
+            val channel = NotificationChannel(
+                Smart.notificationChannelID,
+                "SmartAppChannel",
+                NotificationManager.IMPORTANCE_LOW
+            )
+            val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            manager.createNotificationChannel(channel)
+        }
+//        requestRequiredPermissions()
+    }
+    private fun initializeUploadService() {
+        val service = UploadServiceConfig
+        service.initialize(
+            context = this,
+            defaultNotificationChannel = Smart.notificationChannelID,
+            debug = BuildConfig.DEBUG
+        )
+        service.httpStack = OkHttpStack()
+    }
 
 }

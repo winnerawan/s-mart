@@ -6,11 +6,16 @@
 
 package id.co.sherly.mart.data.db
 
+import androidx.room.Database
 import androidx.room.RoomDatabase
-import id.co.sherly.mart.data.db.dao.SpeedTestDao
+import androidx.room.TypeConverters
+import id.co.sherly.mart.data.db.dao.PurchaseDao
+import id.co.sherly.mart.data.db.entity.PurchaseEntity
+import id.co.sherly.mart.data.db.entity.PurchaseItemEntity
 
-//@Database(entities = [Product::class], version = 1, exportSchema = false)
+@Database(entities = [PurchaseEntity::class, PurchaseItemEntity::class], version = 2, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun speedTestDao(): SpeedTestDao
+    abstract fun purchaseDao(): PurchaseDao
 }

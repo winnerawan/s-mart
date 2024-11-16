@@ -7,6 +7,8 @@
 package id.co.sherly.mart.ui.home
 
 import android.os.Bundle
+import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +17,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.co.sherly.mart.data.model.User
 import id.co.sherly.mart.databinding.FragmentHomeBinding
 import id.co.sherly.mart.ui.base.view.BaseFragment
+import id.co.sherly.mart.ui.main.MainActivity
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeContract.View {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeContract.View{
 
     @Inject
     lateinit var presenter: HomePresenter
@@ -46,7 +49,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.apply {
-
             val concatAdapterConfig = ConcatAdapter.Config.Builder()
                 .setStableIdMode(ConcatAdapter.Config.StableIdMode.ISOLATED_STABLE_IDS)
                 .setIsolateViewTypes(true)

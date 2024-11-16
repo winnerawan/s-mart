@@ -38,4 +38,9 @@
         icon="@drawable/ic_user_octagon"
         title="@string/customer_menu" />
 
+    <tab
+        id="@+id/tab_media"
+        icon="@drawable/ic_gallery_add"
+        title="@string/media_menu" />
+
 </tabs>

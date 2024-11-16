@@ -15,7 +15,6 @@ class CategoryPresenter @Inject constructor(
 ) : CategoryContract.Presenter, BasePresenterImpl() {
 
     init {
-        fetchCategories()
     }
 
     override fun fetchCategories() {

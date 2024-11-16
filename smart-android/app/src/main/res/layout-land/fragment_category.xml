@@ -140,16 +140,17 @@
             app:tint="?attr/colorIcon" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            app:layout_constraintTop_toBottomOf="@id/iconClose"
+            app:layout_constraintTop_toTopOf="@id/iconClose"
+            app:layout_constraintBottom_toBottomOf="@id/iconClose"
+            app:layout_constraintEnd_toStartOf="@id/iconClose"
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/text1"
-            android:layout_marginTop="@dimen/dimen_16dp"
             android:layout_marginStart="@dimen/dimen_16dp"
             android:fontFamily="@font/medium"
             android:textColor="@color/black"
             android:textSize="@dimen/fontsize_17"
             android:text="@string/add_new_category"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"/>
 
         <LinearLayout

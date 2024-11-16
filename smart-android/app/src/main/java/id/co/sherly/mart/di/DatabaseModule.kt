@@ -31,6 +31,6 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideSpeedTestDao(db: AppDatabase) = db.speedTestDao()
+    fun providePurchaseDao(db: AppDatabase) = db.purchaseDao()
 
 }

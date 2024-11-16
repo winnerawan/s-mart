@@ -16,4 +16,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "S-Mart"
-include(":app")
+include(":app", ":carteasy")

@@ -1,5 +1,6 @@
 package id.co.sherly.mart.utils.ext
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ProgressDialog
@@ -7,6 +8,8 @@ import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.ContextWrapper
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.icu.text.DateFormat
@@ -15,22 +18,26 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.Log
+import android.util.TypedValue
 import android.view.View
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.orhanobut.logger.Logger
+import id.co.sherly.mart.BuildConfig
 import id.co.sherly.mart.R
 import id.co.sherly.mart.data.model.Image
+import id.co.sherly.mart.utils.AppConstants
+import net.gotev.uploadservice.protocols.multipart.MultipartUploadRequest
 import java.io.Serializable
+import java.math.BigDecimal
 import java.text.NumberFormat
 import java.util.Currency
 import java.util.Date
@@ -148,14 +155,18 @@ fun Double.priceFormat(currency: String): String {
 }
 
 fun String.formatPrice(): String {
-    val format: NumberFormat = NumberFormat.getCurrencyInstance()
-    format.maximumFractionDigits = 2
+    val format: NumberFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+    format.maximumFractionDigits = 0
     format.currency = Currency.getInstance("IDR")
 //    val symbol = format.currency?.symbol
 
     return format.format(this.toDouble()).replace("IDR", "Rp ")
 }
 
+
+fun BigDecimal.calculateSubtotal(itemQuantity: Int): BigDecimal {
+    return this.multiply(BigDecimal(itemQuantity))
+}
 fun ImageView.loadBlogImage(image: Image?) {
 //    val rw = image?.width?.div(_w)
 //    val w = rw?.let { image.width?.times(it) }
@@ -188,7 +199,8 @@ fun ImageView.loadImage(file: FileUrl?, size: Int = 0) {
 //            logMessage(glideUrl.toStringUrl())
             Glide.with(this.context).load(glideUrl)
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
-                .transition(DrawableTransitionOptions.withCrossFade()).override(size).into(this)
+//                .transition(DrawableTransitionOptions.withCrossFade())
+                .override(size).into(this)
         }
     }
 }
@@ -200,6 +212,13 @@ fun setStatusBarTransparent(window: Window, bool: Boolean) {
     } else {
         setDecorFitSystemWindowsOldApi(window, bool)
     }
+}
+fun dpToPx(dp: Float): Int {
+    return TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,
+        dp,
+        Resources.getSystem().displayMetrics
+    ).toInt()
 }
 
 fun setDecorFitSystemWindowsOldApi(window: Window, bool: Boolean) {
@@ -218,6 +237,73 @@ fun Activity?.hideKeyboard() {
         val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager?
         inputMethodManager!!.hideSoftInputFromWindow(currentFocus?.getWindowToken(), 0)
     }
+}
+
+fun uploadImageRequest(
+    context: Context,
+    token: String,
+    mediaPath: String,
+    param: String
+): MultipartUploadRequest {
+    val url =
+        if (BuildConfig.DEBUG) "${BuildConfig.API_URL}/media/upload" else "${BuildConfig.API_URL}/media/upload"
+    return MultipartUploadRequest(context, url)
+        .addFileToUpload(filePath = mediaPath, parameterName = param)
+        .addHeader("Authorization", "Bearer $token")
+}
+
+private val storge_permissions = arrayOf(
+    Manifest.permission.CAMERA,
+    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+    Manifest.permission.READ_EXTERNAL_STORAGE
+)
+private val storge_permissions_q = arrayOf(
+    Manifest.permission.CAMERA,
+    Manifest.permission.READ_EXTERNAL_STORAGE
+)
+
+@RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
+private val storge_permissions_33 = arrayOf(
+    Manifest.permission.CAMERA,
+    Manifest.permission.READ_MEDIA_IMAGES //            Manifest.permission.READ_MEDIA_AUDIO,
+    //            Manifest.permission.READ_MEDIA_VIDEO
+)
+
+private fun permissions(): Array<String> {
+    val p: Array<String>
+    p = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        storge_permissions_33
+    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        storge_permissions_q
+    } else {
+        storge_permissions
+    }
+    return p
+}
+
+fun hasPermissions(context: Context?): Boolean {
+
+//    permissions = PERMISSIONS
+    if (context != null && permissions().isNotEmpty()) {
+        for (permission in permissions()) {
+            if (ActivityCompat.checkSelfPermission(
+                    context,
+                    permission
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                return false
+            }
+        }
+    }
+    return true
+}
+
+fun requestCameraStoragePermissions(activity: Activity) {
+//    if (ContextCompat.checkSelfPermission(activity, { Manifest.permission.CAMERA, Manifest.permission.ACCESS_FINE_LOCATION })
+//        == PackageManager.PERMISSION_GRANTED) {
+//        // Do something ...
+//    }
+    ActivityCompat.requestPermissions(activity, permissions(), AppConstants.PERMISSIONS)
 }
 
 //fun ImageView.loadImageCircle(file: FileUrl?, size: Int = 0) {

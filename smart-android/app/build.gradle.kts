@@ -57,6 +57,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        isCoreLibraryDesugaringEnabled = true
     }
 //    composeOptions {
 //        kotlinCompilerExtensionVersion = "1.5.4"
@@ -68,7 +69,10 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation(project(":carteasy"))
 
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
     /** core */
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
@@ -142,6 +146,10 @@ dependencies {
     implementation("com.orhanobut:logger:2.2.0")
 //    implementation("com.roughike:bottom-bar:2.3.1")
 
+    implementation("net.gotev:uploadservice:4.9.3")
+    implementation("net.gotev:uploadservice-okhttp:4.9.3")
+    implementation("com.github.Drjacky:ImagePicker:2.3.22")
+//    implementation("com.carteasy.v1.lib:carteasy:0.0.6")
     /** test */
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

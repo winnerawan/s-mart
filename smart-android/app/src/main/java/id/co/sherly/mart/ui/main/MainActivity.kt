@@ -7,11 +7,16 @@
 package id.co.sherly.mart.ui.main
 
 import android.os.Bundle
+import android.util.Log
+import android.view.KeyEvent
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.roughike.bottombar.OnTabSelectListener
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.sherly.mart.R
 import id.co.sherly.mart.databinding.ActivityMainBinding
+import id.co.sherly.mart.utils.ext.hasPermissions
+import id.co.sherly.mart.utils.ext.requestCameraStoragePermissions
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -33,6 +38,10 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         binding.apply {
             setupViewPager()
             setUpBottomNavigation()
+
+            if (!hasPermissions(this@MainActivity)) {
+                requestCameraStoragePermissions(this@MainActivity)
+            }
         }
     }
 
@@ -63,6 +72,9 @@ class MainActivity : AppCompatActivity(), MainContract.View {
                 R.id.tab_customer -> {
                     binding.viewPager.currentItem = 7
                 }
+                R.id.tab_media -> {
+                    binding.viewPager.currentItem = 8
+                }
             }
         }
     }
@@ -80,5 +92,31 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     override fun onStop() {
         super.onStop()
         presenter.onStop()
+    }
+
+//    private val barcode = StringBuffer()
+
+//    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+//
+//        if (event.action == KeyEvent.ACTION_DOWN) {
+//            val pressedKey = event.unicodeChar.toChar()
+//            Log.e("BAR", "pressedKey: ${pressedKey}")
+//            barcode.append(pressedKey)
+//            Log.e("BAR", "appended: ${barcode}")
+//
+//        }
+//        if (event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
+//            Toast.makeText(baseContext, barcode.toString(), Toast.LENGTH_SHORT).show()
+//            Log.e("BAR", "${barcode.toString()}")
+//            callback?.onPhysicalBarcodeScanned(barcode.toString())
+//            barcode.delete(0, barcode.length)
+//        }
+//
+//        return super.dispatchKeyEvent(event)
+//    }
+
+    var callback: Callback? = null
+    interface Callback {
+        fun onPhysicalBarcodeScanned(barcode: String)
     }
 }

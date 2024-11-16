@@ -13,6 +13,8 @@ import id.co.sherly.mart.databinding.ItemCategoryBinding
 
 class ItemCategoryAdapter(
     private var categories: MutableList<Category>,
+//    var divWidth: Int,
+//    var divHeight: Int
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var lastPos = -1
@@ -23,8 +25,8 @@ class ItemCategoryAdapter(
             ), parent, false
         )
 //        view.root.post {
-//            view.root.layoutParams.width = parent.width/4
-//            view.root.layoutParams.height = parent.width/4
+//            view.root.layoutParams.width = parent.width/divWidth
+//            view.root.layoutParams.height = parent.height/divHeight
 //            view.root.requestLayout()
 //        }
         return ItemCategoryViewHolder(
@@ -39,7 +41,7 @@ class ItemCategoryAdapter(
         val binding = (holder as ItemCategoryViewHolder).binding
         val category = categories[position]
         binding.name.text = category.name
-        binding.stockCount.text = holder.itemView.context.getString(R.string.stock_format, "${category.item}")
+        binding.stockCount.text = holder.itemView.context.getString(R.string.item_format, "${category.item}")
 
         if (category.selected) {
             binding.iconCheck.visibility = View.VISIBLE

@@ -17,6 +17,8 @@ import id.co.sherly.mart.ui.customer.CustomerContract
 import id.co.sherly.mart.ui.history.HistoryContract
 import id.co.sherly.mart.ui.home.HomeContract
 import id.co.sherly.mart.ui.item.ItemContract
+import id.co.sherly.mart.ui.media.MediaContract
+import id.co.sherly.mart.ui.purchase.PurchaseContract
 import id.co.sherly.mart.ui.supplier.SupplierContract
 
 @Module
@@ -43,5 +45,11 @@ class FragmentContractViewModule {
 
     @Provides
     fun provideItemFragmentView(fragment: Fragment): ItemContract.View = fragment as ItemContract.View
+
+    @Provides
+    fun provideMediaFragmentView(fragment: Fragment): MediaContract.View = fragment as MediaContract.View
+
+    @Provides
+    fun providePurchaseFragmentView(fragment: Fragment): PurchaseContract.View = fragment as PurchaseContract.View
 
 }

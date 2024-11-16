@@ -45,6 +45,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(), CategoryContra
             gridLayout1 = GridLayoutManager(requireActivity(), 3, GridLayoutManager.VERTICAL, false)
             gridLayout2 = GridLayoutManager(requireActivity(), 2, GridLayoutManager.VERTICAL, false)
             (binding?.recyclerView?.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
+
             binding?.recyclerView?.adapter = adapter
             adapter.callback = this@CategoryFragment
             expandConstraintContent()
@@ -63,6 +64,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(), CategoryContra
 
             binding?.btnSave?.setOnClickListener {
                 val name = binding?.textName?.text.toString()
+                hideConstraintAdd()
                 if (isUpdate) {
                     category?.let {
                         presenter.updateCategory(it.id!!, name)
@@ -79,8 +81,11 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(), CategoryContra
                         presenter.deleteCategory(it.id!!)
                     }
                 }
+                hideConstraintAdd()
+
             }
         }
+        presenter.fetchCategories()
     }
 
     override fun onCategorySelected(category: Category, position: Int) {
@@ -95,7 +100,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(), CategoryContra
         hideProgress()
         adapter.addItems(categories.toMutableList())
         binding?.categoryCount?.text = getString(R.string.category_count_format, "${categories.size}")
-        hideConstraintAdd()
+//        hideConstraintAdd()
 //        binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
 
     }
@@ -143,7 +148,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(), CategoryContra
     }
 
     private fun hideConstraintAdd() {
-        expandConstraintContent()
+
         adapter.clearSelections(adapter.items())
         val mConstrainLayout: ConstraintLayout? = binding?.constraintAdd
         val lp: ConstraintLayout.LayoutParams =
@@ -152,5 +157,6 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(), CategoryContra
         mConstrainLayout.setLayoutParams(lp)
         binding?.btnDelete?.visibility = View.GONE
         adapter.clearSelections(adapter.items())
+        expandConstraintContent()
     }
 }

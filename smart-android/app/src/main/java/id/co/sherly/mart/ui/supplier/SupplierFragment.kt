@@ -53,6 +53,8 @@ class SupplierFragment : BaseFragment<FragmentSupplierBinding>(), SupplierContra
                 binding?.text1?.text = getString(R.string.add_new_supplier)
                 showConstraintAdd()
                 binding?.textName?.text?.clear()
+                binding?.textPhone?.text?.clear()
+                binding?.textAddress?.text?.clear()
                 adapter.clearSelections(adapter.items())
                 requireActivity()?.hideKeyboard()
             }
@@ -92,12 +94,14 @@ class SupplierFragment : BaseFragment<FragmentSupplierBinding>(), SupplierContra
         binding?.text1?.text = getString(R.string.update_supplier)
         showConstraintAdd()
         binding?.textName?.setText(category.name)
+        binding?.textPhone?.setText(category.phone)
+        binding?.textAddress?.setText(category.address)
     }
 
-    override fun showData(customers: List<Supplier>) {
+    override fun showData(suppliers: List<Supplier>) {
         hideProgress()
-        adapter.addItems(customers.toMutableList())
-        binding?.categoryCount?.text = getString(R.string.customer_count_format, "${customers.size}")
+        adapter.addItems(suppliers.toMutableList())
+        binding?.categoryCount?.text = getString(R.string.supplier_count_format, "${suppliers.size}")
         hideConstraintAdd()
 //        binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
 

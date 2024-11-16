@@ -9,6 +9,7 @@ package id.co.sherly.mart.utils
 class AppConstants {
 
     companion object {
+        val PERMISSIONS: Int = 1992
 
         const val EXTRA = "EXTRA"
     }

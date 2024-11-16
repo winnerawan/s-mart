@@ -40,6 +40,7 @@
         <item name="textAppearanceTitleMedium">@style/TextAppearance.Jagonet.TitleMedium</item>
         <item name="textAppearanceTitleSmall">@style/TextAppearance.Jagonet.TitleSmall</item>
         <item name="bottomSheetDialogTheme">@style/Widget.Jagonet.BottomSheet</item>
+        <item name="fontFamily">@font/medium</item>
     </style>
     <style name="TextAppearance.Jagonet.TitleSmall" parent="@style/TextAppearance.Material3.TitleSmall">
         <item name="android:textStyle">bold</item>
@@ -586,5 +587,13 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_marginStart">14dp</item>
         <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="roundedCornersImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+    <style name="roundedCornerImageView8" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/dimen_8dp</item>
     </style>
 </resources>

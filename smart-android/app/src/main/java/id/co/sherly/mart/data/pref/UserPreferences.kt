@@ -16,9 +16,11 @@ class UserPreferences @Inject constructor(
     var name by preferences.nullableStringPreference(NAME)
     var username by preferences.nullableStringPreference(USERNAME)
     var isLoggedIn by preferences.booleanPreference(IS_LOGGED_IN, false)
+    var cartPurchase by preferences.nullableStringPreference(CART_PURCHASE)
 }
 
 private const val NAME = "NAME"
 private const val USERNAME = "USERNAME"
 private const val IS_LOGGED_IN = "IS_LOGGED_IN"
 private const val IS_BIOMETRIC_ENABLE = "IS_BIOMETRIC_ENABLE"
+private const val CART_PURCHASE = "CART_PURCHASE"
