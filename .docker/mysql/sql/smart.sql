@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 8.0.40, for macos14 (arm64)
 --
--- Host: 127.0.0.1    Database: smart
+-- Host: 157.230.33.124    Database: smart
 -- ------------------------------------------------------
--- Server version	8.0.31
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -189,13 +189,13 @@ DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `id` binary(26) NOT NULL,
   `category_id` int unsigned NOT NULL,
-  `sku` binary(30) NOT NULL,
+  `sku` varbinary(30) NOT NULL,
   `name` varchar(192) NOT NULL,
   `description` varchar(128) DEFAULT NULL,
-  `last_purchase_price` decimal(12,2) unsigned DEFAULT NULL,
+  `last_purchase_price` decimal(12,0) unsigned DEFAULT '0',
   `image` varchar(128) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `temp_qty` int NOT NULL DEFAULT '0',
+  `temp_qty` int unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`,`sku`),
   UNIQUE KEY `uid_UNIQUE` (`id`),
   UNIQUE KEY `sku_UNIQUE` (`sku`),
@@ -210,6 +210,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
+INSERT INTO `item` VALUES (_binary '01jcqgmy65t04abtrp0q8akvg1',1,_binary 'Glk123456789','Gulaku 1kg ','',10000,NULL,'2024-11-15 08:57:15',0),(_binary '01jcqhkt34f19p6gmkpwfz8gke',1,_binary 'Mg12345678','Minyak Goreng Sunco 1kg','',12000,NULL,'2024-11-15 09:14:07',0),(_binary '01jcqtqhspm0tv5c9p9z1hfqq5',5,_binary '8999909096004','Sampoerna Mild 16','',35000,NULL,'2024-11-15 11:53:27',0),(_binary '01jcqtrfjfetvyrpa9xy3596qy',5,_binary '8999909096003','Sampoerna Mild 12','',0,NULL,'2024-11-15 11:53:57',0),(_binary '01jcr2n79pzkc7j6jxts8vj8dj',5,_binary '8997018460150','Marlboro Menthol','',50000,NULL,'2024-11-15 14:11:59',0),(_binary '01jcr2rnyh0c9dzhszxyqavvje',5,_binary '8998989110129','Surya 12','',0,NULL,'2024-11-15 14:13:52',0),(_binary '01jcr2vn2y3rw85e3gc4qsh3ss',7,_binary '806025960017','Korek Gas','',3000,NULL,'2024-11-15 14:15:30',0),(_binary '01jcrny4epnpnz7vzhxq90dqjg',2,_binary '123456789','Brio Satya','',0,NULL,'2024-11-15 19:48:54',0),(_binary '01jctma8nyzbnqazn1d8h611j3',1,_binary '089686060126','Pop Mie Rasa Baso','',0,NULL,'2024-11-16 13:59:03',0),(_binary '01jctme9jwjzrgcrsjdgcx3pxn',1,_binary '089686910384','Indomie Rasa Soto','',0,NULL,'2024-11-16 14:01:15',0),(_binary '01jctmfv09rr8kq1x5ay5rswvs',2,_binary '8996129809131','Air Mineral Cleo','',0,NULL,'2024-11-16 14:02:06',0),(_binary '01jctmh58pydp07x2kdsr2rxpc',2,_binary '089686010947','Indomie Goreng','',0,NULL,'2024-11-16 14:02:49',0);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,7 +224,7 @@ DROP TABLE IF EXISTS `item_media`;
 CREATE TABLE `item_media` (
   `item_id` binary(26) NOT NULL,
   `category_id` int unsigned NOT NULL,
-  `sku` binary(30) NOT NULL,
+  `sku` varbinary(30) NOT NULL,
   `media_id` binary(26) NOT NULL,
   `media_user_id` bigint unsigned NOT NULL,
   `created_user_id` bigint unsigned NOT NULL,
@@ -248,6 +249,7 @@ CREATE TABLE `item_media` (
 
 LOCK TABLES `item_media` WRITE;
 /*!40000 ALTER TABLE `item_media` DISABLE KEYS */;
+INSERT INTO `item_media` VALUES (_binary '01jcqgmy65t04abtrp0q8akvg1',1,_binary 'Glk123456789',_binary '01jctxsdt4fnq0xpbh6nyv36mk',2,2,'2024-11-16 16:45:17.179536',0,NULL,NULL),(_binary '01jcqhkt34f19p6gmkpwfz8gke',1,_binary 'Mg12345678',_binary '01jctxs844da6b4ajec4efaesb',2,2,'2024-11-16 16:45:10.191436',0,NULL,NULL),(_binary '01jcqtqhspm0tv5c9p9z1hfqq5',5,_binary '8999909096004',_binary '01jcrpqp9w24je7sv9tjs1kw2a',2,2,'2024-11-15 20:03:02.272766',0,NULL,NULL),(_binary '01jcqtrfjfetvyrpa9xy3596qy',5,_binary '8999909096003',_binary '01jctxwnn3eb7cm3drk7sfm94b',2,2,'2024-11-16 16:46:35.374837',0,NULL,NULL),(_binary '01jcr2n79pzkc7j6jxts8vj8dj',5,_binary '8997018460150',_binary '01jcrnvpqdyzzte5v0b7eqwage',2,2,'2024-11-15 19:48:01.136012',0,NULL,NULL),(_binary '01jcr2rnyh0c9dzhszxyqavvje',5,_binary '8998989110129',_binary '01jcrnv1v45jfj7xd7zkr7d000',2,2,'2024-11-15 19:48:14.290431',0,NULL,NULL),(_binary '01jcr2vn2y3rw85e3gc4qsh3ss',7,_binary '806025960017',_binary '01jctxsjk4em486zy0apkh1hy6',2,2,'2024-11-16 16:44:53.738239',0,NULL,NULL),(_binary '01jcrny4epnpnz7vzhxq90dqjg',2,_binary '123456789',_binary '01jcrqv57skvveam3azemevx75',2,2,'2024-11-15 20:23:48.755244',0,NULL,NULL),(_binary '01jctma8nyzbnqazn1d8h611j3',1,_binary '089686060126',_binary '01jctxkmzq52vwhy3e1m39bqys',2,2,'2024-11-16 16:42:02.375204',0,NULL,NULL),(_binary '01jctme9jwjzrgcrsjdgcx3pxn',1,_binary '089686910384',_binary '01jctxksg4bhcxb0n3w1c3geq9',2,2,'2024-11-16 16:41:54.433495',0,NULL,NULL),(_binary '01jctmfv09rr8kq1x5ay5rswvs',2,_binary '8996129809131',_binary '01jctxkgy4carkz5s2f8rfe5yg',2,2,'2024-11-16 16:42:11.104127',0,NULL,NULL),(_binary '01jctmh58pydp07x2kdsr2rxpc',2,_binary '089686010947',_binary '01jctxky75nkye5xh9m2x19ztg',2,2,'2024-11-16 16:41:47.938646',0,NULL,NULL);
 /*!40000 ALTER TABLE `item_media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,13 +262,14 @@ DROP TABLE IF EXISTS `item_stock`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `item_stock` (
   `item_id` binary(26) NOT NULL,
-  `sku` binary(30) NOT NULL,
+  `sku` varbinary(30) NOT NULL,
   `category_id` int unsigned NOT NULL,
   `stock` int unsigned NOT NULL DEFAULT '0',
-  `purchase_price` decimal(12,2) unsigned NOT NULL,
-  `selling_price` decimal(12,2) NOT NULL,
+  `purchase_price` decimal(12,0) unsigned NOT NULL,
+  `selling_price` decimal(12,0) unsigned NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT NULL,
+  `temp_qty` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`item_id`,`sku`),
   KEY `index2` (`category_id`),
   CONSTRAINT `is_fk_1` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -322,6 +325,7 @@ CREATE TABLE `media` (
 
 LOCK TABLES `media` WRITE;
 /*!40000 ALTER TABLE `media` DISABLE KEYS */;
+INSERT INTO `media` VALUES (2,_binary '01jcqgjzgaqd3jj2mkz55bjr25',1,1,2,_binary 'WyIyIiwiMDFqY3FnanpnYXFkM2pqMm1rejU1YmpyMjUiXQ$$.jpg',46428,'1000059461.jpg',2,'2024-11-15 08:56:11.530478',1,2,'2024-11-15 11:53:27.104788'),(2,_binary '01jcqgk88k3cecam2jemac2atj',1,1,2,_binary 'WyIyIiwiMDFqY3Fnazg4azNjZWNhbTJqZW1hYzJhdGoiXQ$$.jpg',50953,'1000059458.jpg',2,'2024-11-15 08:56:20.499581',1,2,'2024-11-15 11:53:57.586967'),(2,_binary '01jcqgkgb6sexe2d44vbtnjzyr',1,1,2,_binary 'WyIyIiwiMDFqY3Fna2diNnNleGUyZDQ0dmJ0bmp6eXIiXQ$$.jpg',26136,'1000059464.jpg',2,'2024-11-15 08:56:28.774673',1,2,'2024-11-15 09:14:07.335508'),(2,_binary '01jcqgkr1k5rt0zsx803203v3h',1,1,2,_binary 'WyIyIiwiMDFqY3Fna3IxazVydDB6c3g4MDMyMDN2M2giXQ$$.jpg',56398,'1000059467.jpg',2,'2024-11-15 08:56:36.659840',1,2,'2024-11-15 09:12:58.132537'),(2,_binary '01jcrnv1v45jfj7xd7zkr7d000',1,1,2,_binary 'WyIyIiwiMDFqY3JudjF2NDVqZmo3eGQ3emtyN2QwMDAiXQ$$.jpg',77032,'1000059721.jpg',2,'2024-11-15 19:47:13.382382',1,2,'2024-11-15 19:48:14.292241'),(2,_binary '01jcrnv9964he91hr6v771z6q6',1,1,2,_binary 'WyIyIiwiMDFqY3Judjk5NjRoZTkxaHI2djc3MXo2cTYiXQ$$.jpg',25160,'1000059720.jpg',2,'2024-11-15 19:47:20.998880',1,2,'2024-11-15 19:48:23.340632'),(2,_binary '01jcrnvpqdyzzte5v0b7eqwage',1,1,2,_binary 'WyIyIiwiMDFqY3JudnBxZHl6enRlNXYwYjdlcXdhZ2UiXQ$$.jpg',6106,'1000059719.jpg',2,'2024-11-15 19:47:34.765783',1,2,'2024-11-15 19:48:01.136952'),(2,_binary '01jcrnw5hd04gwqcmy545q0kk7',1,1,2,_binary 'WyIyIiwiMDFqY3JudzVoZDA0Z3dxY215NTQ1cTBrazciXQ$$.jpg',340772,'1000059711.jpg',2,'2024-11-15 19:47:49.934101',1,2,'2024-11-15 19:48:54.361859'),(2,_binary '01jcrpqp9w24je7sv9tjs1kw2a',1,1,2,_binary 'WyIyIiwiMDFqY3JwcXA5dzI0amU3c3Y5dGpzMWt3MmEiXQ$$.jpg',25160,'1000059720.jpg',2,'2024-11-15 20:02:51.836700',1,2,'2024-11-15 20:03:02.273682'),(2,_binary '01jcrqv57skvveam3azemevx75',1,1,2,_binary 'WyIyIiwiMDFqY3JxdjU3c2t2dmVhbTNhemVtZXZ4NzUiXQ$$.jpg',421303,'1000059645.jpg',2,'2024-11-15 20:22:14.010974',1,2,'2024-11-15 20:23:48.757044'),(2,_binary '01jctxkgy4carkz5s2f8rfe5yg',1,1,4,_binary 'WyIyIiwiMDFqY3R4a2d5NGNhcmt6NXMyZjhyZmU1eWciXQ$$.webp',4978,'1000000026.webp',2,'2024-11-16 16:41:24.166692',1,2,'2024-11-16 16:42:11.105204'),(2,_binary '01jctxkmzq52vwhy3e1m39bqys',1,1,2,_binary 'WyIyIiwiMDFqY3R4a216cTUydndoeTNlMW0zOWJxeXMiXQ$$.jpg',7669,'1000000025.jpg',2,'2024-11-16 16:41:28.312040',1,2,'2024-11-16 16:42:02.376517'),(2,_binary '01jctxksg4bhcxb0n3w1c3geq9',1,1,2,_binary 'WyIyIiwiMDFqY3R4a3NnNGJoY3hiMG4zdzFjM2dlcTkiXQ$$.jpg',33449,'1000000024.jpg',2,'2024-11-16 16:41:32.933236',1,2,'2024-11-16 16:41:54.435603'),(2,_binary '01jctxky75nkye5xh9m2x19ztg',1,1,2,_binary 'WyIyIiwiMDFqY3R4a3k3NW5reWU1eGg5bTJ4MTl6dGciXQ$$.jpg',7612,'1000000023.jpg',2,'2024-11-16 16:41:37.765812',1,2,'2024-11-16 16:41:47.939600'),(2,_binary '01jctxs844da6b4ajec4efaesb',1,1,2,_binary 'WyIyIiwiMDFqY3R4czg0NGRhNmI0YWplYzRlZmFlc2IiXQ$$.jpg',9356,'1000000029.jpg',2,'2024-11-16 16:44:31.748624',1,2,'2024-11-16 16:45:10.193173'),(2,_binary '01jctxsdt4fnq0xpbh6nyv36mk',1,1,2,_binary 'WyIyIiwiMDFqY3R4c2R0NGZucTB4cGJoNm55djM2bWsiXQ$$.jpg',10014,'1000000028.jpg',2,'2024-11-16 16:44:37.572591',1,2,'2024-11-16 16:45:17.182234'),(2,_binary '01jctxsjk4em486zy0apkh1hy6',1,1,2,_binary 'WyIyIiwiMDFqY3R4c2prNGVtNDg2enkwYXBraDFoeTYiXQ$$.jpg',6114,'1000000027.jpg',2,'2024-11-16 16:44:42.468949',1,2,'2024-11-16 16:44:53.740143'),(2,_binary '01jctxwnn3eb7cm3drk7sfm94b',1,1,2,_binary 'WyIyIiwiMDFqY3R4d25uM2ViN2NtM2RyazdzZm05NGIiXQ$$.jpg',4719,'1000000031.jpg',2,'2024-11-16 16:46:23.908161',1,2,'2024-11-16 16:46:35.376431');
 /*!40000 ALTER TABLE `media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -524,7 +528,7 @@ DROP TABLE IF EXISTS `purchase`;
 CREATE TABLE `purchase` (
   `id` binary(26) NOT NULL,
   `supplier_id` int unsigned NOT NULL,
-  `total` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `total` decimal(12,0) NOT NULL DEFAULT '0',
   `description` varchar(192) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -543,6 +547,185 @@ LOCK TABLES `purchase` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `purchase_import`
+--
+
+DROP TABLE IF EXISTS `purchase_import`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `purchase_import` (
+  `id` binary(26) NOT NULL,
+  `purchase_import_file_id` binary(26) NOT NULL,
+  `updated` datetime DEFAULT NULL,
+  `created_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`id`),
+  KEY `index_3` (`purchase_import_file_id`) USING BTREE,
+  KEY `index_4` (`updated`) USING BTREE,
+  KEY `index_8` (`created_at`) USING BTREE,
+  CONSTRAINT `purchase_import_ibfk_1` FOREIGN KEY (`purchase_import_file_id`) REFERENCES `purchase_import_file` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `purchase_import`
+--
+
+LOCK TABLES `purchase_import` WRITE;
+/*!40000 ALTER TABLE `purchase_import` DISABLE KEYS */;
+/*!40000 ALTER TABLE `purchase_import` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `purchase_import_file`
+--
+
+DROP TABLE IF EXISTS `purchase_import_file`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `purchase_import_file` (
+  `id` binary(26) NOT NULL,
+  `purchase_import_file_path_id` bigint unsigned NOT NULL DEFAULT '1',
+  `purchase_import_file_status_id` bigint unsigned NOT NULL,
+  `purchase_import_file_mimetype_id` bigint unsigned NOT NULL,
+  `file` varbinary(128) NOT NULL,
+  `size` bigint unsigned NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`id`),
+  KEY `index_1` (`id`) USING BTREE,
+  KEY `index_3` (`purchase_import_file_status_id`) USING BTREE,
+  KEY `index_4` (`purchase_import_file_mimetype_id`) USING BTREE,
+  KEY `index_8` (`created_at`) USING BTREE,
+  KEY `index_5` (`size`) USING BTREE,
+  KEY `index_2` (`purchase_import_file_path_id`) USING BTREE,
+  FULLTEXT KEY `index_6` (`name`),
+  CONSTRAINT `purchase_import_file_ibfk_1` FOREIGN KEY (`purchase_import_file_mimetype_id`) REFERENCES `purchase_import_file_mimetype` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `purchase_import_file_ibfk_2` FOREIGN KEY (`purchase_import_file_path_id`) REFERENCES `purchase_import_file_path` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `purchase_import_file_ibfk_3` FOREIGN KEY (`purchase_import_file_status_id`) REFERENCES `purchase_import_file_status` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `purchase_import_file`
+--
+
+LOCK TABLES `purchase_import_file` WRITE;
+/*!40000 ALTER TABLE `purchase_import_file` DISABLE KEYS */;
+/*!40000 ALTER TABLE `purchase_import_file` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `purchase_import_file_mimetype`
+--
+
+DROP TABLE IF EXISTS `purchase_import_file_mimetype`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `purchase_import_file_mimetype` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mimetype` varbinary(128) NOT NULL,
+  `created_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_2` (`mimetype`) USING BTREE,
+  KEY `index_1` (`id`) USING BTREE,
+  KEY `index_4` (`created_at`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `purchase_import_file_mimetype`
+--
+
+LOCK TABLES `purchase_import_file_mimetype` WRITE;
+/*!40000 ALTER TABLE `purchase_import_file_mimetype` DISABLE KEYS */;
+INSERT INTO `purchase_import_file_mimetype` VALUES (1,'Microsoft Excel Worksheet',_binary 'application/vnd.ms-excel','2024-11-21 13:22:05.000000');
+/*!40000 ALTER TABLE `purchase_import_file_mimetype` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `purchase_import_file_path`
+--
+
+DROP TABLE IF EXISTS `purchase_import_file_path`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `purchase_import_file_path` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varbinary(32) NOT NULL,
+  `created_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`id`),
+  KEY `index_1` (`id`) USING BTREE,
+  KEY `index_4` (`created_at`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `purchase_import_file_path`
+--
+
+LOCK TABLES `purchase_import_file_path` WRITE;
+/*!40000 ALTER TABLE `purchase_import_file_path` DISABLE KEYS */;
+INSERT INTO `purchase_import_file_path` VALUES (1,_binary 'xls','2020-03-28 10:08:34.224596');
+/*!40000 ALTER TABLE `purchase_import_file_path` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `purchase_import_file_status`
+--
+
+DROP TABLE IF EXISTS `purchase_import_file_status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `purchase_import_file_status` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`id`),
+  KEY `index_1` (`id`) USING BTREE,
+  KEY `index_2` (`created_at`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `purchase_import_file_status`
+--
+
+LOCK TABLES `purchase_import_file_status` WRITE;
+/*!40000 ALTER TABLE `purchase_import_file_status` DISABLE KEYS */;
+INSERT INTO `purchase_import_file_status` VALUES (1,'Imported','2020-03-28 10:08:34.286262'),(2,'Removed','2020-03-28 10:08:34.286262'),(3,'Temporary','2020-03-28 10:08:34.286262');
+/*!40000 ALTER TABLE `purchase_import_file_status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `purchase_import_record`
+--
+
+DROP TABLE IF EXISTS `purchase_import_record`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `purchase_import_record` (
+  `purchase_import_file_id` binary(30) NOT NULL,
+  `item_id` binary(26) NOT NULL,
+  `sku` varbinary(30) NOT NULL,
+  `created_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`purchase_import_file_id`,`item_id`) USING BTREE,
+  KEY `index_3` (`created_at`) USING BTREE,
+  KEY `purchase_import_file_id` (`purchase_import_file_id`),
+  CONSTRAINT `purchase_import_record_ibfk_1` FOREIGN KEY (`purchase_import_file_id`) REFERENCES `purchase_import_file` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `purchase_import_record`
+--
+
+LOCK TABLES `purchase_import_record` WRITE;
+/*!40000 ALTER TABLE `purchase_import_record` DISABLE KEYS */;
+/*!40000 ALTER TABLE `purchase_import_record` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `purchase_item`
 --
 
@@ -552,9 +735,11 @@ DROP TABLE IF EXISTS `purchase_item`;
 CREATE TABLE `purchase_item` (
   `purchase_id` binary(26) NOT NULL,
   `item_id` binary(26) NOT NULL,
-  `price` decimal(12,2) unsigned NOT NULL DEFAULT '0.00',
+  `category_id` int unsigned NOT NULL,
+  `sku` varbinary(30) NOT NULL,
+  `price` decimal(12,0) unsigned NOT NULL DEFAULT '0',
   `qty` int unsigned NOT NULL DEFAULT '0',
-  `subtotal` decimal(10,2) unsigned NOT NULL DEFAULT '0.00',
+  `subtotal` decimal(12,0) unsigned NOT NULL DEFAULT '0',
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`purchase_id`,`item_id`),
@@ -584,11 +769,11 @@ CREATE TABLE `sale` (
   `customer_id` int unsigned NOT NULL DEFAULT '1',
   `tax_id` int unsigned NOT NULL DEFAULT '1',
   `pay_type_id` int unsigned NOT NULL DEFAULT '1',
-  `subtotal` decimal(12,2) unsigned NOT NULL,
-  `discount` decimal(12,2) unsigned NOT NULL DEFAULT '0.00',
-  `total` decimal(12,2) unsigned NOT NULL,
-  `total_purchase_price` decimal(12,2) unsigned NOT NULL,
-  `total_profit` decimal(12,2) unsigned NOT NULL,
+  `subtotal` decimal(12,0) unsigned NOT NULL,
+  `discount` decimal(12,0) unsigned NOT NULL DEFAULT '0',
+  `total` decimal(12,0) unsigned NOT NULL,
+  `total_purchase_price` decimal(12,0) unsigned NOT NULL,
+  `total_profit` decimal(12,0) unsigned NOT NULL,
   `created_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_datetime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -621,11 +806,12 @@ CREATE TABLE `sale_item` (
   `sale_id` binary(26) NOT NULL,
   `item_id` binary(26) NOT NULL,
   `category_id` int unsigned NOT NULL,
-  `price` decimal(12,2) unsigned NOT NULL,
+  `sku` varbinary(30) NOT NULL,
+  `price` decimal(12,0) unsigned NOT NULL,
   `qty` int unsigned NOT NULL,
-  `subtotal` decimal(12,2) unsigned NOT NULL,
-  `purchase_price` decimal(12,2) unsigned NOT NULL,
-  `profit` decimal(12,2) unsigned NOT NULL,
+  `subtotal` decimal(12,0) unsigned NOT NULL,
+  `purchase_price` decimal(12,0) unsigned NOT NULL,
+  `profit` decimal(12,0) unsigned NOT NULL,
   PRIMARY KEY (`sale_id`,`item_id`),
   KEY `index2` (`category_id`),
   KEY `si_fk_2_idx` (`item_id`),
@@ -736,7 +922,7 @@ CREATE TABLE `token` (
 
 LOCK TABLES `token` WRITE;
 /*!40000 ALTER TABLE `token` DISABLE KEYS */;
-INSERT INTO `token` VALUES (2,1,1,_binary '20241109175026',_binary '20271109175026',_binary 'ysYTA4K5UkxWw2XncLtGJC8jdmS1gDl7','2024-11-09 17:50:26','2027-11-09 17:50:26',2,'2024-11-09 17:50:26.035464',0,NULL,NULL),(2,1,1,_binary '20241109175049',_binary '20271109175049',_binary 'bLuGsBmtFEvlO20ZTqnkHMVi4CrIpXWa','2024-11-09 17:50:49','2027-11-09 17:50:49',2,'2024-11-09 17:50:49.778899',0,NULL,NULL),(2,1,1,_binary '20241109175057',_binary '20271109175057',_binary '2LKNqeIVthXuO5bjmHUa6zdGBQWDsyFE','2024-11-09 17:50:57','2027-11-09 17:50:57',2,'2024-11-09 17:50:57.949779',0,NULL,NULL),(2,1,1,_binary '20241109175749',_binary '20271109175749',_binary 'cZ4qBhoOwfj0dCEmHsInRuF1QrV7D5Ja','2024-11-09 17:57:49','2027-11-09 17:57:49',2,'2024-11-09 17:57:49.573693',0,NULL,NULL),(2,1,1,_binary '20241109175757',_binary '20271109175757',_binary '4X2D3USvAOY1QKB0dFR6ePZhGLC9wiqa','2024-11-09 17:57:57','2027-11-09 17:57:57',2,'2024-11-09 17:57:57.738690',0,NULL,NULL);
+INSERT INTO `token` VALUES (2,1,1,_binary '20241109175026',_binary '20271109175026',_binary 'ysYTA4K5UkxWw2XncLtGJC8jdmS1gDl7','2024-11-09 17:50:26','2027-11-09 17:50:26',2,'2024-11-09 17:50:26.035464',0,NULL,NULL),(2,1,1,_binary '20241109175049',_binary '20271109175049',_binary 'bLuGsBmtFEvlO20ZTqnkHMVi4CrIpXWa','2024-11-09 17:50:49','2027-11-09 17:50:49',2,'2024-11-09 17:50:49.778899',0,NULL,NULL),(2,1,1,_binary '20241109175057',_binary '20271109175057',_binary '2LKNqeIVthXuO5bjmHUa6zdGBQWDsyFE','2024-11-09 17:50:57','2027-11-09 17:50:57',2,'2024-11-09 17:50:57.949779',0,NULL,NULL),(2,1,1,_binary '20241109175749',_binary '20271109175749',_binary 'cZ4qBhoOwfj0dCEmHsInRuF1QrV7D5Ja','2024-11-09 17:57:49','2027-11-09 17:57:49',2,'2024-11-09 17:57:49.573693',0,NULL,NULL),(2,1,1,_binary '20241109175757',_binary '20271109175757',_binary '4X2D3USvAOY1QKB0dFR6ePZhGLC9wiqa','2024-11-09 17:57:57','2027-11-09 17:57:57',2,'2024-11-09 17:57:57.738690',0,NULL,NULL),(2,1,1,_binary '20241115083822',_binary '20271115083822',_binary 'iynUKHQezIWA2NsZu6fcCmB84JolT5Gk','2024-11-15 08:38:22','2027-11-15 08:38:22',2,'2024-11-15 08:38:22.260412',0,NULL,NULL),(2,1,1,_binary '20241115084005',_binary '20271115084005',_binary 'Jfauzwe7MyZWIKErokDC9vhGVQ86sxTg','2024-11-15 08:40:05','2027-11-15 08:40:05',2,'2024-11-15 08:40:05.815156',0,NULL,NULL),(2,1,1,_binary '20241115092538',_binary '20271115092538',_binary 'ziQj9qNxpFsSRm7yMnvKkbJL4ga8o3H2','2024-11-15 09:25:38','2027-11-15 09:25:38',2,'2024-11-15 09:25:38.576783',0,NULL,NULL),(2,1,1,_binary '20241115145600',_binary '20271115145600',_binary 'HQAbvWcDOY3TgpVSMz45ilIhUN8qatZe','2024-11-15 14:56:00','2027-11-15 14:56:00',2,'2024-11-15 14:56:00.492341',0,NULL,NULL),(2,1,1,_binary '20241115201242',_binary '20271115201242',_binary 'M12AIcum8ELnsVBhdtRT0SlUwvCHQia4','2024-11-15 20:12:42','2027-11-15 20:12:42',2,'2024-11-15 20:12:42.572511',0,NULL,NULL),(2,1,1,_binary '20241116084320',_binary '20271116084320',_binary 'g6Gvs9HkwM73cTbULnKzVQaxhjiEZIdr','2024-11-16 08:43:20','2027-11-16 08:43:20',2,'2024-11-16 08:43:20.047388',0,NULL,NULL),(2,1,1,_binary '20241116134844',_binary '20271116134844',_binary 'Xhie3znjcqZQ67WDTR0mtUVLu1Erb84s','2024-11-16 13:48:44','2027-11-16 13:48:44',2,'2024-11-16 13:48:44.495435',0,NULL,NULL),(2,1,1,_binary '20241118155543',_binary '20271118155543',_binary 'IedC9Y0PfOgKZSD7jQx5laq3HWr8REht','2024-11-18 15:55:43','2027-11-18 15:55:43',2,'2024-11-18 15:55:43.853135',0,NULL,NULL);
 /*!40000 ALTER TABLE `token` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -956,4 +1142,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-15  0:59:35
+-- Dump completed on 2024-11-21 20:23:19

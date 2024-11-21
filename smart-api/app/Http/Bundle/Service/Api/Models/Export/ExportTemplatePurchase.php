@@ -77,12 +77,12 @@ class ExportTemplatePurchase extends Api\User\UserValidator implements WithColum
 			),
 		);
 		 
-		$spreadsheet->getActiveSheet()->getStyle('A1:N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+		$spreadsheet->getActiveSheet()->getStyle('A1:F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
 			->getStartColor()->setARGB('E5E4E2');
-		$spreadsheet->getActiveSheet()->getStyle('A1:N1')->getFont()->setBold(true);
-		$spreadsheet->getActiveSheet()->getStyle('A1:N1')->applyFromArray($styleArray);
+		$spreadsheet->getActiveSheet()->getStyle('A1:F1')->getFont()->setBold(true);
+		$spreadsheet->getActiveSheet()->getStyle('A1:F1')->applyFromArray($styleArray);
 		$spreadsheet->getActiveSheet()->setShowGridLines(true);
-		foreach(range('A','N') as $columnID) {
+		foreach(range('A','F') as $columnID) {
 			$spreadsheet->getActiveSheet()->getColumnDimension($columnID)
 				->setAutoSize(true);
 		}

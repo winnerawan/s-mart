@@ -66,6 +66,16 @@
 			'fit' => '//storage.s-mart.dev/images/',
 			'file' => '//storage.s-mart.dev/images/',
 			'storage' => '/app/smart-storage/media/'
+		],
+		/*
+		 |--------------------------------------------------------------------------
+		 | Doc
+		 |--------------------------------------------------------------------------
+		 */
+		'document' => [
+			'fit' => '//storage.s-mart.dev/document/',
+			'file' => '//storage.s-mart.dev/document/',
+			'storage' => '/app/smart-storage/document/'
 		]
 		
 	]
