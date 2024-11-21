@@ -184,6 +184,7 @@ return [
         App\Support\View\Minify\MinifyViewServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
         Rorecek\Ulid\UlidServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         /**
          * Application
          */
@@ -206,6 +207,7 @@ return [
         // 'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Ulid' => Rorecek\Ulid\Facades\Ulid::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         // 'Auth' => Illuminate\Support\Facades\Auth::class,
         // 'Blade' => Illuminate\Support\Facades\Blade::class,
         // 'Broadcast' => Illuminate\Support\Facades\Broadcast::class,

@@ -16,6 +16,8 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "lcobucci/jwt": "3.3",
+        "maatwebsite/excel": "^3.1",
+        "phpoffice/phpspreadsheet": "^1.29",
         "propaganistas/laravel-phone": "^4.2",
         "rorecek/laravel-ulid": "^2.0",
         "wa72/htmlpagedom": "^2.0",
