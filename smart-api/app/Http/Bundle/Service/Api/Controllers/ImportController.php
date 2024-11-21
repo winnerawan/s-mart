@@ -22,7 +22,7 @@ class ImportController extends AbstractController
 
 	/**
 	 */
-	public function importPurchase(Request $request)
+	public function upload(Request $request)
 	{
 		$upload = new Models\Import\Upload($request);
 		if (!$upload->validate()) {
@@ -31,6 +31,25 @@ class ImportController extends AbstractController
 				->build();
 		}
 		$upload->upload();
+		return $this->jsonSuccess()
+			->build();
+	}
+
+	/**
+	 */
+	public function process(Request $request)
+	{
+		$process = new Models\Import\Process($request);
+		if (!$process->validate()) {
+			return $this->jsonError()
+				->params($process->getValidator()->errors())
+				->build();
+		}
+		if (!$process->process()) {
+			return $this->jsonError()
+				->params($process->getValidator()->errors())
+				->build();
+		}
 		return $this->jsonSuccess()
 			->build();
 	}

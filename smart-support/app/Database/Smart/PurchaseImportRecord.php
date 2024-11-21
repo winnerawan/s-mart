@@ -14,8 +14,8 @@ class PurchaseImportRecord extends AbstractModel
 	/**
      */
     protected $primaryKeys = [
-        'purchase_import_file_uid' => 'purchase_import_file_uid',
-        'purchase_uid' => 'purchase_uid'
+        'purchase_import_file_id' => 'purchase_import_file_id',
+        'purchase_id' => 'purchase_id'
     ];
 
     /**

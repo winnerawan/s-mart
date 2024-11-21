@@ -58,8 +58,9 @@ class ExportTemplatePurchase extends Api\User\UserValidator implements WithColum
 		$sheet->setCellValue('B1', 'KATEGORI');
 		$sheet->setCellValue('C1', 'SKU');
 		$sheet->setCellValue('D1', 'ITEM');
-		$sheet->setCellValue('E1', 'HARGA BELI');
-		$sheet->setCellValue('F1', 'HARGA JUAL');
+		$sheet->setCellValue('E1', 'JUMLAH');
+		$sheet->setCellValue('F1', 'HARGA BELI');
+		$sheet->setCellValue('G1', 'HARGA JUAL');
 
 		$styleArray = array(
 			'fill' => array(
@@ -77,10 +78,10 @@ class ExportTemplatePurchase extends Api\User\UserValidator implements WithColum
 			),
 		);
 		 
-		$spreadsheet->getActiveSheet()->getStyle('A1:F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+		$spreadsheet->getActiveSheet()->getStyle('A1:G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
 			->getStartColor()->setARGB('E5E4E2');
-		$spreadsheet->getActiveSheet()->getStyle('A1:F1')->getFont()->setBold(true);
-		$spreadsheet->getActiveSheet()->getStyle('A1:F1')->applyFromArray($styleArray);
+		$spreadsheet->getActiveSheet()->getStyle('A1:G1')->getFont()->setBold(true);
+		$spreadsheet->getActiveSheet()->getStyle('A1:G1')->applyFromArray($styleArray);
 		$spreadsheet->getActiveSheet()->setShowGridLines(true);
 		foreach(range('A','F') as $columnID) {
 			$spreadsheet->getActiveSheet()->getColumnDimension($columnID)
@@ -110,8 +111,9 @@ class ExportTemplatePurchase extends Api\User\UserValidator implements WithColum
             $sheet->setCellValue('B'.$cell, $record->getCategory() ? strtoupper($record->getCategory()->name) : '-');
 			$sheet->setCellValue('C'.$cell, strtoupper($record->sku));
 			$sheet->setCellValue('D'.$cell, strtoupper($record->name));
-			$sheet->setCellValue('E'.$cell, $record->last_purchase_price?:0);
-			$sheet->setCellValue('F'.$cell, 0);
+			$sheet->setCellValue('E'.$cell, 0);
+			$sheet->setCellValue('F'.$cell, $record->last_purchase_price?:0);
+			$sheet->setCellValue('G'.$cell, 0);
 			
 			
 			$cell++;
