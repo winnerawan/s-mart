@@ -45,7 +45,7 @@ class Upload extends Api\User\UserValidator
 			return false;
 		}
 		$this->file = $this->validatorData->get('file');
-		$this->mimetype = Smart\PurchaseImportFileMimetype::where('mimetype', $this->file->getClientMimeType())->first();
+		$this->mimetype = Smart\PurchaseImportFileMimeType::where('mimetype', $this->file->getClientMimeType())->first();
 		if (!$this->mimetype) {
 			$this->validator->errors()->add('file', sprintf('The file type not supported(%s)', $this->file->getClientMimeType()));
 			return false;
