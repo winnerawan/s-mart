@@ -83,7 +83,7 @@ class ExportTemplatePurchase extends Api\User\UserValidator implements WithColum
 		$spreadsheet->getActiveSheet()->getStyle('A1:G1')->getFont()->setBold(true);
 		$spreadsheet->getActiveSheet()->getStyle('A1:G1')->applyFromArray($styleArray);
 		$spreadsheet->getActiveSheet()->setShowGridLines(true);
-		foreach(range('A','F') as $columnID) {
+		foreach(range('A','G') as $columnID) {
 			$spreadsheet->getActiveSheet()->getColumnDimension($columnID)
 				->setAutoSize(true);
 		}
@@ -131,7 +131,7 @@ class ExportTemplatePurchase extends Api\User\UserValidator implements WithColum
     public function columnFormats(): array
 	{
 		return [
-			'C' => NumberFormat::FORMAT_TEXT,
+			'C' => NumberFormat::FORMAT_GENERAL,
             'D' => NumberFormat::FORMAT_TEXT,
             'E' => NumberFormat::FORMAT_TEXT,
 		];

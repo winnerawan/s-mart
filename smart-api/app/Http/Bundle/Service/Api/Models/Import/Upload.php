@@ -66,6 +66,7 @@ class Upload extends Api\User\UserValidator
 			$purchaseImportFile->purchase_import_file_mimetype_id = $this->mimetype->id;
 			$purchaseImportFile->name = $this->getFileName();
 			$purchaseImportFile->size = $this->getFileSize();
+			$purchaseImportFile->user_id = $this->getUser()->id;
 			$purchaseImportFile->save();
 			/**/
 			$purchaseImportFile->file = vsprintf('%s.%s', [static::encodeName($purchaseImportFile), $this->file->guessClientExtension()]);
