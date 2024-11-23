@@ -36,6 +36,7 @@ class ItemStock extends AbstractModel
 	/** 
 	*/
 	protected $category;
+	protected $item;
 
 	/** 
 	*/
@@ -52,6 +53,23 @@ class ItemStock extends AbstractModel
 			$this->category = $this->category()->first();
 		}
 		return $this->category;
+	}
+
+	/** 
+	*/
+	public function item() {
+		return Item::where([
+			'item.id' => $this->item_id
+		]);
+	}
+
+	/** 
+	*/
+	public function getItem() {
+		if ($this->item==null) {
+			$this->item = $this->item()->first();
+		}
+		return $this->item;
 	}
 	/**
 	 */
