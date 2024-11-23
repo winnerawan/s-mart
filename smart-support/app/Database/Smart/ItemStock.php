@@ -32,6 +32,27 @@ class ItemStock extends AbstractModel
 		'item_id' => 'string',
 		'sku' => 'string'
 	];
+
+	/** 
+	*/
+	protected $category;
+
+	/** 
+	*/
+	public function category() {
+		return Category::where([
+			'category.id' => $this->category_id
+		]);
+	}
+
+	/** 
+	*/
+	public function getCategory() {
+		if ($this->category==null) {
+			$this->category = $this->category()->first();
+		}
+		return $this->category;
+	}
 	/**
 	 */
 	public function hasStocks() {
