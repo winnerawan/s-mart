@@ -54,7 +54,7 @@ class Data extends Api\User\UserValidator
 		$response = $item;
 		$response['category_name'] = $item->getCategory()->name;
 		if ($item->media_id!=null) {
-			$response['image'] = sprintf('https:%s%s', Api\Config::get('media.file'), $item->getItemMedia()->getMedia()->file);//Support\Media::buildFileUrlFromItemMedia($item->getItemMedia());
+			$response['image'] = sprintf('https:%s%s', Api\Config::get('media.file'), $item->getItem()->getItemMedia()->getMedia()->file);//Support\Media::buildFileUrlFromItemMedia($item->getItemMedia());
 		} else {
 			$response['image'] = null;
 		}
