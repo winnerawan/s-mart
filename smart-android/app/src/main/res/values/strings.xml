@@ -172,6 +172,8 @@
     <string name="pay_type">Metode Pembayaran</string>
     <string name="total_payment">Jumlah Bayar</string>
     <string name="change_label">Kembalian</string>
+    <string name="price">Harga</string>
+    <string name="qty">QTY</string>
     <string-array name="leftMenu">
         <item>Home</item>
         <item>Search</item>

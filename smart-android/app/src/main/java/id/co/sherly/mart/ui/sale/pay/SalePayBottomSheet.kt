@@ -97,14 +97,14 @@ class SalePayBottomSheet : BottomSheetDialogFragment(), SalePayContract.View {
 
 
             btnPay.setOnClickListener {
-                PrintUtils.print(
-                    requireActivity(),
-                    preferences.storeName.toString(),
-                    "",
-                    listOf(),
-                    "0",
-                    "0"
-                )
+                mPayTypeAdapter.getSelectedPayType()?.let { payType ->
+                    callback?.onPayment(
+                        payType,
+                        currentValue.toBigDecimal(),
+                        change
+                    )
+                    callback?.onDismissPayBottomSheet()
+                }
             }
         }
     }
@@ -120,7 +120,7 @@ class SalePayBottomSheet : BottomSheetDialogFragment(), SalePayContract.View {
         }
     }
 
-    private var currentValue: String = ""
+    private var currentValue: String = "0"
 
     private fun handleNewValue(value: String): String {
         currentValue = "${if (currentValue != "0") currentValue else ""}$value"
@@ -176,10 +176,10 @@ class SalePayBottomSheet : BottomSheetDialogFragment(), SalePayContract.View {
         super.onDismiss(dialog)
     }
 
-    private var callback: Callback? = null
+    var callback: Callback? = null
 
     interface Callback {
-        fun onPayment(payType: PayType, cashBack: BigDecimal)
+        fun onPayment(payType: PayType, payment: BigDecimal, cashBack: BigDecimal)
         fun onDismissPayBottomSheet()
     }
 

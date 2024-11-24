@@ -23,6 +23,7 @@ class UserPreferences @Inject constructor(
     var itemStockGrid by preferences.intPreference(ITEMS_STOCK_GRID, 5)
 
     var storeName by preferences.nullableStringPreference(STORE_NAME, STORE_NAME)
+    var receiptFooter by preferences.nullableStringPreference(RECEIPT_FOOTER, RECEIPT_FOOTER)
 
 }
 
@@ -36,3 +37,4 @@ private const val MASTER_ITEM_CATEGORY_GRID = "MASTER_ITEM_CATEGORY_GRID"
 private const val ITEMS_STOCK_GRID = "ITEMS_STOCK_GRID"
 
 private const val STORE_NAME = "FAMILY MART"
+private const val RECEIPT_FOOTER = "TERIMA KASIH SUDAH BERBELANJA :)"

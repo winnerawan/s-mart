@@ -20,6 +20,7 @@ import id.co.sherly.mart.data.model.Customer
 import id.co.sherly.mart.data.model.Item
 import id.co.sherly.mart.data.model.ItemStock
 import id.co.sherly.mart.data.model.PayType
+import id.co.sherly.mart.data.pref.UserPreferences
 import id.co.sherly.mart.databinding.FragmentSaleBinding
 import id.co.sherly.mart.ui.base.view.BaseFragment
 import id.co.sherly.mart.ui.item.CategoryAdapter
@@ -28,7 +29,9 @@ import id.co.sherly.mart.ui.purchase.SpinnerSupplierAdapter
 import id.co.sherly.mart.ui.purchase.create.ItemCartPurchaseAdapter
 import id.co.sherly.mart.ui.sale.pay.SalePayBottomSheet
 import id.co.sherly.mart.utils.CarteasyHelper
+import id.co.sherly.mart.utils.PrintUtils
 import id.co.sherly.mart.utils.ext.dpToPx
+import id.co.sherly.mart.utils.ext.formatPrice
 import id.co.sherly.mart.utils.view.WrapGripLayoutManager
 import id.co.sherly.mart.utils.view.WrapLinearLayoutManager
 import java.math.BigDecimal
@@ -36,7 +39,8 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class SaleFragment : BaseFragment<FragmentSaleBinding>(), SaleContract.View, CategoryAdapter.Callback,
-    ItemViewSaleAdapter.Callback, ItemCartSaleAdapter.Callback, SalePayBottomSheet.Callback, MainActivity.Callback {
+    ItemViewSaleAdapter.Callback, ItemCartSaleAdapter.Callback, SalePayBottomSheet.Callback,
+    MainActivity.Callback {
 
     @Inject
     lateinit var presenter: SalePresenter
@@ -52,6 +56,9 @@ class SaleFragment : BaseFragment<FragmentSaleBinding>(), SaleContract.View, Cat
 
     @Inject
     lateinit var mPayTypeAdapter: ItemPayTypeAdapter
+
+    @Inject
+    lateinit var preferences: UserPreferences
 
     private var mPayBottomSheet: SalePayBottomSheet? = null
     
@@ -120,17 +127,22 @@ class SaleFragment : BaseFragment<FragmentSaleBinding>(), SaleContract.View, Cat
         adapter.filterBySku(barcode)
     }
 
-    override fun onPayment(payType: PayType, change: BigDecimal) {
-
-    }
 
     override fun onDismissPayBottomSheet() {
         mPayBottomSheet?.dismiss()
         mPayBottomSheet = null
+        clearCarts()
+
+    }
+
+    private fun clearCarts() {
+        cart?.clearCart(requireActivity())
+        mCartSaleAdapter.clear()
     }
 
     private fun showPayBottomSheet(total: BigDecimal, list: List<PayType>) {
         mPayBottomSheet = SalePayBottomSheet.newInstance(total.toString(), list as ArrayList<PayType>)
+        mPayBottomSheet?.callback = this
         mPayBottomSheet?.show(childFragmentManager, SalePayBottomSheet.TAG)
     }
 
@@ -352,7 +364,7 @@ class SaleFragment : BaseFragment<FragmentSaleBinding>(), SaleContract.View, Cat
             item.quantity = 1
             cart?.add(item.itemId, "id", item.itemId)
             cart?.add(item.itemId, "name", item.name)
-            cart?.add(item.itemId, "price", price)
+            cart?.add(item.itemId, "selling_price", price)
             cart?.add(item.itemId, "quantity", item.quantity)
             cart?.add(item.itemId, "image", item.image)
             cart?.add(item.itemId, "category", item.categoryId)
@@ -378,22 +390,17 @@ class SaleFragment : BaseFragment<FragmentSaleBinding>(), SaleContract.View, Cat
         mPayTypeAdapter.addItems(this.payTypes.toMutableList())
     }
 
-    private val barcode = StringBuffer()
-
-//    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
-//
-//        if (event.action == KeyEvent.ACTION_DOWN) {
-//            val pressedKey = event.unicodeChar.toChar()
-//            barcode.append(pressedKey)
-//        }
-//        if (event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
-//            adapter.filterBySku(barcode.toString())
-//            Toast.makeText(requireActivity(), barcode.toString(), Toast.LENGTH_SHORT).show()
-//            barcode.delete(0, barcode.length)
-//
-//            return true
-//        }
-//
-//        return super.dispatchKeyEvent(event)
-//    }
+    override fun onPayment(payType: PayType, payment: BigDecimal, cashBack: BigDecimal) {
+        //todo: after post
+        CarteasyHelper().getCartsToItemStocks(requireActivity(), cart)
+        PrintUtils.print(
+            requireActivity(),
+            preferences.storeName.toString(),
+            CarteasyHelper().getCartsToItemStocks(requireActivity(), cart),
+            this.total.toString().formatPrice(),
+            payment.toString().formatPrice(),
+            cashBack.toString().formatPrice(),
+            preferences.receiptFooter.toString()
+        )
+    }
 }

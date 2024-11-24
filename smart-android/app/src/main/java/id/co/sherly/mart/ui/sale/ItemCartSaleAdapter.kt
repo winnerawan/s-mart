@@ -106,6 +106,14 @@ class ItemCartSaleAdapter(
         notifyDataSetChanged()
     }
 
+    fun clear() {
+        val size = this.items.size
+        this.items.clear()
+        notifyItemRangeRemoved(0, size)
+        calculatePrice()
+    }
+
+
     fun items(): List<ItemStock> {
         return items
     }

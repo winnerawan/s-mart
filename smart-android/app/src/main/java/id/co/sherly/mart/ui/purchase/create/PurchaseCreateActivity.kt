@@ -452,9 +452,9 @@ class PurchaseCreateActivity : BaseActivity<ActivityPurchaseCreateBinding>(), Pu
     }
 
     override fun onPriceCalculated(subtotal: String?, total: String?) {
-        binding.total.subtotal.text = subtotal
-        binding.total.tax.text = "0"
-        binding.total.total.text = total
+//        binding.tota.subtotal.text = subtotal
+//        binding.total.tax.text = "0"
+//        binding.total.total.text = total
     }
 
     private val barcode = StringBuffer()

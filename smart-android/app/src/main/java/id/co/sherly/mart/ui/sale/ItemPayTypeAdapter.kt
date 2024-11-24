@@ -116,6 +116,10 @@ class ItemPayTypeAdapter(
         this.notifyDataSetChanged()
     }
 
+    fun getSelectedPayType(): PayType? {
+        return payTypes.find { it.selected }
+    }
+
     var callback: Callback? = null
     interface Callback {
         fun onCategorySelected(payType: PayType, position: Int)

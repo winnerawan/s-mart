@@ -262,7 +262,7 @@ class Process extends Api\User\UserValidator
 	{
         $category = $this->getCategory((string)strtolower(trim($item[1])));
         $it = $this->getItem((string)trim($item[2]));       
-		if ($it!=null) {
+		if ($it!=null && $item['quantity']!=0) {
             $data['category'] = (string) strtoupper(trim($item[1]));
             $data['sku'] = (string) strtoupper(trim($item[2]));
             $data['name'] = strtoupper(trim($item[3]));
