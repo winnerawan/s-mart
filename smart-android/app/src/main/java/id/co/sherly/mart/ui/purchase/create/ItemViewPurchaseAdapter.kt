@@ -44,7 +44,7 @@ class ItemViewPurchaseAdapter(
         val item = items[position]
         binding.name.text = item.name
         binding.button.quantity.text = item.quantity.toString()
-        binding.description.text = item.sku
+        binding.description.text = item.description
         if (item.lastPurchasePrice!=null) {
             binding.lastPurchasePrice.text = item.lastPurchasePrice?.formatPrice()
         } else {

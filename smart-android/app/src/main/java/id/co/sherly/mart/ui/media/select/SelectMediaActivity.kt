@@ -37,7 +37,6 @@ class SelectMediaActivity : BaseActivity<ActivitySelectMediaBinding>(), SelectMe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        presenter.data()
         binding.apply {
             gridLayout1 = GridLayoutManager(this@SelectMediaActivity, 4, GridLayoutManager.VERTICAL, false)
             gridLayout2 = GridLayoutManager(this@SelectMediaActivity, 3, GridLayoutManager.VERTICAL, false)
@@ -67,6 +66,8 @@ class SelectMediaActivity : BaseActivity<ActivitySelectMediaBinding>(), SelectMe
         onBackPressedDispatcher.addCallback(this) {
             finishActivity()
         }
+        presenter.data()
+
     }
 
 

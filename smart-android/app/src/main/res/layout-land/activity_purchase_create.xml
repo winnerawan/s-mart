@@ -171,24 +171,21 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerCategory"
-            android:paddingTop="@dimen/dimen_8dp"
+            android:layout_marginTop="@dimen/dimen_8dp"
             app:layout_constraintTop_toBottomOf="@id/constraint2"
             android:layout_marginHorizontal="@dimen/dimen_8dp"
             tools:listitem="@layout/item_category_blue"
             tools:itemCount="3"
-            app:spanCount="4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:paddingTop="@dimen/dimen_12dp"
             app:layout_constraintTop_toBottomOf="@id/recyclerCategory"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_view_purchase"
             android:layout_marginHorizontal="@dimen/dimen_8dp"
             tools:itemCount="8"
             tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             />
@@ -254,9 +251,10 @@
             android:layout_height="wrap_content"/>
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             app:layout_constraintTop_toBottomOf="@id/text1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/btnSave"
+            app:layout_constraintBottom_toTopOf="@id/total"
             android:layout_width="match_parent"
             android:layout_height="0dp">
 
@@ -265,9 +263,21 @@
                 layout="@layout/view_cart_purchase"/>
         </androidx.core.widget.NestedScrollView>
 
+        <include
+            android:id="@+id/total"
+            android:layout_marginHorizontal="@dimen/dimen_16dp"
+            app:layout_constraintTop_toBottomOf="@id/nestedScrollView"
+            app:layout_constraintBottom_toTopOf="@id/btnSave"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/dimen_4dp"
+            android:layout_height="wrap_content"
+            layout="@layout/view_total"/>
         <androidx.appcompat.widget.AppCompatButton
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/btnDelete"
+            android:layout_marginBottom="@dimen/dimen_16dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:id="@+id/btnSave"

@@ -133,7 +133,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnImport"
                 android:id="@+id/btnAdd"
                 android:drawableTint="@color/white"
                 android:drawableStart="@drawable/baseline_add_24"
@@ -144,7 +144,25 @@
                 android:textSize="@dimen/fontsize_12"
                 android:includeFontPadding="false"
                 android:paddingEnd="@dimen/dimen_22dp"
-                android:backgroundTint="@color/blue_accent"
+                android:backgroundTint="@color/blue_accent2"
+                android:layout_marginEnd="@dimen/dimen_16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_40dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/btnImport"
+                android:drawableTint="@color/white"
+                android:drawableStart="@drawable/baseline_add_24"
+                android:drawablePadding="@dimen/dimen_8dp"
+                android:text="@string/_import"
+                android:textColor="@color/white"
+                android:fontFamily="@font/medium"
+                android:textSize="@dimen/fontsize_12"
+                android:includeFontPadding="false"
+                android:paddingEnd="@dimen/dimen_22dp"
+                android:backgroundTint="@color/secondary_color"
                 android:layout_marginEnd="@dimen/dimen_16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dimen_40dp"/>
@@ -235,7 +253,6 @@
             android:fontFamily="@font/medium"
             android:textColor="@color/black"
             android:textSize="@dimen/fontsize_17"
-            android:text="@string/add_new_master_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
 

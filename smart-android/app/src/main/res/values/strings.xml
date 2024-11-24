@@ -131,6 +131,8 @@
     <string name="add_new_master_item">Tambah master item baru</string>
     <string name="label_item_name">Nama Item</string>
     <string name="label_sku">SKU (Stock Keeping Unit)</string>
+    <string name="sku">SKU</string>
+
     <string name="label_description">Deskripsi/Keterangan</string>
     <string name="label_category">Kategori</string>
     <string name="upload_file">Upload file</string>
@@ -154,6 +156,22 @@
     <string name="item_cart_count_format">%1$s Item di pilih</string>
     <string name="purchase_price_label">Harga beli</string>
     <string name="sell_price_label">Harga jual</string>
+    <string name="subtotal">Sub Total</string>
+    <string name="tax">PPN</string>
+    <string name="total">Total</string>
+    <string name="_import">Import</string>
+    <string name="document_label">Dokumen</string>
+    <string name="add_new_doc">Tambah dokumen baru</string>
+    <string name="_export">Download Sample</string>
+    <string name="quantity">Jumlah</string>
+    <string name="_exported">Successfully export sample data</string>
+    <string name="select_document">Pililh Dokumen</string>
+    <string name="cart_label">Keranjang</string>
+    <string name="pay">Bayar</string>
+    <string name="payment">Pembayaran</string>
+    <string name="pay_type">Metode Pembayaran</string>
+    <string name="total_payment">Jumlah Bayar</string>
+    <string name="change_label">Kembalian</string>
     <string-array name="leftMenu">
         <item>Home</item>
         <item>Search</item>

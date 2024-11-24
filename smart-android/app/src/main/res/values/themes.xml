@@ -596,4 +596,8 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/dimen_8dp</item>
     </style>
+    <style name="roundedCornerImageView4" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/dimen_4dp</item>
+    </style>
 </resources>

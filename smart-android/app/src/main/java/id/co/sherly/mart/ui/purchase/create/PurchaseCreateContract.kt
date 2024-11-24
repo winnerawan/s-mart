@@ -16,8 +16,8 @@ interface PurchaseCreateContract {
 
     interface Presenter {
         fun data(category: Int?, query: String?)
-        fun suppliers()
         fun categories()
+        fun suppliers()
         fun updateTempQty(item: Item, tempQty: Int)
     }
 }

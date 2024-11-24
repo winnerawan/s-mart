@@ -3,6 +3,7 @@ package id.co.sherly.mart.ui.media
 import android.app.Activity
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -184,6 +185,8 @@ class MediaFragment : BaseFragment<FragmentMediaBinding>(), MediaContract.View, 
 //                        uri, Intent.FLAG_GRANT_READ_URI_PERMISSION
 //                    )
                 }
+                Log.e("DOC", "uri: $uri  mediaUri: $mediaUri   imageUri: $imageUri")
+
             }
         }
 

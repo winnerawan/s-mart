@@ -3,7 +3,9 @@ package id.co.sherly.mart.data.model
 import android.os.Parcelable
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
+import id.co.sherly.mart.utils.ext.calculateSubtotal
 import kotlinx.parcelize.Parcelize
+import java.math.BigDecimal
 
 @Keep
 @Parcelize
@@ -20,8 +22,18 @@ data class Item(
 
     @SerializedName("temp_qty"           ) var tempQty          : Int? = 0,
 
+
     var quantity: Int = 0,
+    var tmpPrice: Int = 0,
     var selected: Boolean = false,
     var recyclerViewPosition: Int = 0
+
+
 ) : Parcelable {
+
+    fun getSubtotal(): BigDecimal {
+        var t = BigDecimal(0)
+        t = tmpPrice.toBigDecimal().calculateSubtotal(itemQuantity = quantity)
+        return t
+    }
 }

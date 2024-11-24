@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/constraint1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/white_semi_blue"
+    tools:layout_width="200dp"
+    android:background="@drawable/ripple_accent_corner_44"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/dimen_8dp"
+        android:background="@drawable/ripple_accent_corner_44"
+        android:fontFamily="@font/bold"
+        android:includeFontPadding="false"
+        android:gravity="center_vertical"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:visibility="gone"
+        android:paddingHorizontal="@dimen/dimen_16dp"
+        android:text="@string/buy"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/buttonMinus"
+        android:layout_margin="@dimen/dimen_1dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_minus"
+        android:padding="@dimen/dimen_4dp"
+        android:background="@drawable/ripple_button_increase_decrease2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/quantity"
+        app:layout_constraintStart_toEndOf="@id/buttonMinus"
+        app:layout_constraintEnd_toStartOf="@id/buttonPlus"
+        android:layout_marginHorizontal="@dimen/dimen_6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:clickable="false"
+        android:background="@null"
+        android:text="0"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/fontsize_16"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_0dp"/>
+
+    <ImageButton
+        android:id="@+id/buttonPlus"
+        android:layout_margin="@dimen/dimen_1dp"
+        android:backgroundTint="@color/blue_accent2"
+        android:src="@drawable/ic_plus"
+        app:tint="@color/white"
+        android:padding="@dimen/dimen_4dp"
+        android:background="@drawable/ripple_button_increase_decrease2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,43 +1,482 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/test"
     android:layout_height="match_parent">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/mainContent"
-        android:layout_width="match_parent"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintContent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="@dimen/dimen_0dp"
+        app:layout_constraintWidth_percent="1"
+        tools:layout_constraintWidth_percent="0.7"
         android:layout_height="match_parent">
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint2"
+            android:elevation="@dimen/dimen_3dp"
+            android:paddingVertical="@dimen/dimen_6dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:layout_height="wrap_content">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
-            style="@style/Widget.Jagonet.AppBarLayout"
+            <androidx.appcompat.widget.AppCompatTextView
+                app:layout_constraintTop_toTopOf="@id/itemCount"
+                app:layout_constraintBottom_toBottomOf="@id/itemCount"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/title"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:fontFamily="@font/bold"
+                android:textSize="@dimen/fontsize_19"
+                android:text="@string/stock_menu"
+                android:layout_width="wrap_content"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+            <FrameLayout
+                android:id="@+id/searchViewContainer"
+                app:layout_constraintTop_toTopOf="@id/itemCount"
+                app:layout_constraintBottom_toBottomOf="@id/itemCount"
+                app:layout_constraintStart_toEndOf="@id/title"
+                app:layout_constraintEnd_toStartOf="@id/scanBarcode"
+                android:background="@drawable/shape_search"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="@dimen/dimen_0dp">
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/txtQuery"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:imeOptions="actionSearch"
+                    android:queryBackground="@android:color/transparent"
+                    app:queryBackground="@color/colorTransparent"
+                    app:searchIcon="@drawable/ic_search"
+
+                    app:defaultQueryHint="@string/search_query_hint"
+                    app:queryHint="@string/search_query_hint"
+                    android:queryHint="@string/search_query_hint"
+                    app:searchHintIcon="@null"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:background="@null"
+                    android:drawableStart="@drawable/ic_search"
+                    android:layout_marginVertical="@dimen/dimen_4dp"
+                    android:fontFamily="@font/medium"
+                    android:textSize="@dimen/fontsize_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </FrameLayout>
+
+
+
+            <ImageButton
+                android:id="@+id/scanBarcode"
+                android:background="@drawable/ripple_accent_corner_6"
+                app:tint="@color/white"
+                android:backgroundTint="@color/blue_accent2"
+                app:shapeAppearance="@style/roundedImageView"
+                app:layout_constraintTop_toTopOf="@id/itemCount"
+                app:layout_constraintBottom_toBottomOf="@id/itemCount"
+                android:layout_marginEnd="@dimen/dimen_16dp"
+                app:srcCompat="@drawable/ic_scan_qr"
+                app:layout_constraintStart_toEndOf="@id/searchViewContainer"
+                app:layout_constraintEnd_toStartOf="@id/tag"
+                android:layout_width="@dimen/dimen_32dp"
+                android:layout_height="@dimen/dimen_32dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                app:layout_constraintStart_toEndOf="@id/scanBarcode"
+                app:layout_constraintEnd_toStartOf="@id/itemCount"
+                app:layout_constraintTop_toTopOf="@id/itemCount"
+                app:layout_constraintBottom_toBottomOf="@id/itemCount"
+                android:background="@drawable/shape_tag"
+                tools:text="@tools:sample/lorem"
+                android:layout_marginEnd="@dimen/dimen_16dp"
+                android:paddingVertical="@dimen/dimen_6dp"
+                android:paddingStart="@dimen/dimen_12dp"
+                android:paddingEnd="@dimen/dimen_12dp"
+                android:visibility="gone"
+                android:fontFamily="@font/bold"
+                android:textSize="@dimen/fontsize_12"
+                android:maxLines="1"
+                android:drawableStart="@drawable/ic_round_clear_circle_full"
+                android:drawablePadding="@dimen/dimen_8dp"
+                android:includeFontPadding="false"
+                android:gravity="center"
+                android:id="@+id/tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/itemCount"
+                android:drawableTint="@color/blue_accent_dark"
+                android:drawableStart="@drawable/ic_list_up_down"
+                android:drawablePadding="@dimen/dimen_8dp"
+                android:fontFamily="@font/bold"
+                app:layout_constraintEnd_toStartOf="@id/btnAdd"
+                android:background="@drawable/shape_rect"
+                android:paddingVertical="@dimen/dimen_5dp"
+                android:paddingStart="@dimen/dimen_12dp"
+                android:paddingEnd="@dimen/dimen_22dp"
+                android:textSize="@dimen/fontsize_12"
+                android:layout_marginEnd="@dimen/dimen_16dp"
+                tools:text="3 item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/btnAdd"
+                android:drawableTint="@color/white"
+                android:drawableStart="@drawable/baseline_add_24"
+                android:drawablePadding="@dimen/dimen_8dp"
+                android:text="@string/add"
+                android:visibility="gone"
+                android:textColor="@color/white"
+                android:fontFamily="@font/medium"
+                android:textSize="@dimen/fontsize_12"
+                android:includeFontPadding="false"
+                android:paddingEnd="@dimen/dimen_22dp"
+                android:backgroundTint="@color/blue_accent"
+                android:layout_marginEnd="@dimen/dimen_16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_40dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:background="@color/shimmer_color"
+            app:layout_constraintTop_toBottomOf="@id/constraint2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true">
+            android:layout_height="0.7dp"/>
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
-                app:titleTextAppearance="@style/Widget.Jagonet.TextView.Title.Toolbar"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCategory"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            app:layout_constraintTop_toBottomOf="@id/constraint2"
+            android:layout_marginHorizontal="@dimen/dimen_8dp"
+            tools:listitem="@layout/item_category_blue"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:itemCount="3"
+            app:spanCount="4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recyclerCategory"
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/dimen_8dp"
+            tools:listitem="@layout/item_item" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="@dimen/dimen_128dp"
+            android:layout_height="@dimen/dimen_128dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/loading"
+            android:id="@+id/progress"
+            app:lottie_loop="true" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:background="@color/shimmer_color"
+        app:layout_constraintStart_toEndOf="@id/constraintContent"
+        app:layout_constraintEnd_toStartOf="@id/constraintAdd"
+        android:layout_width="0.5dp"
+        android:layout_height="match_parent"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintAdd"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/divider"
+        android:layout_width="@dimen/dimen_0dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iconClose"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:background="@drawable/bg_circle_close"
+            android:padding="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_round_clear"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?attr/colorIcon" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            app:layout_constraintTop_toTopOf="@id/iconClose"
+            app:layout_constraintBottom_toBottomOf="@id/iconClose"
+            app:layout_constraintEnd_toStartOf="@id/iconClose"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/text1"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:fontFamily="@font/medium"
+            android:textColor="@color/black"
+            android:textSize="@dimen/fontsize_17"
+            android:text="@string/add_new_master_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/text1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:id="@+id/linear11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium"
+                    android:text="@string/label_category"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fontsize_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/asterisk"
+                    android:fontFamily="@font/medium"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="@dimen/fontsize_14" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                app:layout_constraintTop_toBottomOf="@id/linear1"
+                android:id="@+id/spinnerCategory"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:title="@string/history" />
+                android:background="@drawable/shape_et"
+                android:fontFamily="@font/medium"
+                android:hint="@string/label_item_name"
+                android:textCursorDrawable="@drawable/cursor_et"
+                android:imeOptions="actionNext"
+                android:textSize="@dimen/fontsize_12" />
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayout"
-                android:contentDescription="tabLayout"
-                style="@style/Widget.Jagonet.TabLayout.MediaType"
+            <LinearLayout
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:id="@+id/linear2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium"
+                    android:text="@string/label_item_name"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fontsize_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/asterisk"
+                    android:fontFamily="@font/medium"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="@dimen/fontsize_14" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                app:layout_constraintTop_toBottomOf="@id/linear1"
+                android:id="@+id/textName"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_scrollFlags="snap" />
-        </com.google.android.material.appbar.AppBarLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</FrameLayout>
+                android:background="@drawable/shape_et"
+                android:fontFamily="@font/medium"
+                android:hint="@string/label_item_name"
+                android:textCursorDrawable="@drawable/cursor_et"
+                android:imeOptions="actionNext"
+                android:inputType="text|textCapWords"
+                android:padding="@dimen/dimen_12dp"
+                android:textSize="@dimen/fontsize_14" />
+
+            <LinearLayout
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:id="@+id/linear4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium"
+                    android:text="@string/label_sku"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fontsize_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/asterisk"
+                    android:fontFamily="@font/medium"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="@dimen/fontsize_14" />
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                app:layout_constraintTop_toBottomOf="@id/linear1"
+                android:layout_width="match_parent"
+                android:background="@drawable/shape_et"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/scanSku"
+                    android:background="@drawable/shape_et_left"
+                    android:backgroundTint="@color/blue_light"
+                    app:tint="@color/blue_accent_dark"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/ic_scan_qr"
+                    android:layout_width="@dimen/dimen_42dp"
+                    android:layout_height="0dp"/>
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/scanSku"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/textSku"
+                    android:layout_width="0dp"
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium"
+                    android:textCursorDrawable="@drawable/cursor_et"
+                    android:hint="@string/label_sku"
+                    android:imeOptions="actionNext"
+                    android:inputType="text|textCapWords"
+                    android:padding="@dimen/dimen_12dp"
+                    android:textSize="@dimen/fontsize_14" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:id="@+id/linear3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium"
+                    android:text="@string/label_description"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fontsize_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/asterisk"
+                    android:fontFamily="@font/medium"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="@dimen/fontsize_14" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                app:layout_constraintTop_toBottomOf="@id/linear1"
+                android:id="@+id/textDescription"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:layout_width="match_parent"
+                android:gravity="top|start"
+                tools:text="@tools:sample/lorem/random"
+                android:maxLines="3"
+                android:layout_height="@dimen/dimen_80dp"
+                android:background="@drawable/shape_et"
+                android:fontFamily="@font/medium"
+                android:hint="@string/label_description"
+                android:textCursorDrawable="@drawable/cursor_et"
+                android:imeOptions="actionDone"
+                android:lines="3"
+                android:inputType="text|textCapSentences|textMultiLine"
+                android:padding="@dimen/dimen_12dp"
+                android:textSize="@dimen/fontsize_14" />
+
+            <include
+                android:id="@+id/media"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                layout="@layout/view_upload"/>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnDelete"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:id="@+id/btnSave"
+            android:textColor="@color/white"
+            android:text="@string/save"
+            android:layout_marginHorizontal="@dimen/dimen_16dp"
+            android:backgroundTint="@color/blue_accent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:id="@+id/btnDelete"
+            android:textColor="@color/white"
+            android:text="@string/delete"
+            android:layout_marginHorizontal="@dimen/dimen_16dp"
+            android:layout_marginBottom="@dimen/dimen_16dp"
+            android:backgroundTint="@color/gray56"
+            android:visibility="gone"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

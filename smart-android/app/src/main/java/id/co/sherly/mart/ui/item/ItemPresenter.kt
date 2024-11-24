@@ -19,8 +19,8 @@ class ItemPresenter @Inject constructor(
 ): ItemContract.Presenter, BasePresenterImpl() {
 
     init {
-        categories()
-        data(null, null)
+//        categories()
+//        data(null, null)
     }
 
     override fun categories() {

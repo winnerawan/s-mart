@@ -167,6 +167,13 @@ fun String.formatPrice(): String {
 fun BigDecimal.calculateSubtotal(itemQuantity: Int): BigDecimal {
     return this.multiply(BigDecimal(itemQuantity))
 }
+inline fun <T> Iterable<T>.sumByBigDecimal(selector: (T) -> BigDecimal): BigDecimal {
+    var sum: BigDecimal = BigDecimal.ZERO
+    for (element in this) {
+        sum += selector(element)
+    }
+    return sum
+}
 fun ImageView.loadBlogImage(image: Image?) {
 //    val rw = image?.width?.div(_w)
 //    val w = rw?.let { image.width?.times(it) }
@@ -255,17 +262,32 @@ fun uploadImageRequest(
 private val storge_permissions = arrayOf(
     Manifest.permission.CAMERA,
     Manifest.permission.WRITE_EXTERNAL_STORAGE,
-    Manifest.permission.READ_EXTERNAL_STORAGE
+    Manifest.permission.READ_EXTERNAL_STORAGE,
+    Manifest.permission.ACCESS_FINE_LOCATION,
+    Manifest.permission.ACCESS_COARSE_LOCATION,
+    Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
+    Manifest.permission.BLUETOOTH_PRIVILEGED
 )
 private val storge_permissions_q = arrayOf(
     Manifest.permission.CAMERA,
-    Manifest.permission.READ_EXTERNAL_STORAGE
+    Manifest.permission.READ_EXTERNAL_STORAGE,
+    Manifest.permission.ACCESS_FINE_LOCATION,
+    Manifest.permission.ACCESS_COARSE_LOCATION,
+    Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
+    Manifest.permission.BLUETOOTH_PRIVILEGED
 )
 
 @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
 private val storge_permissions_33 = arrayOf(
     Manifest.permission.CAMERA,
-    Manifest.permission.READ_MEDIA_IMAGES //            Manifest.permission.READ_MEDIA_AUDIO,
+    Manifest.permission.READ_MEDIA_IMAGES,
+    Manifest.permission.ACCESS_FINE_LOCATION,
+    Manifest.permission.ACCESS_COARSE_LOCATION,
+    Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
+    Manifest.permission.BLUETOOTH_SCAN,
+    Manifest.permission.BLUETOOTH_CONNECT,
+    Manifest.permission.BLUETOOTH_PRIVILEGED
+//            Manifest.permission.READ_MEDIA_AUDIO,
     //            Manifest.permission.READ_MEDIA_VIDEO
 )
 

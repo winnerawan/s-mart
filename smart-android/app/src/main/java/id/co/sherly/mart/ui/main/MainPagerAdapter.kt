@@ -17,6 +17,8 @@ import id.co.sherly.mart.ui.home.HomeFragment
 import id.co.sherly.mart.ui.item.ItemFragment
 import id.co.sherly.mart.ui.media.MediaFragment
 import id.co.sherly.mart.ui.purchase.PurchaseFragment
+import id.co.sherly.mart.ui.sale.SaleFragment
+import id.co.sherly.mart.ui.stock.StockFragment
 import id.co.sherly.mart.ui.supplier.SupplierFragment
 
 class MainPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
@@ -26,8 +28,8 @@ class MainPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
     override fun createFragment(position: Int): Fragment {
         when (position) {
             0 -> return HomeFragment()
-            1 -> return HomeFragment()
-            2 -> return HomeFragment()
+            1 -> return SaleFragment()
+            2 -> return StockFragment()
             3 -> return PurchaseFragment()
             4 -> return CategoryFragment()
             5 -> return ItemFragment()

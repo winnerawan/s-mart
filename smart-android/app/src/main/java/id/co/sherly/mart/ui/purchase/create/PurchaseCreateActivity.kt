@@ -348,10 +348,19 @@ class PurchaseCreateActivity : BaseActivity<ActivityPurchaseCreateBinding>(), Pu
     override fun onInCreaseQuantity(item: Item, textView: AppCompatTextView, position: Int) {
         showConstraintAdd()
         val qty = textView.text.toString().toInt()
-        val price = item.lastPurchasePrice?:0
+        val price = item.tmpPrice?:0
         val cartSize = CarteasyHelper().getCartsToItems(this, cart).size?:0
 
-        if (qty==0) {
+        val id = cart?.get(item.id, "id", this)
+        val items = CarteasyHelper().getCartsToItems(this, cart)
+        val itemCart = items.find { it.id == id }
+        item.quantity = qty+1
+        if (itemCart!=null) {
+            val cartPos = itemCart.recyclerViewPosition//cart?.getLong(item.id, "recyclerViewPosition", this) ?: 0
+            Log.e("LOG cartpos +", "${cartPos}")
+            mCartPurchaseAdapter.updateItem(item, cartPos.toInt())
+        } else {
+            item.quantity = 1
             cart?.add(item.id, "id", item.id)
             cart?.add(item.id, "name", item.name)
             cart?.add(item.id, "price", price)
@@ -359,19 +368,18 @@ class PurchaseCreateActivity : BaseActivity<ActivityPurchaseCreateBinding>(), Pu
             cart?.add(item.id, "image", item.image)
             cart?.add(item.id, "category", item.categoryId)
             cart?.add(item.id, "recyclerViewPosition", cartSize)
+            cart?.add(item.id, "tmp_price", item.tmpPrice)
 
             cart?.commit(this)
             mCartPurchaseAdapter.addItem(item)
         }
-        val id = cart?.get(item.id, "id", this)
-        val items = CarteasyHelper().getCartsToItems(this, cart)
-        val itemCart = items.find { it.id == id }
-        if (itemCart!=null) {
-            val cartPos = itemCart.recyclerViewPosition//cart?.getLong(item.id, "recyclerViewPosition", this) ?: 0
-            Log.e("LOG cartpos +", "${cartPos}")
-            mCartPurchaseAdapter.updateItem(item, cartPos.toInt())
-        }
-        item.quantity = qty + 1
+
+//        if (qty==0) {
+//
+//        }
+//        item.quantity += 1
+//
+//        item.quantity = qty + 1
         textView.text = item.quantity.toString()
 
         cart?.update(item.id, "quantity", textView.text.toString(), this)
@@ -397,7 +405,7 @@ class PurchaseCreateActivity : BaseActivity<ActivityPurchaseCreateBinding>(), Pu
         for (i in list.indices) {
             val itemData = list[i]
             if (itemData.quantity > 0) {
-                priceEst += list[i].lastPurchasePrice?.toDouble()!!  * list[i].quantity
+                priceEst += list[i].tmpPrice  * list[i].quantity
             }
         }
         return priceEst
@@ -414,7 +422,7 @@ class PurchaseCreateActivity : BaseActivity<ActivityPurchaseCreateBinding>(), Pu
 
     override fun onFilteredAddToCart(item: Item) {
         Log.e("LOG", "filteredAddToCart= ${item.name}")
-        val price = item.lastPurchasePrice?:0
+        val price = item.tmpPrice?:0
         val cartItems =  CarteasyHelper().getCartsToItems(this, cart)
         val cartSize = cartItems.size?:0
         val itemInCart = cartItems.find { it.id == item.id }
@@ -438,6 +446,12 @@ class PurchaseCreateActivity : BaseActivity<ActivityPurchaseCreateBinding>(), Pu
             mCartPurchaseAdapter.addItem(item)
         }
         adapter.resetFilter()
+    }
+
+    override fun onPriceCalculated(subtotal: String?, total: String?) {
+        binding.total.subtotal.text = subtotal
+        binding.total.tax.text = "0"
+        binding.total.total.text = total
     }
 
     private val barcode = StringBuffer()

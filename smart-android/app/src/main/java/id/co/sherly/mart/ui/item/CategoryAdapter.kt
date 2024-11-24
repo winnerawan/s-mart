@@ -8,11 +8,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.co.sherly.mart.R
 import id.co.sherly.mart.data.model.Category
+import id.co.sherly.mart.data.pref.UserPreferences
 import id.co.sherly.mart.databinding.ItemCategoryBinding
 import id.co.sherly.mart.databinding.ItemCategoryBlueBinding
+import javax.inject.Inject
 
 
 class CategoryAdapter(
+    private var preferences: UserPreferences,
     private var categories: MutableList<Category>,
 //    var divWidth: Int,
 //    var divHeight: Int
@@ -26,7 +29,7 @@ class CategoryAdapter(
             ), parent, false
         )
         view.root.post {
-            view.root.layoutParams.width = parent.width/4
+            view.root.layoutParams.width = parent.width/preferences.masterItemCategoryGridCount
             view.root.layoutParams.height = parent.height/1
             view.root.requestLayout()
         }

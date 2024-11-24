@@ -6,6 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import id.co.sherly.mart.data.pref.UserPreferences
 import id.co.sherly.mart.ui.category.ItemCategoryAdapter
 import id.co.sherly.mart.ui.customer.ItemCustomerAdapter
 import id.co.sherly.mart.ui.item.CategoryAdapter
@@ -16,6 +17,11 @@ import id.co.sherly.mart.ui.purchase.ItemPurchaseAdapter
 import id.co.sherly.mart.ui.purchase.SupplierAdapter
 import id.co.sherly.mart.ui.purchase.create.ItemCartPurchaseAdapter
 import id.co.sherly.mart.ui.purchase.create.ItemViewPurchaseAdapter
+import id.co.sherly.mart.ui.purchase.imports.ItemDocumentAdapter
+import id.co.sherly.mart.ui.sale.ItemCartSaleAdapter
+import id.co.sherly.mart.ui.sale.ItemPayTypeAdapter
+import id.co.sherly.mart.ui.sale.ItemViewSaleAdapter
+import id.co.sherly.mart.ui.stock.ItemStockAdapter
 import id.co.sherly.mart.ui.supplier.ItemSupplierAdapter
 
 @Module
@@ -43,8 +49,8 @@ class AdapterModule {
     }
 
     @Provides
-    fun provideCategoryAdapter(): CategoryAdapter {
-        return CategoryAdapter(mutableListOf())
+    fun provideCategoryAdapter(prefs: UserPreferences): CategoryAdapter {
+        return CategoryAdapter(prefs, mutableListOf())
     }
 
     @Provides
@@ -63,6 +69,11 @@ class AdapterModule {
     }
 
     @Provides
+    fun provideItemStockAdapter(): ItemStockAdapter {
+        return ItemStockAdapter(mutableListOf())
+    }
+
+    @Provides
     fun provideItemViewPurchaseAdapter(): ItemViewPurchaseAdapter {
         return ItemViewPurchaseAdapter(mutableListOf())
     }
@@ -72,4 +83,21 @@ class AdapterModule {
         return ItemCartPurchaseAdapter(mutableListOf())
     }
 
+    @Provides
+    fun provideItemDocumentAdapter(): ItemDocumentAdapter {
+        return ItemDocumentAdapter(mutableListOf())
+    }
+    @Provides
+    fun provideItemViewSaleAdapter(): ItemViewSaleAdapter {
+        return ItemViewSaleAdapter(mutableListOf())
+    }
+
+    @Provides
+    fun provideItemCartSaleAdapter(): ItemCartSaleAdapter {
+        return ItemCartSaleAdapter(mutableListOf())
+    }
+    @Provides
+    fun provideItemPayTypeAdapter(): ItemPayTypeAdapter {
+        return ItemPayTypeAdapter(mutableListOf())
+    }
 }

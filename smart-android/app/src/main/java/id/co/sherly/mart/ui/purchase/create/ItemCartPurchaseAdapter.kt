@@ -1,7 +1,8 @@
 package id.co.sherly.mart.ui.purchase.create
 
 import android.annotation.SuppressLint
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import id.co.sherly.mart.databinding.ItemCartPurchaseBinding
 import id.co.sherly.mart.utils.ext.calculateSubtotal
 import id.co.sherly.mart.utils.ext.formatPrice
 import id.co.sherly.mart.utils.ext.loadImage
+import java.math.BigDecimal
 
 
 class ItemCartPurchaseAdapter(
@@ -44,14 +46,15 @@ class ItemCartPurchaseAdapter(
         val item = items[position]
         binding.name.text = item.name
 
-        binding.quantity.text = "${item.quantity} x ${item.lastPurchasePrice?.formatPrice()}"
-        binding.subtotal.text = (item.lastPurchasePrice?.toBigDecimal()?.calculateSubtotal(item.quantity)).toString().formatPrice()
-//        binding.description.text = item.description
-        if (item.lastPurchasePrice != null) {
-            binding.lastPurchasePrice.text = item.lastPurchasePrice?.formatPrice()
-        } else {
-            binding.lastPurchasePrice.text = "0".formatPrice()
+        var price = binding.purchasePrice.text.toString()
+        if (price.isEmpty()) {
+            price = item.lastPurchasePrice.toString()
         }
+        item.tmpPrice = price.toInt()
+        binding.quantity.text = "${item.quantity} x ${price.formatPrice()}"
+        binding.subtotal.text = item.getSubtotal().toString().formatPrice()
+//        binding.description.text = item.description
+
         if (item.image == null) {
             binding.icon.setImageDrawable(
                 ContextCompat.getDrawable(
@@ -93,13 +96,41 @@ class ItemCartPurchaseAdapter(
 //            callback?.onItemSelected(item, position)
         }
 
+
         binding.button.buttonMinus.setOnClickListener {
 //            callback?.onDecreaseQuantity(item, binding.button.quantity, position)
         }
         binding.button.buttonPlus.setOnClickListener {
 //            callback?.onInCreaseQuantity(item, binding.button.quantity, position)
         }
+
+        val textWatcher: TextWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+
+
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                Log.e("log", "atc : ${s.toString()}")
+                if (binding.purchasePrice.length() >= 3) {
+                    item.tmpPrice = s.toString().toInt()
+                    calculatePrice()
+                }
+
+                try {
+                   calculatePrice()
+               } catch (_: Exception){}
+//                binding.quantity.text = "${item.quantity} x ${binding.purchasePrice?.toString()?.formatPrice()}"
+
+            }
+        }
+        binding.purchasePrice.addTextChangedListener(textWatcher)
+
     }
+
 
     @SuppressLint("NotifyDataSetChanged")
     fun clearSelections(list: List<Item>) {
@@ -124,6 +155,7 @@ class ItemCartPurchaseAdapter(
     fun addItem(item: Item) {
         this.items.add(item)
         notifyItemInserted(this.items.size)
+        calculatePrice()
     }
 
     /*
@@ -133,18 +165,18 @@ class ItemCartPurchaseAdapter(
     */
     fun removeItem(item: Item, position: Int) {
         checkPositions()
-        if (position!=0 && position!=items.size) {
+        if (position != 0 && position != items.size) {
             updateNextItemPosition(position)
         }
         this.items.remove(item)
         notifyItemRemoved(position)
-        if (position==0){
+        if (position == 0) {
             updateAllPosition()
         }
-        if (position==items.size) {
+        if (position == items.size) {
 
         }
-
+        calculatePrice()
 
     }
 
@@ -155,10 +187,10 @@ class ItemCartPurchaseAdapter(
     }
 
     private fun updateNextItemPosition(position: Int) {
-        val data = items.slice(position+1 until items.size)
+        val data = items.slice(position + 1 until items.size)
         for (item in data) {
             val oldPosition = item.recyclerViewPosition
-            val newPosition = oldPosition-1
+            val newPosition = oldPosition - 1
             Log.e("===", "${item.name} old position = $oldPosition  new position = $newPosition")
 
             item.recyclerViewPosition = newPosition
@@ -177,14 +209,14 @@ class ItemCartPurchaseAdapter(
     }
 
     private fun updateAllPosition() {
-       for (item in items) {
-           val position: Int = item.recyclerViewPosition
-           val newPosition = position - 1
-           Log.e("LOG", "${item.name} old position = $position   -    new position = $newPosition")
-           item.recyclerViewPosition = newPosition
-           updateItem(item, newPosition)
-           callback?.onUpdatePosition(item, newPosition)
-       }
+        for (item in items) {
+            val position: Int = item.recyclerViewPosition
+            val newPosition = position - 1
+            Log.e("LOG", "${item.name} old position = $position   -    new position = $newPosition")
+            item.recyclerViewPosition = newPosition
+            updateItem(item, newPosition)
+            callback?.onUpdatePosition(item, newPosition)
+        }
     }
 
     //    if (item.recyclerViewPosition!=0) {
@@ -195,7 +227,31 @@ class ItemCartPurchaseAdapter(
     fun updateItem(item: Item, position: Int) {
         item.recyclerViewPosition = position
         notifyItemChanged(position)
+        calculatePrice()
     }
+
+    fun calculatePrice() {
+//        var total: BigDecimal? = BigDecimal(0)
+        val total: BigDecimal = items
+            .stream()
+            .map(Item::getSubtotal)
+            .reduce(BigDecimal::add)
+            .get()
+//        total = this.items
+//            .groupBy { it.id }
+//            .mapValues { it.value.sumOf { it.tmpPrice * it.quantity } }
+//        for (item in items) {
+//            total = total?.plus(
+//                (item.tmpPrice?.toBigDecimal()?.calculateSubtotal(item.quantity)!!)
+//            )
+//            Log.e("cal", "${item.name} - $total")
+//        }
+        callback?.onPriceCalculated(
+            total?.toString()?.formatPrice(),
+            total?.toString()?.formatPrice()
+        )
+    }
+
 
     var callback: Callback? = null
 
@@ -204,6 +260,7 @@ class ItemCartPurchaseAdapter(
 //        fun onDecreaseQuantity(item: Item, textView: AppCompatTextView, position: Int)
 //        fun onInCreaseQuantity(item: Item, textView: AppCompatTextView, position: Int)
         fun onUpdatePosition(item: Item, position: Int)
+        fun onPriceCalculated(subtotal: String?, total: String?)
     }
 
 

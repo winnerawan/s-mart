@@ -194,6 +194,7 @@
                         android:layout_width="@dimen/dimen_42dp"
                         android:layout_height="0dp"/>
                     <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/purchase_price"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="@tools:sample/us_phones"
                         android:gravity="center_vertical|end"
@@ -238,6 +239,7 @@
                         android:layout_width="@dimen/dimen_42dp"
                         android:layout_height="0dp"/>
                     <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/sell_price"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="@tools:sample/us_phones"
                         android:gravity="center_vertical|end"

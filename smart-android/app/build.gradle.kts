@@ -71,6 +71,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation(project(":carteasy"))
+    implementation(project(":printama"))
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
     /** core */
@@ -149,6 +150,12 @@ dependencies {
     implementation("net.gotev:uploadservice:4.9.3")
     implementation("net.gotev:uploadservice-okhttp:4.9.3")
     implementation("com.github.Drjacky:ImagePicker:2.3.22")
+    implementation ("io.github.chochanaresh:filepicker:0.1.9")
+    implementation("com.github.yoanngoular:numpadview:1.0.0")
+//    implementation("com.github.mazenrashed:Printooth:1.3.1")
+//    implementation("com.github.anggastudio:Printama:0.9.73")
+
+
 //    implementation("com.carteasy.v1.lib:carteasy:0.0.6")
     /** test */
     testImplementation("junit:junit:4.13.2")

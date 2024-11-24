@@ -27,6 +27,7 @@ import id.co.sherly.mart.R
 import id.co.sherly.mart.data.model.Category
 import id.co.sherly.mart.data.model.Item
 import id.co.sherly.mart.data.model.Media
+import id.co.sherly.mart.data.pref.UserPreferences
 import id.co.sherly.mart.databinding.FragmentItemBinding
 import id.co.sherly.mart.ui.base.view.BaseFragment
 import id.co.sherly.mart.ui.media.select.SelectMediaActivity
@@ -48,6 +49,9 @@ class ItemFragment : BaseFragment<FragmentItemBinding>(), ItemContract.View, Cat
     
     @Inject
     lateinit var mCategoryAdapter: CategoryAdapter
+
+    @Inject
+    lateinit var preferences: UserPreferences
 
     private var isUpdate = false
 
@@ -72,8 +76,8 @@ class ItemFragment : BaseFragment<FragmentItemBinding>(), ItemContract.View, Cat
 
             mSpinnerCategoryAdapter = SpinnerCategoryAdapter(requireActivity(), R.id.txt_name, mutableListOf())
 
-            gridLayout1 = GridLayoutManager(requireActivity(), 3, GridLayoutManager.VERTICAL, false)
-            gridLayout2 = GridLayoutManager(requireActivity(), 2, GridLayoutManager.VERTICAL, false)
+            gridLayout1 = GridLayoutManager(requireActivity(), preferences.masterItemGridCount, GridLayoutManager.VERTICAL, false)
+            gridLayout2 = GridLayoutManager(requireActivity(), preferences.masterItemGridCount-1, GridLayoutManager.VERTICAL, false)
             binding?.recyclerCategory?.layoutManager = LinearLayoutManager(requireActivity(), RecyclerView.HORIZONTAL, false)
 
             (binding?.recyclerView?.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
@@ -83,8 +87,8 @@ class ItemFragment : BaseFragment<FragmentItemBinding>(), ItemContract.View, Cat
             binding?.recyclerCategory?.adapter = mCategoryAdapter
             mCategoryAdapter.callback = this@ItemFragment
 
-            val snapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(binding?.recyclerCategory)
+//            val snapHelper = PagerSnapHelper()
+//            snapHelper.attachToRecyclerView(binding?.recyclerCategory)
 //            binding?.recyclerView?.layoutManager = LinearLayoutManager(requireActivity())
 
             expandConstraintContent()
@@ -162,6 +166,9 @@ class ItemFragment : BaseFragment<FragmentItemBinding>(), ItemContract.View, Cat
                 launchSelectMedia()
             }
         }
+
+        presenter.categories()
+        presenter.data(null, null)
     }
 
     private fun clearCategorySelected(){

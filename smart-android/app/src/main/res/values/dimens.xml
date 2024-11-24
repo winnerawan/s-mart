@@ -51,6 +51,11 @@
     <dimen name="fontsize_24">24sp</dimen>
     <dimen name="fontsize_26">26sp</dimen>
     <dimen name="fontsize_32">32sp</dimen>
+    <dimen name="fontsize_36">36sp</dimen>
+    <dimen name="fontsize_40">40sp</dimen>
+    <dimen name="fontsize_42">42sp</dimen>
+    <dimen name="fontsize_46">46sp</dimen>
+
     <dimen name="dimen_128dp">128dp</dimen>
     <dimen name="dimen_42dp">42dp</dimen>
     <dimen name="dimen_36dp">36dp</dimen>

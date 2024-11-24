@@ -16,6 +16,7 @@ import id.co.sherly.mart.ui.main.MainContract
 import id.co.sherly.mart.ui.main.MainPagerAdapter
 import id.co.sherly.mart.ui.media.select.SelectMediaContract
 import id.co.sherly.mart.ui.purchase.create.PurchaseCreateContract
+import id.co.sherly.mart.ui.purchase.imports.PurchaseImportContract
 import id.co.sherly.mart.ui.sign.`in`.SignInContract
 import id.co.sherly.mart.ui.splash.SplashContract
 
@@ -46,6 +47,11 @@ class ActivityContractViewModule {
     @Provides
     fun purchaseCreateView(activity: Activity): PurchaseCreateContract.View {
         return activity as PurchaseCreateContract.View
+    }
+
+    @Provides
+    fun purchaseImportView(activity: Activity): PurchaseImportContract.View {
+        return activity as PurchaseImportContract.View
     }
 
     @Provides

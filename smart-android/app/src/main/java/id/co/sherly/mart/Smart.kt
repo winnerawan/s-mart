@@ -49,6 +49,7 @@ class Smart : Application() {
 
             Logger.addLogAdapter(AndroidLogAdapter(formatStrategy))
         }
+
     }
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= 26) {

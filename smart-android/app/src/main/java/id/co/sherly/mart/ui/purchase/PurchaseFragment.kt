@@ -32,6 +32,7 @@ import id.co.sherly.mart.databinding.FragmentPurchaseBinding
 import id.co.sherly.mart.ui.base.view.BaseFragment
 import id.co.sherly.mart.ui.media.select.SelectMediaActivity
 import id.co.sherly.mart.ui.purchase.create.PurchaseCreateActivity
+import id.co.sherly.mart.ui.purchase.imports.PurchaseImportActivity
 import id.co.sherly.mart.utils.ext.dpToPx
 import id.co.sherly.mart.utils.ext.hideKeyboard
 import id.co.sherly.mart.utils.ext.loadImage
@@ -163,6 +164,9 @@ class PurchaseFragment : BaseFragment<FragmentPurchaseBinding>(), PurchaseContra
             }
             binding?.media?.attachmentUploadTv?.setOnClickListener {
                 launchSelectMedia()
+            }
+            binding?.btnImport?.setOnClickListener {
+                launchPurchaseImport()
             }
         }
         presenter.suppliers()
@@ -380,5 +384,17 @@ class PurchaseFragment : BaseFragment<FragmentPurchaseBinding>(), PurchaseContra
     private fun launchPurchaseCreate() {
         val intent = Intent(requireActivity(), PurchaseCreateActivity::class.java)
         purchaseCreateLauncher.launch(intent, optionsLauncher())
+    }
+
+    private val purchaseImportLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                presenter.data(null, null)
+            }
+        }
+
+    private fun launchPurchaseImport() {
+        val intent = Intent(requireActivity(), PurchaseImportActivity::class.java)
+        purchaseImportLauncher.launch(intent, optionsLauncher())
     }
 }

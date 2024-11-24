@@ -99,7 +99,7 @@
                     android:fontFamily="@font/medium"
                     android:hint="@string/label_username"
                     android:imeOptions="actionNext"
-                    android:inputType="text"
+                    android:inputType="text|textEmailAddress"
                     android:padding="@dimen/dimen_16dp"
                     android:textSize="@dimen/fontsize_14" />
 

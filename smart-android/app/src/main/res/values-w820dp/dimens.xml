@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2023 © JAGONET  All Rights Reserved by PT. SARANA MEDIA CEMERLANG
+  ~ Unauthorized copying of this file, via any medium is strictly
+  ~ prohibited Proprietary and confidential
+  -->
+
+<resources>
+
+<!--    &lt;!&ndash;    dp size&ndash;&gt;-->
+<!--    <dimen name="dimen_1dp">1dp</dimen>-->
+<!--    <dimen name="dimen_2dp">2dp</dimen>-->
+<!--    <dimen name="dimen_3dp">3dp</dimen>-->
+<!--    <dimen name="dimen_4dp">4dp</dimen>-->
+<!--    <dimen name="dimen_5dp">5dp</dimen>-->
+<!--    <dimen name="dimen_6dp">6dp</dimen>-->
+<!--    <dimen name="dimen_8dp">8dp</dimen>-->
+<!--    <dimen name="dimen_10dp">10dp</dimen>-->
+<!--    <dimen name="dimen_12dp">12dp</dimen>-->
+<!--    <dimen name="dimen_14dp">14dp</dimen>-->
+<!--    <dimen name="dimen_16dp">16dp</dimen>-->
+<!--    <dimen name="dimen_18dp">18dp</dimen>-->
+<!--    <dimen name="dimen_20dp">20dp</dimen>-->
+<!--    <dimen name="dimen_22dp">22dp</dimen>-->
+<!--    <dimen name="dimen_24dp">24dp</dimen>-->
+<!--    <dimen name="dimen_26dp">26dp</dimen>-->
+<!--    <dimen name="dimen_30dp">30dp</dimen>-->
+<!--    <dimen name="dimen_32dp">32dp</dimen>-->
+<!--    <dimen name="dimen_44dp">44dp</dimen>-->
+<!--    <dimen name="dimen_48dp">48dp</dimen>-->
+<!--    <dimen name="dimen_50dp">50dp</dimen>-->
+<!--    <dimen name="dimen_56dp">56dp</dimen>-->
+<!--    <dimen name="dimen_80dp">80dp</dimen>-->
+<!--    <dimen name="dimen_120dp">120dp</dimen>-->
+<!--    <dimen name="dimen_160dp">160dp</dimen>-->
+<!--    <dimen name="dimen_240dp">240dp</dimen>-->
+
+<!--    <dimen name="dimen_260dp">260dp</dimen>-->
+
+<!--    &lt;!&ndash;    font size&ndash;&gt;-->
+<!--    <dimen name="fontsize_6">6sp</dimen>-->
+<!--    <dimen name="fontsize_8">8sp</dimen>-->
+<!--    <dimen name="fontsize_10">10sp</dimen>-->
+<!--    <dimen name="fontsize_11">11sp</dimen>-->
+<!--    <dimen name="fontsize_12">12sp</dimen>-->
+<!--    <dimen name="fontsize_14">14sp</dimen>-->
+<!--    <dimen name="fontsize_16">16sp</dimen>-->
+<!--    <dimen name="fontsize_17">17sp</dimen>-->
+<!--    <dimen name="fontsize_18">18sp</dimen>-->
+<!--    <dimen name="fontsize_20">20sp</dimen>-->
+<!--    <dimen name="fontsize_22">22sp</dimen>-->
+<!--    <dimen name="fontsize_24">24sp</dimen>-->
+<!--    <dimen name="fontsize_26">26sp</dimen>-->
+<!--    <dimen name="fontsize_32">32sp</dimen>-->
+<!--    <dimen name="dimen_128dp">128dp</dimen>-->
+<!--    <dimen name="dimen_42dp">42dp</dimen>-->
+<!--    <dimen name="dimen_36dp">36dp</dimen>-->
+<!--    <dimen name="marginSide">20dp</dimen>-->
+<!--    <dimen name="marginSideSmall">16dp</dimen>-->
+<!--    <dimen name="marginSideToolbar">20dp</dimen>-->
+<!--    <dimen name="detailsAboutMarginTop">12dp</dimen>-->
+<!--    <dimen name="detailsButtonMarinStart">10dp</dimen>-->
+<!--    <dimen name="detailsDividerMarginTop">16dp</dimen>-->
+<!--    <dimen name="detailsPaddingBottom">140dp</dimen>-->
+<!--    <dimen name="detailsTitleMargin">12dp</dimen>-->
+<!--    <dimen name="dialogCorners">12dp</dimen>-->
+<!--    <dimen name="dialogMaxWidth">480dp</dimen>-->
+<!--    <dimen name="dialogMinWidth">320dp</dimen>-->
+<!--    <dimen name="dialogPadding">16dp</dimen>-->
+<!--    <dimen name="disabled_alpha_material_dark">0.3</dimen>-->
+<!--    <dimen name="disabled_alpha_material_light">0.26</dimen>-->
+<!--    <dimen name="discoverOverviewCategoryHeight">100dp</dimen>-->
+<!--    <dimen name="dividerHeight">1dp</dimen>-->
+<!--    <dimen name="divider_height">1dp</dimen>-->
+<!--    <dimen name="divider_height_wide">8dp</dimen>-->
+<!--    <dimen name="elementMaxWidth">640dp</dimen>-->
+<!--    <dimen name="elevation">4dp</dimen>-->
+<!--    <dimen name="elevationCirclePoster">4dp</dimen>-->
+<!--    <dimen name="elevationPoster">4dp</dimen>-->
+<!--    <dimen name="fabAreaSize">76dp</dimen>-->
+<!--    <dimen name="maxSlideMenuWidth">320dp</dimen>-->
+<!--    <dimen name="minSlideMenuWidth">280dp</dimen>-->
+<!--    <dimen name="detailGradientHeight">80dp</dimen>-->
+<!--    <dimen name="marginTextField">10dp</dimen>-->
+<!--    <dimen name="dimen_96dp">96dp</dimen>-->
+<!--    <dimen name="fontsize_19">19sp</dimen>-->
+<!--    <dimen name="dimen_208dp">208dp</dimen>-->
+<!--    <dimen name="dimen_15dp">15dp</dimen>-->
+<!--    <dimen name="dimen_60dp">60dp</dimen>-->
+<!--    <dimen name="dimen_28dp">28dp</dimen>-->
+<!--    <dimen name="fontsize_5">5sp</dimen>-->
+<!--    <dimen name="badgeCorners">4dp</dimen>-->
+<!--    <dimen name="bottomAppBarSize">72dp</dimen>-->
+<!--    <dimen name="bottomMenuItemPadding">24dp</dimen>-->
+<!--    <dimen name="bottomNavigationFabSize">46dp</dimen>-->
+<!--    <dimen name="bottomPadding">24dp</dimen>-->
+<!--    <dimen name="bottomSheetPaddingBottom">32dp</dimen>-->
+<!--    <dimen name="iconExtraLarge">72dp</dimen>-->
+<!--    <dimen name="iconHuge">92dp</dimen>-->
+<!--    <dimen name="iconLarge">48dp</dimen>-->
+<!--    <dimen name="iconMedium">24dp</dimen>-->
+<!--    <dimen name="iconMediumLarge">36dp</dimen>-->
+<!--    <dimen name="iconTiny">18dp</dimen>-->
+<!--    <dimen name="icon_huge">92dp</dimen>-->
+<!--    <dimen name="icon_large">48dp</dimen>-->
+<!--    <dimen name="icon_medium">24dp</dimen>-->
+<!--    <dimen name="icon_medium_large">36dp</dimen>-->
+<!--    <dimen name="icon_xlarge">72dp</dimen>-->
+<!--    <dimen name="buttonCorners">8dp</dimen>-->
+<!--    <dimen name="buttonHeightSmall">42dp</dimen>-->
+<!--    <dimen name="buttonHeightTiny">28dp</dimen>-->
+<!--    <dimen name="buttonIconSize">18dp</dimen>-->
+<!--    <dimen name="button_height_small">42dp</dimen>-->
+<!--    <dimen name="fontsize_13">13sp</dimen>-->
+<!--    <dimen name="cardCornerRadius">8dp</dimen>-->
+<!--    <dimen name="homeItemPaddingBottom">8dp</dimen>-->
+<!--    <dimen name="homeItemPosterHeight">170dp</dimen>-->
+<!--    <dimen name="homeItemPosterHeight2">150dp</dimen>-->
+<!--    <dimen name="fontsize_15">15sp</dimen>-->
+
+<!--    <dimen name="homeItemPosterHeightParent">216dp</dimen>-->
+<!--    <dimen name="homeItemPosterTextHeight">42dp</dimen>-->
+<!--    <dimen name="homeItemTextPaddingTop">4dp</dimen>-->
+<!--    <dimen name="dimen_0dp">0dp</dimen>-->
+<!--    <dimen name="dimen_72dp">72dp</dimen>-->
+<!--    <dimen name="chipRecyclerViewPadding">16dp</dimen>-->
+<!--    <dimen name="tabPaddingSmall">14dp</dimen>-->
+<!--    <dimen name="dimen_40dp">40dp</dimen>-->
+<!--    <dimen name="dimen_64dp">64dp</dimen>-->
+<!--    <dimen name="dimen_230dp">230dp</dimen>-->
+<!--    <dimen name="tabPadding">8dp</dimen>-->
+<!--    <dimen name="dimen_46dp">46dp</dimen>-->
+<!--    <dimen name="dimen_38dp">38dp</dimen>-->
+<!--    <dimen name="dimen_180dp">180dp</dimen>-->
+<!--    <dimen name="dimen_140dp">140dp</dimen>-->
+    <dimen name="bottom_sheet_width">1200dp</dimen>
+
+</resources>

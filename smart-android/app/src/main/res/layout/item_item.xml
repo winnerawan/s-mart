@@ -93,7 +93,7 @@
                     android:layout_width="0dp"
                     android:textSize="@dimen/fontsize_11"
                     android:fontFamily="@font/regular"
-                    android:text="@string/last_purchase_price_label"
+                    android:text="@string/selling_price"
                     android:includeFontPadding="false"
                     android:layout_height="wrap_content"/>
 
