@@ -16,10 +16,10 @@ class Delete extends Api\User\UserValidator
     /**
 	 */
 	protected $validatorRules = [
-        'category' => 'required|numeric'
+        'purchase' => 'required|string'
     ];
 
-    protected $category;
+    protected $purchase;
 
      /**
 	 */
@@ -27,10 +27,10 @@ class Delete extends Api\User\UserValidator
 		if (!parent::validate()) {
 			return false;
 		}
-        $this->category = Smart\Category::select()
-            ->where('category.id', $this->validatorData->get('category'))
+        $this->purchase = Smart\Purchase::select()
+            ->where('purchase.id', $this->validatorData->get('purchase'))
             ->first();
-        if (!$this->category) {
+        if (!$this->purchase) {
             return false;
         }
         return true;
@@ -40,14 +40,32 @@ class Delete extends Api\User\UserValidator
      */
     public function delete() {
         return Smart\User::transaction(function(){
-            if ($this->category->hasItems()) {
-                return;
-            }
-            //todo: revert item_stock
-            $this->category->delete();
+           $this->revertItemStocks();
+           $this->purchase->delete();
 		});
     }
-
     
+    /**
+     */
+    protected function revertItemStocks() {
+        foreach($this->purchase->getItems() as $item) {
+            $itemStock = $this->getItemStock($item->category_id, $item->sku, $item->item_id);
+            if ($itemStock) {
+                $itemStock->stock = $itemStock->stock - $item->qty;
+                $itemStock->save();
+                $item->delete();
+            }
+        }
+    }
+
+    /**
+     */
+    protected function getItemStock($category, $sku, $item) {
+        return Smart\ItemStock::where([
+            'item_stock.category_id' => $category,
+            'item_stock.sku' => $sku, 
+            'item_stock.item_id' => $item
+        ])->first();
+    }
 
 }

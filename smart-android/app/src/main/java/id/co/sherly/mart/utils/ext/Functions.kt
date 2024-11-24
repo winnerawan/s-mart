@@ -36,6 +36,8 @@ import id.co.sherly.mart.R
 import id.co.sherly.mart.data.model.Image
 import id.co.sherly.mart.utils.AppConstants
 import net.gotev.uploadservice.protocols.multipart.MultipartUploadRequest
+import java.io.File
+import java.io.FileOutputStream
 import java.io.Serializable
 import java.math.BigDecimal
 import java.text.NumberFormat
@@ -326,6 +328,20 @@ fun requestCameraStoragePermissions(activity: Activity) {
 //        // Do something ...
 //    }
     ActivityCompat.requestPermissions(activity, permissions(), AppConstants.PERMISSIONS)
+}
+
+
+fun cashDrawer(fileName: String?, data: String) {
+    val file: File = File("/sys/class/gpio/gpio14/value")
+    var outputStream: FileOutputStream? = null
+    try {
+        outputStream = FileOutputStream(file)
+        val bytes = data.toByteArray()
+        outputStream.write(bytes)
+        outputStream.close()
+    } catch (e: java.lang.Exception) {
+        e.printStackTrace()
+    }
 }
 
 //fun ImageView.loadImageCircle(file: FileUrl?, size: Int = 0) {

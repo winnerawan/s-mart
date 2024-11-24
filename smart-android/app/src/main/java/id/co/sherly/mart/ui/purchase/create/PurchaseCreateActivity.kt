@@ -13,11 +13,8 @@ import androidx.appcompat.widget.SearchView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SimpleItemAnimator
 import com.carteasy.v1.lib.Carteasy
-import com.google.gson.Gson
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
@@ -31,6 +28,7 @@ import id.co.sherly.mart.ui.base.view.BaseActivity
 import id.co.sherly.mart.ui.item.CategoryAdapter
 import id.co.sherly.mart.ui.purchase.SpinnerSupplierAdapter
 import id.co.sherly.mart.utils.CarteasyHelper
+import id.co.sherly.mart.utils.ext.cashDrawer
 import id.co.sherly.mart.utils.ext.dpToPx
 import id.co.sherly.mart.utils.ext.hideKeyboard
 import id.co.sherly.mart.utils.view.WrapGripLayoutManager
@@ -116,6 +114,11 @@ class PurchaseCreateActivity : BaseActivity<ActivityPurchaseCreateBinding>(), Pu
         presenter.suppliers()
         presenter.categories()
         presenter.data(null, null)
+
+        binding.btnSave.setOnClickListener {
+            val file = "/sys/class/gpio/gpio14/value"
+            cashDrawer(file, "1")
+        }
     }
 
 

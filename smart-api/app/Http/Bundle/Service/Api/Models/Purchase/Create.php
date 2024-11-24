@@ -45,7 +45,7 @@ class Create extends Api\User\UserValidator
         return Smart\User::transaction(function(){
             $now = \Carbon\Carbon::now();
             $this->purchase = new Smart\Purchase();
-            $this->purchase->id = Str::uuid();
+            // $this->purchase->id = Str::uuid();
             $json = json_decode($this->request->getContent(), true);
             $this->purchase->supplier_id = $json['supplier'];
             $this->purchase->description = $json['description'];

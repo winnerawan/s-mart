@@ -155,3 +155,27 @@ $router->group([
 		'api.auth.authorizedToken'
 	]
 ],__DIR__.'/media.php');
+
+/*-------------------------------------------------------------------------
+ * /import
+ *-------------------------------------------------------------------------
+ */
+$router->group([
+	'as' => '/import',
+	'prefix' => '/import',
+	'middleware' => [
+		'api.auth.authorizedToken'
+	]
+],__DIR__.'/import.php');
+
+/*-------------------------------------------------------------------------
+ * /export
+ *-------------------------------------------------------------------------
+ */
+$router->group([
+	'as' => '/export',
+	'prefix' => '/export',
+	'middleware' => [
+		'api.auth.authorizedToken'
+	]
+],__DIR__.'/export.php');

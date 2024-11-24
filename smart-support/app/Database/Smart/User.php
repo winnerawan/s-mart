@@ -20,11 +20,11 @@ class User extends AbstractModel
 	protected $userPhone;
 	protected $userBranch;
 	protected $userTimezone;
-	// protected $userFamily;
 	protected $username;
 	protected $password;
 	protected $tokens;
 	protected $medias;
+	protected $documents;
 
 
 
@@ -196,6 +196,23 @@ class User extends AbstractModel
 			$this->medias = $this->medias()->get();
 		}
 		return $this->medias;
+	}
+
+	/**
+	 */
+	public function documents(){
+		return PurchaseImportFile::where([
+			'purchase_import_file.user_id' => $this->id
+		]);
+	}
+
+	/**
+	 */
+	public function getDocuments(){
+		if ($this->purchase_import_file == null) {
+			$this->purchase_import_file = $this->documents()->get();
+		}
+		return $this->purchase_import_file;
 	}
 
 	

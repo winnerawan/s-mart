@@ -52,6 +52,7 @@ class Data extends Api\User\UserValidator
 	 */
 	protected function wrapResponse($item) {
 		$response = $item;
+		$response['category_name'] = $item->getCategory()->name;
 		if ($item->media_id!=null) {
 			$response['image'] = sprintf('https:%s%s', Api\Config::get('media.file'), $item->getItemMedia()->getMedia()->file);//Support\Media::buildFileUrlFromItemMedia($item->getItemMedia());
 		} else {
@@ -61,7 +62,7 @@ class Data extends Api\User\UserValidator
 	}
 	/**
 	 */
-	protected function getData() {
+	public function getData() {
 		$response = [];
 		foreach($this->data as $item) {
 			$response[] = $this->wrapResponse($item);

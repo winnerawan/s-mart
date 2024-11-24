@@ -34,6 +34,7 @@ class Item extends AbstractModel
 	/**
 	 */
 	protected $itemMedia;
+	protected $category;
 	/**
 	 */
 	public function hasStocks() {
@@ -46,6 +47,23 @@ class Item extends AbstractModel
 			return true;
 		}
 		return false;
+	}
+
+	/** 
+	*/
+	public function category() {
+		return Category::where([
+			'category.id' => $this->category_id
+		]);
+	}
+
+	/** 
+	*/
+	public function getCategory() {
+		if ($this->category==null) {
+			$this->category = $this->category()->first();
+		}
+		return $this->category;
 	}
 	
 	/**
