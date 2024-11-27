@@ -43,7 +43,7 @@ object PrintUtils {
             printama.printText("\n\n")
             printama.printText(footer)
             printama.feedPaper()
-//            printama.openCashDrawer()
+            printama.openCashDrawer()
 //            printama.printText(Printama.CENTER, "------------------\n")
 //            printama.printText(Printama.CENTER, "")
 //            printama.printText(Printama.CENTER, "")

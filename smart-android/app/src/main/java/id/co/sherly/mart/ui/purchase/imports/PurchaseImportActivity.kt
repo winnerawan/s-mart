@@ -178,7 +178,7 @@ class PurchaseImportActivity : BaseActivity<ActivityPurchaseImportBinding>(), Pu
                 val uri = it.data?.data
                 // Use the file path to set image or upload
                 val filePath= it.data?.getStringExtra(Const.BundleExtras.FILE_PATH)
-                documentUri = FileUtils(this).getPath(uri)
+                documentUri = filePath//FileUtils(this).getPath(uri)
                 Log.e("DOC", "fp: $filePath  uri: $uri.  docUri: $documentUri")
                 binding.upload.name.text = filePath?.substringAfterLast("/")
                 //...
