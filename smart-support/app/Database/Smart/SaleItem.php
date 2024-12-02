@@ -19,6 +19,14 @@ class SaleItem extends AbstractModel
 	// 	'icon',
 	// 	'position' 
 	// ];
+
+	/**
+	 */
+	protected $primaryKeys = [
+		'sale_id' => 'sale_id',
+		'item_id' => 'item_id',
+	];
+
 	/**
 	 */
 	protected $casts = [

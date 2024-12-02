@@ -2,11 +2,13 @@
 /**
  */
 namespace App\Database\Smart;
+use Rorecek\Ulid\HasUlid;
 
 /**
  */
 class Sale extends AbstractModel
 {
+	use HasUlid;
 	/**
 	 */
 	protected $table = 'sale';
@@ -28,6 +30,7 @@ class Sale extends AbstractModel
 	/**
 	 */
 	protected $items;
+	protected $customer;
 	protected $hasItems;
 
 	/** 
@@ -45,8 +48,8 @@ class Sale extends AbstractModel
 	/** 
 	*/
 	public function items() {
-		return Item::where([
-			'item.category_id' => $this->id
+		return SaleItem::where([
+			'sale_item.sale_id' => $this->id
 		]);
 	}
 
@@ -57,6 +60,29 @@ class Sale extends AbstractModel
 			$this->items = $this->items()->get();
 		}
 		return $this->items;
+	}
+
+	/** 
+	*/
+	public function customer() {
+		return Customer::where([
+			'customer.id' => $this->customer_id
+		]);
+	}
+
+	/** 
+	*/
+	public function getCustomer() {
+		if ($this->customer==null) {
+			$this->customer = $this->customer()->first();
+		}
+		return $this->customer;
+	}
+
+	/** 
+	*/
+	public function pieces() {
+		return $this->items()->sum('qty');;
 	}
 
 }
